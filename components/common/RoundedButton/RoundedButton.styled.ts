@@ -4,7 +4,7 @@ import { fonts } from '@/variables/fonts.styled';
 
 interface RoundedBtnProps {
   variant: 'big' | 'small';
-  typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn';
+  typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn' | 'editBtn';
 }
 
 const bigStyle = css`
@@ -60,6 +60,21 @@ const otherBtn = css`
   }
 `;
 
+const editBtn = css`
+  background-color: ${colors.colorEditLight};
+  border: 0.2rem solid ${colors.colorEditLight};
+  color: ${colors.colorFontPrimaryLighten};
+
+  :hover {
+    border: 0.2rem solid ${colors.colorEdit};
+  }
+
+  :active {
+    border: 0.2rem solid ${colors.colorEdit};
+    background-color: ${colors.colorEdit};
+  }
+`;
+
 const getButtonStyles = (type?: string) => {
   switch (type) {
     case 'addBtn':
@@ -70,6 +85,9 @@ const getButtonStyles = (type?: string) => {
 
     case 'otherBtn':
       return otherBtn;
+
+    case 'editBtn':
+      return editBtn;
 
     default:
       return '';

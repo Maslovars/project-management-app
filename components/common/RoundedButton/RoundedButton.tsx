@@ -8,7 +8,7 @@ export interface RoundedButtonProps {
   type?: 'button' | 'submit';
   onClick?(): void;
   disabled?: boolean;
-  typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn';
+  typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn' | 'editBtn';
 }
 
 export const RoundedButton: React.FC<RoundedButtonProps> = ({

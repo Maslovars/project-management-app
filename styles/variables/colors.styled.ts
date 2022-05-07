@@ -15,4 +15,6 @@ export const colors = {
   colorErrorLight: '#ffe2e2',
   colorInfo: '#ffc200',
   colorInfoLight: '#fff8dd',
+  colorEdit: '#1975d0',
+  colorEditLight: '#d7f6ff',
 };
