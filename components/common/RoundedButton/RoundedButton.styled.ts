@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../../../styles/variables/colors.styled';
-import { fonts } from './../../../styles/variables/fonts.styled';
+import { colors } from '@/variables/colors.styled';
+import { fonts } from '@/variables/fonts.styled';
 
 interface RoundedBtnProps {
   variant: 'big' | 'small';
