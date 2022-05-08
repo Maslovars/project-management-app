@@ -9,5 +9,4 @@ export const OverlayLayer = styled.div`
   height: 100%;
   background: ${colors.colorFontPrimary};
   opacity: 0.6;
-  z-index: 100;
 `;

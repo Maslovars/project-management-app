@@ -3,7 +3,7 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const Container = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 
 export const Description = styled.p`
@@ -14,7 +14,7 @@ export const Description = styled.p`
 `;
 
 export const Input = styled.input`
-  padding: 1.3rem 2rem;
+  padding: 1rem 2rem;
   background: ${colors.colorBgSecondaryDarken};
   border-radius: 0.8rem;
   border: 0.2rem solid ${colors.colorBgSecondaryDarken};
