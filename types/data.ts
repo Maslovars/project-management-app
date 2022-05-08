@@ -6,3 +6,7 @@ export interface TaskTypes {
   name: string;
   fileImage: string;
 }
+
+export interface TaskListTypes {
+  tasks: TaskTypes[];
+}

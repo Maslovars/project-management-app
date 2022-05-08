@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
@@ -7,6 +7,7 @@ export const Card = styled.li`
   border-radius: 1rem;
   max-width: 29rem;
   padding: 2rem 3rem;
+  margin-bottom: 0.9rem;
 `;
 
 export const Title = styled.h3`

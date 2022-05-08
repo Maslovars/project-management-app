@@ -100,6 +100,7 @@ export const RoundedBtn = styled.button<RoundedBtnProps>`
   text-align: center;
   border-radius: 5rem;
   cursor: pointer;
+  white-space: nowrap;
 
   :disabled {
     pointer-events: none;
