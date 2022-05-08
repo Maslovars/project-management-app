@@ -55,3 +55,48 @@ export const TasksMock = [
     fileImage: '/file_img.jpg',
   },
 ];
+
+export const ColumnMock = {
+  id: 1,
+  title: 'Backlog',
+  tasks: TasksMock,
+};
+
+export const ColumnMock2 = {
+  id: 2,
+  title: 'Backlog',
+  tasks: TasksMock,
+};
+
+export const ColumnMock3 = {
+  id: 3,
+  title: 'Backlog',
+  tasks: TasksMock,
+};
+
+export const ColumnMock4 = {
+  id: 4,
+  title: 'Backlog',
+  tasks: TasksMock,
+};
+
+export const ColumnMock5 = {
+  id: 5,
+  title: 'Backlog',
+  tasks: TasksMock,
+};
+
+export const ColumnMock6 = {
+  id: 6,
+  title: 'Backlog',
+  tasks: TasksMock,
+};
+
+export const ColumnListMock = [
+  ColumnMock,
+  ColumnMock2,
+  ColumnMock3,
+  ColumnMock4,
+  ColumnMock5,
+  ColumnMock6,
+];

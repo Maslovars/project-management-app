@@ -2,15 +2,9 @@ import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
-export const Container = styled.div`
-  display: flex;
-  background-color: ${colors.colorBgPrimary};
-  padding: 3rem;
-  height: 100vh;
-`;
-
 export const CardList = styled.div`
   max-width: 35rem;
+  min-width: 35rem;
   border-radius: 0.8rem;
   background-color: ${colors.colorBgSecondary};
   padding: 3rem;

@@ -10,3 +10,9 @@ export interface TaskTypes {
 export interface TaskListTypes {
   tasks: TaskTypes[];
 }
+
+export interface ColumnTypes {
+  id: number;
+  title: string;
+  tasks: TaskTypes[];
+}
