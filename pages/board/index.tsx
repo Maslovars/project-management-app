@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedBtn } from '@/components/common/RoundedButton/RoundedButton.styled';
-
 import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
 
 import { ColumnListMock } from '../../mock/data';
