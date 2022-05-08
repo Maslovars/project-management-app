@@ -23,10 +23,11 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks }) => {
           <Task task={item} />
         ))}
       </TasksContainer>
-
-      <RoundedButton type="submit" typeBtn="delBtn">
-        - Delete column
-      </RoundedButton>
+      <div>
+        <RoundedButton type="submit" typeBtn="delBtn">
+          Delete column
+        </RoundedButton>
+      </div>
     </CardList>
   );
 };

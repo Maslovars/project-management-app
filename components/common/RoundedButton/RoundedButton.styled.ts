@@ -105,8 +105,8 @@ export const RoundedBtn = styled.button<RoundedBtnProps>`
   :disabled {
     pointer-events: none;
     background-color: ${colors.colorBgSecondaryDarken};
-    border: 0.2rem solid ${colors.colorBgSecondaryDarken};
-    color: ${colors.colorFontLight};
+    border: 0.2rem solid ${colors.colorFontSecondary};
+    color: ${colors.colorFontSecondary};
   }
 
   ${(props) => (props.variant === 'big' ? bigStyle : smallStyle)};

@@ -3,12 +3,13 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const CardList = styled.div`
-  max-width: 35rem;
-  min-width: 35rem;
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
   border-radius: 0.8rem;
   background-color: ${colors.colorBgSecondary};
   padding: 3rem;
-  height: 100%;
+  max-height: 100%;
 `;
 
 export const Header = styled.div`
@@ -31,6 +32,6 @@ export const TasksContainer = styled.ul`
   height: 85%;
   margin-bottom: 2rem;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-right: 0.5rem;
 `;

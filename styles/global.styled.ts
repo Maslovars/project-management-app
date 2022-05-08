@@ -14,9 +14,13 @@ font-style: normal;
   font-family: 'Heebo', sans-serif;
 }
 
-
 html {
   font-size: 10px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 a {

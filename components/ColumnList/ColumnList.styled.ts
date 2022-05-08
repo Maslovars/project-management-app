@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
-import { fonts } from '@/variables/fonts.styled';
 
 export const Container = styled.ul`
   display: flex;
@@ -9,10 +8,11 @@ export const Container = styled.ul`
   width: auto;
   background-color: ${colors.colorBgPrimary};
   padding: 3rem;
-  height: 100vh;
+  max-height: 100%;
   overflow-x: scroll;
+  gap: 3rem;
 `;
 
 export const Item = styled.li`
-  margin-right: 3rem;
+  max-height: 100%;
 `;
