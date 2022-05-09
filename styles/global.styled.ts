@@ -14,9 +14,13 @@ font-style: normal;
   font-family: 'Heebo', sans-serif;
 }
 
-
 html {
   font-size: 10px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 a {
@@ -25,5 +29,21 @@ a {
 
 ul {
   list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #9b9b9b;
+  border-radius: 0.8rem;
+  border: 0.2rem solid #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 0.8rem;
+  border: 0.2rem solid #9b9b9b;
 }
 `;

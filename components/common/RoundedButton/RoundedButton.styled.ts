@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../../../styles/variables/colors.styled';
-import { fonts } from './../../../styles/variables/fonts.styled';
+import { colors } from '@/variables/colors.styled';
+import { fonts } from '@/variables/fonts.styled';
 
 interface RoundedBtnProps {
   variant: 'big' | 'small';
-  typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn';
+  typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn' | 'editBtn';
 }
 
 const bigStyle = css`
@@ -60,6 +60,21 @@ const otherBtn = css`
   }
 `;
 
+const editBtn = css`
+  background-color: ${colors.colorEditLight};
+  border: 0.2rem solid ${colors.colorEditLight};
+  color: ${colors.colorFontPrimaryLighten};
+
+  :hover {
+    border: 0.2rem solid ${colors.colorEdit};
+  }
+
+  :active {
+    border: 0.2rem solid ${colors.colorEdit};
+    background-color: ${colors.colorEdit};
+  }
+`;
+
 const getButtonStyles = (type?: string) => {
   switch (type) {
     case 'addBtn':
@@ -70,6 +85,9 @@ const getButtonStyles = (type?: string) => {
 
     case 'otherBtn':
       return otherBtn;
+
+    case 'editBtn':
+      return editBtn;
 
     default:
       return '';
@@ -82,12 +100,13 @@ export const RoundedBtn = styled.button<RoundedBtnProps>`
   text-align: center;
   border-radius: 5rem;
   cursor: pointer;
+  white-space: nowrap;
 
   :disabled {
     pointer-events: none;
     background-color: ${colors.colorBgSecondaryDarken};
-    border: 0.2rem solid ${colors.colorBgSecondaryDarken};
-    color: ${colors.colorFontLight};
+    border: 0.2rem solid ${colors.colorFontSecondary};
+    color: ${colors.colorFontSecondary};
   }
 
   ${(props) => (props.variant === 'big' ? bigStyle : smallStyle)};
