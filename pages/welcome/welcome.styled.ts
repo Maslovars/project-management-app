@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { colors } from './../../styles/variables/colors.styled';
-import { fonts } from './../../styles/variables/fonts.styled';
-import { breakpoints } from './../../styles/variables/response.styled';
+import { colors } from '@/variables/colors.styled';
+import { fonts } from '@/variables/fonts.styled';
+import { breakpoints } from '@/variables/response.styled';
 
 const WelcomeSpan = styled.div`
   width: 100vw;

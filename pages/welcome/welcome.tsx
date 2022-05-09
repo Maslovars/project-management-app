@@ -6,7 +6,7 @@ import {
   Title, 
   Text,
   SubTitle 
-} from './welcom.styled';
+} from './welcome.styled';
 import type { NextPage } from 'next';
 
 const WelcomePage: NextPage = () => {
