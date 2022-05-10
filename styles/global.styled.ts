@@ -25,6 +25,8 @@ body {
 
 a {
   text-decoration: none;
+  list-style: none;
+  text-decoration: none;
 }
 
 ul {
