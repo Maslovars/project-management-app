@@ -5,7 +5,6 @@ export const Container = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   gap: 3rem;
-  justify-content: space-between;
   width: auto;
   max-height: 100%;
   padding: 3rem;
