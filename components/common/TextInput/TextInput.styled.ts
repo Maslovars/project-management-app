@@ -7,22 +7,22 @@ export const Container = styled.div`
 `;
 
 export const Description = styled.p`
+  margin-bottom: 1rem;
+  color: ${colors.colorFontPrimary};
   font-weight: ${fonts.fontWeightBold};
   font-size: 1.6rem;
-  color: ${colors.colorFontPrimary};
-  margin-bottom: 1rem;
 `;
 
 export const Input = styled.input`
+  width: 100%;
   padding: 1rem 2rem;
-  background: ${colors.colorBgSecondaryDarken};
-  border-radius: 0.8rem;
-  border: 0.2rem solid ${colors.colorBgSecondaryDarken};
-  outline: 0;
+  color: ${colors.colorFontSecondary};
   font-weight: ${fonts.fontWeightBold};
   font-size: 1.6rem;
-  color: ${colors.colorFontSecondary};
-  width: 100%;
+  background: ${colors.colorBgSecondaryDarken};
+  border: 0.2rem solid ${colors.colorBgSecondaryDarken};
+  border-radius: 0.8rem;
+  outline: 0;
 
   &:hover {
     border: 0.2rem solid ${colors.colorFontSecondary};

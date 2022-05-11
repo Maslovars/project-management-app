@@ -7,7 +7,7 @@
   ],
   "overrides": [
     {
-      "files": "**/*.tsx",
+      "files": "**/*.styled.ts",
       "customSyntax": "@stylelint/postcss-css-in-js"
     }
   ]

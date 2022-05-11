@@ -3,8 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 @font-face {
 font-family: 'Heebo';
-src: url('../assets/Heebo-VariableFont_wght.ttf');
 font-style: normal;
+src: url('../assets/Heebo-VariableFont_wght.ttf');
 }
 
 * {
@@ -15,8 +15,8 @@ font-style: normal;
 }
 
 html {
-  font-size: 10px;
   height: 100%;
+  font-size: 10px;
 }
 
 body {
@@ -26,7 +26,6 @@ body {
 a {
   text-decoration: none;
   list-style: none;
-  text-decoration: none;
 }
 
 ul {
@@ -39,13 +38,13 @@ ul {
 
 ::-webkit-scrollbar-track {
   background-color: #9b9b9b;
-  border-radius: 0.8rem;
   border: 0.2rem solid #ffffff;
+  border-radius: 0.8rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #ffffff;
-  border-radius: 0.8rem;
   border: 0.2rem solid #9b9b9b;
+  border-radius: 0.8rem;
 }
 `;

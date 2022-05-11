@@ -9,41 +9,41 @@ export const FooterSpan = styled.span`
 `;
 
 export const FooterWrapper = styled.div`
-  height: 100%;
-  max-width: 140rem;
-  padding: 0.5rem 2rem;
-  margin: 0 auto;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 140rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
   @media (max-width: ${breakpoints.sm}) {
     justify-content: center;
   }
 `;
 
 export const Link = styled.a`
-  font-size: ${fonts.fontSizeRegular};
-  font-weight: ${fonts.fontWeightBold};
   color: black;
-  transition: 0.5s;
+  font-weight: ${fonts.fontWeightBold};
+  font-size: ${fonts.fontSizeRegular};
   cursor: pointer;
+  transition: 0.5s;
   &:hover {
     opacity: 0.3;
   }
 `;
 
 export const LogoSchool = styled.img`
-  height: 40px;
   width: 80px;
+  height: 40px;
 `;
 
 export const GitHubsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
+  justify-content: center;
 `;
 
 export const GitHubsItem = styled.li``;
@@ -54,6 +54,6 @@ export const Wrap = styled.div`
 `;
 
 export const Year = styled.p`
-  font-size: ${fonts.fontSizeRegular};
   font-weight: ${fonts.fontWeightBold};
+  font-size: ${fonts.fontSizeRegular};
 `;
