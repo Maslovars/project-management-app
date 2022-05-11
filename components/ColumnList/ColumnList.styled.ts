@@ -3,14 +3,14 @@ import { colors } from '@/variables/colors.styled';
 
 export const Container = styled.ul`
   display: flex;
-  justify-content: space-between;
   flex-wrap: nowrap;
-  width: auto;
-  background-color: ${colors.colorBgPrimary};
-  padding: 3rem;
-  max-height: 100%;
-  overflow-x: scroll;
   gap: 3rem;
+  justify-content: space-between;
+  width: auto;
+  max-height: 100%;
+  padding: 3rem;
+  overflow-x: scroll;
+  background-color: ${colors.colorBgPrimary};
 `;
 
 export const Item = styled.li`

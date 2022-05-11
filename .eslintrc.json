@@ -8,12 +8,7 @@
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "prettier",
-    "react-hooks"
-  ],
+  "plugins": ["@typescript-eslint", "react", "prettier", "react-hooks"],
   "parserOptions": {
     "ecmaVersion": 11,
     "sourceType": "module",
@@ -22,12 +17,10 @@
     }
   },
   "rules": {
+    "no-console": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "comma-dangle": [
-      "error",
-      "only-multiline"
-    ],
+    "comma-dangle": ["error", "only-multiline"],
     "react/prop-types": "off",
     "react/display-name": "off",
     "@typescript-eslint/explicit-function-return-type": "off",

@@ -4,72 +4,63 @@ import { fonts } from '@/variables/fonts.styled';
 import { breakpoints } from '@/variables/response.styled';
 
 const WelcomeSpan = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: ${colors.colorBgPrimaryLighten};
-`
+`;
 
 const WrapperContent = styled.div`
-  height: 80%;
-  width: 90%;
-  border-radius: 8px;
-  background-image: url(/img/welcomeBg.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right;
   display: flex;
   align-items: center;
   justify-content: left;
-`
+  max-width: 140rem;
+  height: 80%;
+  padding: 0 2rem;
+  background-image: url(/img/welcomeBg.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  border-radius: 8px;
+`;
 
 const TextBlock = styled.div`
-  height: 100%;
-  width: 40%;
-  padding-right: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 3rem;
-  background: linear-gradient(
-      to right,
-      rgba(247, 246, 243, 0.8) 70%,
-      rgba(247, 246, 243, 0) 100%
-    );
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+  padding-right: 3rem;
+  background: linear-gradient(to right, rgba(247, 246, 243, 0.8) 70%, rgba(247, 246, 243, 0) 100%);
   @media (max-width: ${breakpoints.md}) {
     width: 100%;
-}
-`
+  }
+`;
 
 const Title = styled.h1`
-  font-size: ${fonts.fontSizeLogo};
   font-weight: ${fonts.fontWeightBlack};
+  font-size: ${fonts.fontSizeLogo};
   text-transform: uppercase;
-`
+`;
 
 const SubTitle = styled.h2`
-  font-size: ${fonts.fontSizeTitle};
   font-weight: ${fonts.fontWeightRegular};
-  text-transform: uppercase;
+  font-size: ${fonts.fontSizeTitle};
   line-height: 150%;
-`
+  text-transform: uppercase;
+`;
 
 const Text = styled.p`
-  font-size: ${fonts.fontSizeSubTitle};
   font-weight: ${fonts.fontWeightRegular};
+  font-size: ${fonts.fontSizeSubTitle};
   line-height: 150%;
-@media (max-width: ${breakpoints.md}) {
-  font-size: ${fonts.fontSizeRegular};
-}
-`
+  @media (max-width: ${breakpoints.md}) {
+    font-size: ${fonts.fontSizeRegular};
+  }
+`;
 
-export { 
-  WelcomeSpan, 
-  WrapperContent, 
-  TextBlock, 
-  Title, 
-  Text, 
-  SubTitle 
-}
+export { WelcomeSpan, WrapperContent, TextBlock, Title, Text, SubTitle };
