@@ -16,62 +16,62 @@ const smallStyle = css`
 `;
 
 const addBtn = css`
+  color: ${colors.colorFontPrimaryLighten};
   background-color: ${colors.colorSuccessLight};
   border: 0.2rem solid ${colors.colorSuccessLight};
-  color: ${colors.colorFontPrimaryLighten};
 
   :hover {
     border: 0.2rem solid ${colors.colorSuccess};
   }
 
   :active {
-    border: 0.2rem solid ${colors.colorSuccess};
     background-color: ${colors.colorSuccess};
+    border: 0.2rem solid ${colors.colorSuccess};
   }
 `;
 
 const delBtn = css`
+  color: ${colors.colorFontPrimaryLighten};
   background-color: ${colors.colorErrorLight};
   border: 0.2rem solid ${colors.colorErrorLight};
-  color: ${colors.colorFontPrimaryLighten};
 
   :hover {
     border: 0.2rem solid ${colors.colorError};
   }
 
   :active {
-    border: 0.2rem solid ${colors.colorError};
     background-color: ${colors.colorError};
+    border: 0.2rem solid ${colors.colorError};
   }
 `;
 
 const otherBtn = css`
+  color: ${colors.colorFontPrimaryLighten};
   background-color: ${colors.colorBgSecondaryDarken};
   border: 0.2rem solid ${colors.colorBgSecondaryDarken};
-  color: ${colors.colorFontPrimaryLighten};
 
   :hover {
     border: 0.2rem solid ${colors.colorFontSecondary};
   }
 
   :active {
-    border: 0.2rem solid ${colors.colorFontSecondary};
     background-color: ${colors.colorFontSecondary};
+    border: 0.2rem solid ${colors.colorFontSecondary};
   }
 `;
 
 const editBtn = css`
+  color: ${colors.colorFontPrimaryLighten};
   background-color: ${colors.colorEditLight};
   border: 0.2rem solid ${colors.colorEditLight};
-  color: ${colors.colorFontPrimaryLighten};
 
   :hover {
     border: 0.2rem solid ${colors.colorEdit};
   }
 
   :active {
-    border: 0.2rem solid ${colors.colorEdit};
     background-color: ${colors.colorEdit};
+    border: 0.2rem solid ${colors.colorEdit};
   }
 `;
 
@@ -103,10 +103,10 @@ export const RoundedBtn = styled.button<RoundedBtnProps>`
   white-space: nowrap;
 
   :disabled {
-    pointer-events: none;
+    color: ${colors.colorFontSecondary};
     background-color: ${colors.colorBgSecondaryDarken};
     border: 0.2rem solid ${colors.colorFontSecondary};
-    color: ${colors.colorFontSecondary};
+    pointer-events: none;
   }
 
   ${(props) => (props.variant === 'big' ? bigStyle : smallStyle)};
