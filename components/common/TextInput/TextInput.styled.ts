@@ -3,7 +3,6 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const Container = styled.div`
-  margin-bottom: 2rem;
 `;
 
 export const Description = styled.p`
@@ -31,4 +30,12 @@ export const Input = styled.input`
   &:focus {
     border: 0.2rem solid ${colors.colorFontPrimaryLighten};
   }
+
+  &::placeholder {
+  color: ${colors.colorFontSecondary};
+  font-size: ${fonts.fontSizeRegular}*0.9;
+  font-weight: ${fonts.fontWeightRegular};
+  font-style: italic;
+  opacity: 0.5;
+}
 `;
