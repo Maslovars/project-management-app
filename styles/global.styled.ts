@@ -47,4 +47,8 @@ ul {
   border: 0.2rem solid #9b9b9b;
   border-radius: 0.8rem;
 }
+
+:hover {
+  transition: 0.5s;
+}
 `;
