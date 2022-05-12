@@ -32,12 +32,12 @@ export const EntryCardWrap = styled.div`
   }
   a {
     color: blue;
-    transition: .5s;
+    transition: 0.5s;
     &:hover {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
-`
+`;
 
 export const Svg = styled.div`
   height: 6rem;
@@ -49,4 +49,4 @@ export const Svg = styled.div`
     height: 4rem;
     width: 4rem;
   }
-`
+`;
