@@ -26,7 +26,7 @@ export const LogIn: NextPage = () => {
         </RoundedButton>
       </form>
       <span>
-        Don't have an account? &nbsp;
+        Don&#x0027;t have an account? &nbsp;
         <Link href="/signup">
           <a className="link-form">Sign up</a>
         </Link>
