@@ -2,10 +2,10 @@ import React from 'react';
 import { EntryCardWrap, Svg } from './EntryCard.styled';
 
 type Props = {
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 };
 
-export const EntryCard: React.FC<Props> = ({children}) => {
+export const EntryCard: React.FC<Props> = ({ children }) => {
   return (
     <EntryCardWrap>
       <Svg />
