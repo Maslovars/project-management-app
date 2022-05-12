@@ -2,7 +2,13 @@ import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
+export const StyledLink = styled.a`
+  /* width: 100%; */
+  cursor: pointer;
+`;
+
 export const Card = styled.li`
+  width: 100%;
   max-width: 44.5rem;
   padding: 3rem;
   background-color: ${colors.colorBgSecondary};
