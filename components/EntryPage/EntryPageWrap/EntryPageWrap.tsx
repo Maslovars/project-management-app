@@ -1,8 +1,5 @@
 import { EntryCard } from '@/components/EntryPage/EntryCard/EntryCard';
-import { TextInput } from '@/components/common/TextInput';
-import { RoundedButton } from '@/components/common/RoundedButton';
-import { PageWrap, ContentWrap } from './EntryPageWrap.styled';
-import { Footer } from '@/components/Footer';
+import { PageWrap } from './EntryPageWrap.styled';
 
 type Props = {
   children?: React.ReactNode,
@@ -11,12 +8,9 @@ type Props = {
 export const EntryPageWrap: React.FC<Props> = ({children}) => {
   return (
     <PageWrap>
-      <ContentWrap>
-        <EntryCard>
-          {children}
-        </EntryCard>
-      </ContentWrap>
-      <Footer />
+      <EntryCard>
+        {children}
+      </EntryCard>
     </PageWrap>
   );
 };

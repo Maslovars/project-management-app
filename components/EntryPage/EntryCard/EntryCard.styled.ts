@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
-import Image from 'next/image';
+import { breakpoints } from '@/variables/response.styled';
 
 export const EntryCardWrap = styled.div`
   padding: 4rem 5rem;
@@ -10,6 +10,9 @@ export const EntryCardWrap = styled.div`
   flex-direction: column;
   gap: 2rem;
   border-radius: 8px;
+  @media (max-width: ${breakpoints.sm}) {
+    padding: 3rem 2rem;
+  }
   h2 {
     font-weight: ${fonts.fontWeightBold};
     font-size: ${fonts.fontSizeTitle};
@@ -29,7 +32,6 @@ export const EntryCardWrap = styled.div`
   }
   a {
     color: blue;
-    
     transition: .5s;
     &:hover {
       opacity: .5;
@@ -43,4 +45,8 @@ export const Svg = styled.div`
   background-image: url(/img/LogoEntry.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  @media (max-width: ${breakpoints.sm}) {
+    height: 4rem;
+    width: 4rem;
+  }
 `
