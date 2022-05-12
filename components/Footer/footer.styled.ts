@@ -10,13 +10,13 @@ export const FooterSpan = styled.div`
 
 export const FooterWrapper = styled.div`
   min-height: 5vh;
+  padding: 0 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
   max-width: 140rem;
-  height: 100%;
   margin: 0 auto;
   font-size: ${fonts.fontSizeRegular};
   @media (max-width: ${breakpoints.sm}) {
@@ -36,8 +36,8 @@ export const Link = styled.a`
 `;
 
 export const LogoSchool = styled.img`
-  width: 8rem;
-  height: 4rem;
+  width: 7rem;
+  height: 2.8rem;
   @media (max-width: ${breakpoints.sm}) {
     width: 6rem;
     height: 3rem;

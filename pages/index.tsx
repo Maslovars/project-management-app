@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-  WelcomeSpan,
-  WrapperContent,
-  TextBlock,
-  Title,
-  Text,
-  SubTitle,
-} from './welcome/welcome.styled';
+import { WelcomeSpan, WrapperContent, TextBlock, Title, Text, SubTitle } from './index.styled';
 import type { NextPage } from 'next';
-import { Footer } from '@/components/Footer';
 
 const WelcomePage: NextPage = () => {
   return (
