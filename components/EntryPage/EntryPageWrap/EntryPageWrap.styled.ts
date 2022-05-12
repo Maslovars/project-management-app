@@ -9,4 +9,4 @@ export const PageWrap = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${colors.colorBgSecondaryDarken};
-`
+`;

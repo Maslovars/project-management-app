@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  FooterSpan,
-  FooterWrapper,
-  Link,
-  GitHubsList,
-  LogoSchool,
-  Wrap,
-} from './footer.styled';
+import { FooterSpan, FooterWrapper, Link, GitHubsList, LogoSchool, Wrap } from './footer.styled';
 
 export const Footer: React.FC = () => {
   return (

@@ -21,7 +21,7 @@ export const FooterWrapper = styled.div`
   font-size: ${fonts.fontSizeRegular};
   @media (max-width: ${breakpoints.sm}) {
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
     font-size: ${fonts.fontSizeRegular}*.6;
   }
 `;
@@ -40,7 +40,7 @@ export const LogoSchool = styled.img`
   height: 2.8rem;
   @media (max-width: ${breakpoints.sm}) {
     width: 6rem;
-    height: 3rem;  
+    height: 3rem;
   }
 `;
 
@@ -50,7 +50,7 @@ export const GitHubsList = styled.ul`
   gap: 1rem;
   justify-content: center;
   @media (max-width: ${breakpoints.sm}) {
-    gap: .2rem;
+    gap: 0.2rem;
     order: 1;
   }
 `;
@@ -60,7 +60,6 @@ export const Wrap = styled.div`
   flex-wrap: wrap;
   column-gap: 1rem;
   @media (max-width: ${breakpoints.sm}) {
-    gap: .2rem;
- 
+    gap: 0.2rem;
   }
 `;
