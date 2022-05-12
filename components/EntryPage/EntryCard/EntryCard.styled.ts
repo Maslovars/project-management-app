@@ -8,7 +8,7 @@ export const EntryCardWrap = styled.div`
   background-color: ${colors.colorBgSecondary};
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   border-radius: 8px;
   h2 {
     font-weight: ${fonts.fontWeightBold};
@@ -19,12 +19,21 @@ export const EntryCardWrap = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
   }
   span {
     color: ${colors.colorFontPrimaryLighten};
-    font-size: ${fonts.fontSizeRegular}*0.6;
+    font-size: ${fonts.fontSizeRegular}*.8;
     font-weight: ${fonts.fontWeightRegular};
+    font-style: italic;
+  }
+  a {
+    color: blue;
+    
+    transition: .5s;
+    &:hover {
+      opacity: .5;
+    }
   }
 `
 

@@ -18,6 +18,7 @@ export const FooterWrapper = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 0.5rem 2rem;
+  font-size: ${fonts.fontSizeRegular};
   @media (max-width: ${breakpoints.sm}) {
     justify-content: center;
   }
@@ -25,8 +26,6 @@ export const FooterWrapper = styled.div`
 
 export const Link = styled.a`
   color: black;
-  font-weight: ${fonts.fontWeightBold};
-  font-size: ${fonts.fontSizeRegular};
   cursor: pointer;
   transition: 0.5s;
   &:hover {
@@ -51,9 +50,4 @@ export const Wrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-`;
-
-export const Year = styled.p`
-  font-weight: ${fonts.fontWeightBold};
-  font-size: ${fonts.fontSizeRegular};
 `;

@@ -7,7 +7,6 @@ import {
   GitHubsItem,
   LogoSchool,
   Wrap,
-  Year,
 } from './footer.styled';
 
 export const Footer: React.FC = () => {
@@ -30,7 +29,7 @@ export const Footer: React.FC = () => {
         </GitHubsList>
         <Wrap>
           <Link href="https://rs.school/react/">REACT </Link>
-          <Year>2022</Year>
+          <p>2022</p>
         </Wrap>
       </FooterWrapper>
     </FooterSpan>

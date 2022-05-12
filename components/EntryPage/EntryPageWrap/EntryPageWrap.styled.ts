@@ -12,7 +12,7 @@ export const PageWrap = styled.span`
   background-color: ${colors.colorBgSecondaryDarken};
 `
 
-export const ContentWrap = styled.span`
+export const ContentWrap = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
