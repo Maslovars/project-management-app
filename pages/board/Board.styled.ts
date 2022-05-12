@@ -5,7 +5,7 @@ import { fonts } from '@/variables/fonts.styled';
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 95vh;
   background-color: ${colors.colorBgPrimary};
 `;
 
