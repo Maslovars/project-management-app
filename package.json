@@ -11,8 +11,7 @@
     "stylelint:fix": "stylelint **/*.styled.ts --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "postinstall": "husky install",
-    "precommit": "lint-staged"
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.25",
