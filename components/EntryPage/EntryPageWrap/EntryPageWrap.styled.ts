@@ -3,19 +3,19 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const PageWrap = styled.span`
-  height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
   background-color: ${colors.colorBgSecondaryDarken};
-`
+`;
 
 export const ContentWrap = styled.div`
-  height: 100%;
-  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-`
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;

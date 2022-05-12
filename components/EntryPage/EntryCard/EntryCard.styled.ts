@@ -4,17 +4,17 @@ import { fonts } from '@/variables/fonts.styled';
 import Image from 'next/image';
 
 export const EntryCardWrap = styled.div`
-  padding: 4rem 5rem;
-  background-color: ${colors.colorBgSecondary};
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 4rem 5rem;
+  background-color: ${colors.colorBgSecondary};
   border-radius: 8px;
   h2 {
-    font-weight: ${fonts.fontWeightBold};
-    font-size: ${fonts.fontSizeTitle};
     align-items: center;
     align-self: center;
+    font-weight: ${fonts.fontWeightBold};
+    font-size: ${fonts.fontSizeTitle};
   }
   form {
     display: flex;
@@ -23,24 +23,23 @@ export const EntryCardWrap = styled.div`
   }
   span {
     color: ${colors.colorFontPrimaryLighten};
-    font-size: ${fonts.fontSizeRegular}*.8;
     font-weight: ${fonts.fontWeightRegular};
+    font-size: ${fonts.fontSizeRegular}*.8;
     font-style: italic;
   }
   a {
     color: blue;
-    
-    transition: .5s;
+    transition: 0.5s;
     &:hover {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
-`
+`;
 
 export const Svg = styled.div`
-  height: 6rem;
   width: 6rem;
+  height: 6rem;
   background-image: url(/img/LogoEntry.svg);
   background-repeat: no-repeat;
   background-size: contain;
-`
+`;

@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const Description = styled.p`
   margin-bottom: 1rem;
@@ -32,10 +31,10 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-  color: ${colors.colorFontSecondary};
-  font-size: ${fonts.fontSizeRegular}*0.9;
-  font-weight: ${fonts.fontWeightRegular};
-  font-style: italic;
-  opacity: 0.5;
-}
+    color: ${colors.colorFontSecondary};
+    font-weight: ${fonts.fontWeightRegular};
+    font-size: ${fonts.fontSizeRegular}*0.9;
+    font-style: italic;
+    opacity: 0.5;
+  }
 `;
