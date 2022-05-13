@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  FooterSpan,
-  FooterWrapper,
-  Link,
-  GitHubsList,
-  GitHubsItem,
-  LogoSchool,
-  Wrap,
-} from './footer.styled';
+import { FooterSpan, FooterWrapper, Link, GitHubsList, LogoSchool, Wrap } from './footer.styled';
 
 export const Footer: React.FC = () => {
   return (
@@ -17,15 +9,15 @@ export const Footer: React.FC = () => {
           <LogoSchool src="/rs_school_js.svg" alt="rsschool" />
         </Link>
         <GitHubsList>
-          <GitHubsItem>
+          <li>
             <Link href="https://github.com/Voloshin-Sergei">@Voloshin-Sergei</Link>
-          </GitHubsItem>
-          <GitHubsItem>
+          </li>
+          <li>
             <Link href="https://github.com/Maslovars">@Maslovars</Link>
-          </GitHubsItem>
-          <GitHubsItem>
+          </li>
+          <li>
             <Link href="https://github.com/YuliaEnik">@YuliaEnik </Link>
-          </GitHubsItem>
+          </li>
         </GitHubsList>
         <Wrap>
           <Link href="https://rs.school/react/">REACT </Link>

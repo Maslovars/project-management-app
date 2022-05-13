@@ -7,7 +7,12 @@ interface TextInputProps {
   placeholder?: string;
 }
 
-export const TextInput: React.FC<TextInputProps> = ({ htmlFor, name, type='text', placeholder }) => {
+export const TextInput: React.FC<TextInputProps> = ({
+  htmlFor,
+  name,
+  type = 'text',
+  placeholder,
+}) => {
   return (
     <Container>
       <label htmlFor={htmlFor}>

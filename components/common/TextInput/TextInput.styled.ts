@@ -32,8 +32,8 @@ export const Input = styled.input`
 
   &::placeholder {
     color: ${colors.colorFontSecondary};
-    font-weight: ${fonts.fontWeightRegular};
     font-size: ${fonts.fontSizeRegular}*0.9;
+    font-weight: ${fonts.fontWeightRegular};
     font-style: italic;
     opacity: 0.5;
   }
