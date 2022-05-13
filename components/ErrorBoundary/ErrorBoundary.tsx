@@ -1,35 +1,55 @@
-import React from 'react';
+import React, { ReactNode, ErrorInfo } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Container, Error, Button } from './ErrorBoundary.styled';
 
 export interface ErrorBoundaryProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
-
 export interface ErrorBoundaryState {
   hasError: boolean;
+  error: string;
 }
-
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { hasError: false, error: '' };
   }
 
-  componentDidCatch(): void {
-    this.setState({ hasError: true });
+  handelClick = () => {
+    this.setState({ hasError: false });
+  };
+
+  errorMessage = (error: string) => (
+    <Container>
+      <Error>{error}</Error>
+      <Button onClick={this.handelClick}>Retry</Button>
+    </Container>
+  );
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    this.setState({ hasError: true, error: error.message });
+    toast.error(this.errorMessage(error.message));
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div>
-          <h2>Oops, there is an error!</h2>
-          <button type="button" onClick={() => this.setState({ hasError: false })}>
-            Try again?
-          </button>
-        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       );
     }
-
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;
