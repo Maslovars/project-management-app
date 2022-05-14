@@ -1,12 +1,11 @@
-import { RoundedButton } from '../common/RoundedButton';
 import {
-  BtnWrapper,
   LogoHeader,
   LogoWrapper,
   MainHeader,
   MainHeaderWrapper,
   MainLogoImg,
 } from './Header.styled';
+import HeaderButtons from './HeaderButtons/HeaderButtons';
 
 const Header: React.FC = () => {
   return (
@@ -14,16 +13,9 @@ const Header: React.FC = () => {
       <MainHeaderWrapper>
         <LogoWrapper>
           <MainLogoImg src="/img/MainLogo.png" width={50} height={50} alt="Main logo" />
-          <LogoHeader>Logo</LogoHeader>
+          <LogoHeader>Taskrunner</LogoHeader>
         </LogoWrapper>
-        <BtnWrapper>
-          <RoundedButton variant="small" typeBtn="otherBtn">
-            Sign In
-          </RoundedButton>
-          <RoundedButton variant="small" typeBtn="otherBtn">
-            Sign Out
-          </RoundedButton>
-        </BtnWrapper>
+        <HeaderButtons />
       </MainHeaderWrapper>
     </MainHeader>
   );
