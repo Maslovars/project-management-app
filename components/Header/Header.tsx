@@ -1,4 +1,5 @@
 import {
+  BtnGroup,
   LogoHeader,
   LogoWrapper,
   MainHeader,
@@ -6,6 +7,7 @@ import {
   MainLogoImg,
 } from './Header.styled';
 import HeaderButtons from './HeaderButtons/HeaderButtons';
+import LangToggler from './LangToggler/LangToggler';
 
 const Header: React.FC = () => {
   return (
@@ -15,7 +17,10 @@ const Header: React.FC = () => {
           <MainLogoImg src="/img/MainLogo.png" width={50} height={50} alt="Main logo" />
           <LogoHeader>Taskrunner</LogoHeader>
         </LogoWrapper>
-        <HeaderButtons />
+        <BtnGroup>
+          <HeaderButtons />
+          <LangToggler />
+        </BtnGroup>
       </MainHeaderWrapper>
     </MainHeader>
   );

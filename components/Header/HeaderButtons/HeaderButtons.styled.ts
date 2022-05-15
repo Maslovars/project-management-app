@@ -7,5 +7,5 @@ export const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 19rem;
+  gap: 2rem;
 `;

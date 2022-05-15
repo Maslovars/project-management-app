@@ -33,9 +33,8 @@ export const MainLogoImg = styled(Image)`
   border-radius: 50%;
 `;
 
-export const BtnWrapper = styled.div`
+export const BtnGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 19rem;
 `;
