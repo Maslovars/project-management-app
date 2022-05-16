@@ -12,8 +12,8 @@ export const MainHeader = styled.header`
 
 export const MainHeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   max-width: 140rem;
   margin: 0 auto;
   padding: 3rem 1rem;
@@ -21,8 +21,8 @@ export const MainHeaderWrapper = styled.div`
 
 export const LogoWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const LogoHeader = styled.h1`
@@ -35,6 +35,6 @@ export const MainLogoImg = styled(Image)`
 
 export const BtnGroup = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
