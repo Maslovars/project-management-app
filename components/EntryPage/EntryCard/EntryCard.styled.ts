@@ -47,7 +47,7 @@ export const Svg = styled.div`
   background-size: contain;
 
   @media (max-width: ${breakpoints.sm}) {
-    height: 4rem;
     width: 4rem;
+    height: 4rem;
   }
 `;

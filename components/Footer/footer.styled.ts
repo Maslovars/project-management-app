@@ -9,19 +9,19 @@ export const FooterSpan = styled.div`
 `;
 
 export const FooterWrapper = styled.div`
-  min-height: 5vh;
-  padding: 0 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
   max-width: 140rem;
+  min-height: 5vh;
   margin: 0 auto;
+  padding: 0 2rem;
   font-size: ${fonts.fontSizeRegular};
   @media (max-width: ${breakpoints.sm}) {
-    justify-content: center;
     gap: 0.5rem;
+    justify-content: center;
     font-size: ${fonts.fontSizeRegular}*.6;
   }
 `;
