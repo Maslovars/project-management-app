@@ -9,10 +9,10 @@ interface ColumnListProps {
 export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
   return (
     <Container>
-      {columns.map(({ id, title, tasks }) => {
+      {columns.map((column) => {
         return (
-          <Item key={id}>
-            <Column id={id} title={title} tasks={tasks} />
+          <Item key={column.id}>
+            <Column id={column.id} title={column.title} tasks={column.tasks} />
           </Item>
         );
       })}

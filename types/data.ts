@@ -8,6 +8,7 @@ export interface ColumnTypes {
   id: string;
   title: string;
   order: number;
+  tasks: TaskTypes[];
 }
 
 export interface FileType {

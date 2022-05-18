@@ -1,10 +1,10 @@
-import { Task } from './Task';
+import { Task } from '../Task';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { CardList, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 
 interface ColumnProps {
-  id: number;
+  id: string;
   title: string;
   tasks: TaskTypes[];
 }

@@ -16,16 +16,18 @@ interface TaskProps {
 }
 
 export const Task: React.FC<TaskProps> = ({ task }) => {
-  const { id, title, description, avatar, name, fileImage } = task;
+  const { id, title, done, order, description, userId, boardId, columnId, files } = task;
 
   return (
-    <Card key={id}>
+    <Card>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <Assigned>
-        <Avatar src={avatar} alt={name} /> <Name>{name}</Name>
+        <Avatar src="../img/user-avatar.png" alt={userId} /> <Name>User Name</Name>
       </Assigned>
-      <FileImage src={fileImage} alt={fileImage} />
+      {files.map((item) => (
+        <FileImage key={item.filename} src={item.filename} alt={item.filename} />
+      ))}
       <ButtonGroup>
         <RoundedButton type="submit" typeBtn="editBtn" variant="small">
           Edit
