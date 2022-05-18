@@ -2,12 +2,12 @@ import { RoundedButton } from '@/components/common/RoundedButton';
 import { StyledLink, Card, Header, Title, Body, Column, ColumnTitle } from './BoardPreview.styled';
 import Link from 'next/link';
 interface Column {
-  id: number;
+  id: string;
   title: string;
 }
 
 interface BoardPreviewProps {
-  id: number;
+  id: string;
   title: string;
   columns: Column[];
 }

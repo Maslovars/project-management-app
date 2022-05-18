@@ -1,9 +1,10 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
+
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedBtn } from '@/components/common/RoundedButton/RoundedButton.styled';
 import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
 import { testBoardMock } from '../../mock/data';
-import { useState } from 'react';
 
 const Board: NextPage = () => {
   const [boardInfo, setBoardInfo] = useState(testBoardMock);
@@ -24,6 +25,7 @@ const Board: NextPage = () => {
           </RoundedBtn>
         </ButtonGroup>
       </Header>
+
       <ColumnList columns={boardInfo.columns} />
     </Container>
   );
