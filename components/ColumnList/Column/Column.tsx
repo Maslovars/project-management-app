@@ -20,7 +20,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks }) => {
       </Header>
       <TasksContainer>
         {tasks.map((item) => (
-          <Task task={item} />
+          <Task key={item.id} task={item} />
         ))}
       </TasksContainer>
       <div>
