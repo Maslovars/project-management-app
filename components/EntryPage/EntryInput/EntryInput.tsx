@@ -1,7 +1,7 @@
-import { Formik, Form, useField, useFormikContext } from "formik";
-import { TextInput } from "@/components/common/TextInput";
-import { type } from "os";
-import { runInThisContext } from "vm";
+import { Formik, Form, useField, useFormikContext } from 'formik';
+import { TextInput } from '@/components/common/TextInput';
+import { type } from 'os';
+import { runInThisContext } from 'vm';
 import props from 'prop-types';
 
 interface TextInputProps {
@@ -12,19 +12,13 @@ interface TextInputProps {
   showErrors?: boolean;
 }
 
-export const EnterInput:React.FC<TextInputProps> = ({ 
-  htmlFor,
-  name,
-  type }) => {
-  //@ts-ignore
+export const EnterInput: React.FC<TextInputProps> = ({ htmlFor, name, type }) => {
   const [field, meta] = useField(props);
   return (
     <>
-     <label htmlFor={htmlFor}>{name}</label>
+      <label htmlFor={htmlFor}>{name}</label>
       <input className="text-input" {...field} type={type} name={name} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
+      {meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}
     </>
   );
 };
