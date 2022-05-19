@@ -1,14 +1,18 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
+
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedBtn } from '@/components/common/RoundedButton/RoundedButton.styled';
 import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
-import { ColumnListMock } from '../../mock/data';
+import { testBoardMock } from '../../mock/data';
 
 const Board: NextPage = () => {
+  const [boardInfo, setBoardInfo] = useState(testBoardMock);
+
   return (
     <Container>
       <Header>
-        <BoardTitle>Find top 5 customer requests</BoardTitle>
+        <BoardTitle>{boardInfo.title}</BoardTitle>
         <ButtonGroup>
           <RoundedBtn type="submit" variant="big" typeBtn="addBtn" disabled>
             Create Board
@@ -21,7 +25,8 @@ const Board: NextPage = () => {
           </RoundedBtn>
         </ButtonGroup>
       </Header>
-      <ColumnList columns={ColumnListMock} />
+
+      <ColumnList columns={boardInfo.columns} />
     </Container>
   );
 };
