@@ -3,7 +3,7 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 import { breakpoints } from '@/variables/response.styled';
 
-export const FooterSpan = styled.div`
+export const FooterSpan = styled.footer`
   width: 100%;
   background-color: ${colors.colorBgSecondary};
 `;

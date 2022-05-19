@@ -51,4 +51,12 @@ ul {
 :hover {
   transition: 0.5s;
 }
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
 `;
