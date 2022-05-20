@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
-export const CardList = styled.div`
+interface isDraggingOverProps {
+  isDraggingOver: boolean;
+}
+
+export const ColumnStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 35rem;
@@ -26,12 +30,22 @@ export const Title = styled.h2`
   font-weight: ${fonts.fontWeightBold};
   font-size: 2.6rem;
   text-overflow: ellipsis;
+
+  :hover {
+    cursor: text;
+  }
 `;
 
-export const TasksContainer = styled.ul`
-  height: 100%;
+export const TasksContainer = styled.ul<isDraggingOverProps>`
+  height: 85%;
   margin-bottom: 2rem;
-  padding-right: 0.5rem;
+  padding: 0.9rem 0.9rem 0 0.9rem;
   overflow-x: hidden;
   overflow-y: auto;
+  border-radius: 1rem;
+  transition: background-color 0.2s ease;
+  ${(props) =>
+    props.isDraggingOver
+      ? `background-color: ${colors.colorInfoLight}`
+      : 'background-color: inherit'};
 `;
