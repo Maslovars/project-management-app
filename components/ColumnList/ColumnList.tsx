@@ -1,8 +1,8 @@
-import { DragDropContext } from 'react-beautiful-dnd';
+import { useEffect, useState } from 'react';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Column } from '@/components/ColumnList/Column';
 import { Container, Item } from './ColumnList.styled';
 import { ColumnTypes } from '@/types/data';
-import { useEffect, useState } from 'react';
 
 interface ColumnListProps {
   columns: ColumnTypes[];
@@ -11,9 +11,8 @@ interface ColumnListProps {
 export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
   const [columnsData, setColumnsData] = useState(columns);
 
-  const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
-    // console.log('result', result)
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source, type } = result;
 
     if (!destination) {
       return;
@@ -23,35 +22,40 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
       return;
     }
 
-    const column = columnsData.find((column) => column.id === source.droppableId);
-    // console.log('column', column)
+    if (type === 'column') {
+      const newState = Array.from(columnsData);
+      [newState[source.index], newState[destination.index]] = [
+        newState[destination.index],
+        newState[source.index],
+      ];
 
-    // const newTask = column.tasks.splice(source.index, 1)
-    const newTask = column.tasks[source.index];
-    newTask.columnId = destination.droppableId;
-    // console.log('newTask', newTask)
-    column.tasks.splice(source.index, 1);
-    const newColumn = columnsData.find((column) => column.id === destination.droppableId);
+      newState.forEach((column, index) => {
+        column.order = index + 1;
+      });
 
-    newColumn.tasks.splice(destination.index, 0, newTask);
-    // console.log('newColum', newColumn)
+      setColumnsData(newState);
+    }
 
-    // console.log("@@@@@", newTaskIds)
-    // const newColumn = {
-    //   ...column, tasks: newTaskIds
-    // }
+    if (type === 'task') {
+      const newState = JSON.parse(JSON.stringify(columnsData));
 
-    // console.log('#####',newColumn)
+      const column = newState.find((column: ColumnTypes) => column.id === source.droppableId);
+      const newTask = column.tasks[source.index];
+      newTask.columnId = destination.droppableId;
+      column.tasks.splice(source.index, 1);
+      const newColumn = newState.find(
+        (column: ColumnTypes) => column.id === destination.droppableId
+      );
+      newColumn.tasks.splice(destination.index, 0, newTask);
 
-    // const newState = {
-    //   ...columnsData, columns: {
-    //     ...columnsData, [newColumn.id]: newColumn,
-    //   },
-    // }
+      newState.forEach((column: ColumnTypes) => {
+        column.tasks.forEach((task, index) => {
+          task.order = index + 1;
+        });
+      });
 
-    // console.log('#####',newState)
-
-    // setColumnsData([...columnsData, newColumn]);
+      setColumnsData(newState);
+    }
   };
 
   const [isBrowser, setIsBrowser] = useState(false);
@@ -64,23 +68,28 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
     <>
       {isBrowser ? (
         <DragDropContext onDragEnd={onDragEnd}>
-          {' '}
           {
-            <Container>
-              {columnsData.map((column) => {
-                return (
-                  <Item key={column.id}>
-                    <Column
-                      order={column.order}
-                      id={column.id}
-                      title={column.title}
-                      tasks={column.tasks}
-                    />
-                  </Item>
-                );
-              })}
-            </Container>
-          }{' '}
+            <Droppable droppableId="all-columns" direction="horizontal" type="column">
+              {(provided) => (
+                <Container {...provided.droppableProps} ref={provided.innerRef}>
+                  {columnsData.map((column, index) => {
+                    return (
+                      <Item key={column.id}>
+                        <Column
+                          order={column.order}
+                          id={column.id}
+                          title={column.title}
+                          tasks={column.tasks}
+                          index={index}
+                        />
+                      </Item>
+                    );
+                  })}
+                  {provided.placeholder}
+                </Container>
+              )}
+            </Droppable>
+          }
         </DragDropContext>
       ) : null}
     </>
