@@ -1,5 +1,5 @@
 import { Description, Input } from '../../common/TextInput/TextInput.styled';
-import { Formik, Form, useField, useFormikContext } from 'formik';
+import { useField } from 'formik';
 import { ErrorMessage, Container, ErrorMessageWrap } from './EntryInput.styled';
 
 interface IEntryInputProps {
@@ -20,7 +20,7 @@ export const EntryInput: React.FC<IEntryInputProps> = ({ label, ...props }) => {
         <Input {...field} {...props} />
         <ErrorMessageWrap>
           {meta.touched && meta.error ? (
-            <ErrorMessage className="error">{meta.error}</ErrorMessage>
+            <ErrorMessage className='error'>{meta.error}</ErrorMessage>
           ) : null}
         </ErrorMessageWrap>
       </label>
