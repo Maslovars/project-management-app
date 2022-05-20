@@ -1,6 +1,5 @@
 import { Overlay } from '../Overlay';
 import { Modal, Header, Title, Close, Body } from './PopUp.styled';
-import { TextInput } from '../TextInput';
 import { RoundedButton } from '../RoundedButton';
 import { ReactNode } from 'react';
 

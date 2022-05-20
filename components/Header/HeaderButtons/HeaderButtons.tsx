@@ -1,7 +1,7 @@
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { BtnWrapper } from './HeaderButtons.styled';
 
-const HeaderButtons: React.FC | any = () => {
+const HeaderButtons: React.FC = () => {
   const loggedIn = false;
 
   if (!loggedIn) {

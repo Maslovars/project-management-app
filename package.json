@@ -11,7 +11,8 @@
     "stylelint:fix": "stylelint **/*.styled.ts --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/react-beautiful-dnd": "^13.1.2",
@@ -40,7 +41,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.0",
     "lint-staged": "^12.4.1",
     "prettier": "2.6.2",
     "stylelint": "^14.8.2",
