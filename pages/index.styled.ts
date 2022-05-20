@@ -4,11 +4,11 @@ import { fonts } from '@/variables/fonts.styled';
 import { breakpoints } from '@/variables/response.styled';
 
 const WelcomeMain = styled.main`
-  width: 100%;
   display: flex;
   flex: 1 0 auto;
   align-items: center;
   justify-content: center;
+  width: 100%;
   background-color: ${colors.colorBgPrimaryLighten};
 `;
 
