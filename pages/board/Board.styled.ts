@@ -3,13 +3,14 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const Container = styled.main`
+  height: 86%;
   display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
-  height: 95vh;
   background-color: ${colors.colorBgPrimary};
 `;
 
-export const Header = styled.div`
+export const HeaderBoard = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 2rem 2rem 0 2rem;
@@ -26,4 +27,8 @@ export const ButtonGroup = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: space-around;
+`;
+
+export const BoardLayout = styled.div`
+  height: 100vh;
 `;

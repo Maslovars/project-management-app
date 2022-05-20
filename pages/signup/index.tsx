@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { TextInput } from '@/components/common/TextInput';
-import { Formik, Form, useField, useFormikContext } from 'formik';
+import { Formik, Form, useField, useFormikContext, FormikHelpers, ErrorMessage } from 'formik';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { EntryPageWrap } from '@/components/EntryPage/EntryPageWrap/EntryPageWrap';
-import { EnterInput } from '@/components/EntryPage/EntryInput/EntryInput';
+import * as Yup from 'yup';
+import { EntryInput } from '@/components/EntryPage/EntryInput/EntryInput';
 import type { NextPage } from 'next';
 
 export const SignUp: NextPage = () => {
@@ -16,24 +16,45 @@ export const SignUp: NextPage = () => {
           email: '',
           password: '',
         }}
-        onSubmit={async (values, { setSubmitting }) => {
-          await new Promise((r) => setTimeout(r, 500));
-          setSubmitting(false);
+        validationSchema={Yup.object({
+          name: Yup.string().min(1, 'Must be 1 characters or more').required('Required'),
+          email: Yup.string().email('Invalid email address').required('Required'),
+          password: Yup.string()
+            .min(6, 'Must be 6 characters or more')
+            .matches(
+              /([a-z]+[A-Z]+[0-9]+|[a-z]+[0-9]+[A-Z]+|[A-Z]+[a-z]+[0-9]+|[A-Z]+[0-9]+[a-z]+|[0-9]+[a-z]+[A-Z]+|[0-9]+[A-Z]+[a-z]+)/,
+              'Must contain number, capital, lowercase letter'
+            )
+            .required('Required'),
+        })}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
         }}
       >
         <Form>
-          <EnterInput htmlFor="signup-name" name="Name" />
-          <EnterInput
-            htmlFor="signup-email"
-            name="Email"
+          <EntryInput
+            label="Name"
+            htmlFor="name"
+            name="name"
+            type="text"
+            placeholder="enter name"
+          />
+          <EntryInput
+            label="Email"
+            htmlFor="email"
+            name="email"
             type="email"
             placeholder="name@email.com"
           />
-          <EnterInput
-            htmlFor="signup-password"
-            name="Password"
+          <EntryInput
+            label="Password"
+            htmlFor="password"
+            name="password"
             type="password"
-            placeholder="password"
+            placeholder="enter password"
           />
           <RoundedButton type="submit" variant="big" typeBtn="addBtn">
             Sugn Up

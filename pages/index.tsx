@@ -1,10 +1,10 @@
 import React from 'react';
-import { WelcomeSpan, WrapperContent, TextBlock, Title, Text, SubTitle } from './index.styled';
+import { WelcomeMain, WrapperContent, TextBlock, Title, Text, SubTitle } from './index.styled';
 import type { NextPage } from 'next';
 
 const WelcomePage: NextPage = () => {
   return (
-    <WelcomeSpan>
+    <WelcomeMain>
       <WrapperContent>
         <TextBlock>
           <Title>TaskRunner</Title>
@@ -18,7 +18,7 @@ const WelcomePage: NextPage = () => {
           </Text>
         </TextBlock>
       </WrapperContent>
-    </WelcomeSpan>
+    </WelcomeMain>
   );
 };
 

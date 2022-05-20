@@ -4,7 +4,7 @@ import { fonts } from '@/variables/fonts.styled';
 import { breakpoints } from '@/variables/response.styled';
 
 export const FooterSpan = styled.footer`
-  width: 100%;
+  flex: 0 0 auto;
   background-color: ${colors.colorBgSecondary};
 `;
 
@@ -17,7 +17,7 @@ export const FooterWrapper = styled.div`
   max-width: 140rem;
   min-height: 5vh;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   font-size: ${fonts.fontSizeRegular};
   @media (max-width: ${breakpoints.sm}) {
     gap: 0.5rem;

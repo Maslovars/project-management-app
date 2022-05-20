@@ -1,24 +1,29 @@
+import { Description, Input } from '../../common/TextInput/TextInput.styled';
 import { Formik, Form, useField, useFormikContext } from 'formik';
-import { TextInput } from '@/components/common/TextInput';
-import { type } from 'os';
-import { runInThisContext } from 'vm';
-import props from 'prop-types';
+import { ErrorMessage, Container, ErrorMessageWrap } from './EntryInput.styled';
 
-interface TextInputProps {
+interface IEntryInputProps {
+  label: string;
   htmlFor: string;
   name: string;
-  type?: string;
+  type: string;
   placeholder?: string;
-  showErrors?: boolean;
+  id?: string;
 }
 
-export const EnterInput: React.FC<TextInputProps> = ({ htmlFor, name, type }) => {
+export const EntryInput: React.FC<IEntryInputProps> = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <>
-      <label htmlFor={htmlFor}>{name}</label>
-      <input className="text-input" {...field} type={type} name={name} />
-      {meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}
-    </>
+    <Container>
+      <label htmlFor={props.id || props.name}>
+        <Description>{label}:</Description>
+        <Input {...field} {...props} />
+        <ErrorMessageWrap>
+          {meta.touched && meta.error ? (
+            <ErrorMessage className="error">{meta.error}</ErrorMessage>
+          ) : null}
+        </ErrorMessageWrap>
+      </label>
+    </Container>
   );
 };

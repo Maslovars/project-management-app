@@ -29,7 +29,7 @@ export const Title = styled.h2`
 `;
 
 export const TasksContainer = styled.ul`
-  height: 85%;
+  height: 100%;
   margin-bottom: 2rem;
   padding-right: 0.5rem;
   overflow-x: hidden;

@@ -8,7 +8,7 @@ export const Container = styled.ul`
   width: auto;
   max-height: 100%;
   padding: 3rem;
-  overflow-x: scroll;
+  overflow-x: auto;
   background-color: ${colors.colorBgPrimary};
 `;
 

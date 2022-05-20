@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import { NotFoundWrap, NotFoundContent } from './404.styled';
+import { NotFoundMain, NotFoundContent } from './404.styled';
 
 const NotFound: NextPage = () => {
   return (
-    <NotFoundWrap>
+    <NotFoundMain>
       <NotFoundContent />
-    </NotFoundWrap>
+    </NotFoundMain>
   );
 };
 

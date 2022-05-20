@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
 @font-face {
 font-family: 'Heebo';
 font-style: normal;
-src: url('../assets/Heebo-VariableFont_wght.ttf');
+src: url('fonts/Heebo-VariableFont_wght.ttf');
 }
 
 * {
@@ -56,7 +56,10 @@ ul {
   height: 100%;
 }
 
-.App {
+#__next {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 `;
