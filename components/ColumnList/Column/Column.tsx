@@ -1,8 +1,10 @@
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { Task } from '../Task';
 import { RoundedButton } from '@/components/common/RoundedButton';
+import { TitleChanger } from '../Task/TitleChanger/TitleChanger';
 import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
+import { useState } from 'react';
 
 interface ColumnProps {
   id: string;
@@ -13,6 +15,21 @@ interface ColumnProps {
 }
 
 export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
+  const [columnTitle, setColumnTitle] = useState(title);
+  const [inputShow, setInputShow] = useState(false);
+
+  const showTitleChanger = () => {
+    setInputShow(true);
+  };
+
+  const closeTitleChanger = () => {
+    setInputShow(false);
+  };
+
+  const titleHandler = (newTitle: string) => {
+    setColumnTitle(newTitle);
+  };
+
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (
@@ -23,10 +40,21 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
           {...provided.dragHandleProps}
         >
           <Header>
-            <Title>{title}</Title>
-            <RoundedButton type="button" typeBtn="addBtn">
-              + Add Task
-            </RoundedButton>
+            {inputShow && (
+              <TitleChanger
+                closeTitleChanger={closeTitleChanger}
+                currentTitle={columnTitle}
+                titleHandler={titleHandler}
+              />
+            )}
+            {!inputShow && (
+              <>
+                <Title onClick={showTitleChanger}>{columnTitle}</Title>
+                <RoundedButton type="button" typeBtn="addBtn">
+                  + Add Task
+                </RoundedButton>
+              </>
+            )}
           </Header>
           <Droppable droppableId={id} type="task">
             {(provided, snapshot) => (

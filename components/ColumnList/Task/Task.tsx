@@ -15,7 +15,7 @@ import {
   ButtonGroup,
 } from './Task.styled';
 import { TaskTypes } from '@/types/data';
-import { useState } from 'react';
+import { ReactEventHandler, useState } from 'react';
 
 interface TaskProps {
   index: number;
@@ -23,10 +23,10 @@ interface TaskProps {
 }
 
 export const Task: React.FC<TaskProps> = ({ task, index }) => {
-  const { id, title, done, description, userId, files } = task;
+  const { id, title, done, description, userId, files, boardId } = task;
   const [checked, setChecked] = useState(done);
 
-  const handleChecked = () => {
+  const handleChecked = (): void => {
     setChecked(!checked);
   };
 
