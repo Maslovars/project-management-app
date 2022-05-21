@@ -1,4 +1,3 @@
-import React from 'react';
 import { EntryCardWrap, Svg } from './EntryCard.styled';
 
 type Props = {

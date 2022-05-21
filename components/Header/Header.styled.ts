@@ -8,6 +8,7 @@ export const MainHeader = styled.header`
   position: sticky;
   top: 0;
   background-color: ${colors.colorFontLight};
+  flex: 0 0 auto;
 `;
 
 export const MainHeaderWrapper = styled.div`
@@ -16,7 +17,7 @@ export const MainHeaderWrapper = styled.div`
   justify-content: space-between;
   max-width: 140rem;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: 2rem 0.5rem;
 `;
 
 export const LogoWrapper = styled.div`

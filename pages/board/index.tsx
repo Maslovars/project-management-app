@@ -1,17 +1,19 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-
+import type { ReactElement } from 'react';
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedBtn } from '@/components/common/RoundedButton/RoundedButton.styled';
-import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
+import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
 import { testBoardMock } from '../../mock/data';
+import { Footer } from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
 
-const Board: NextPage = () => {
+const Board = () => {
   const [boardInfo, setBoardInfo] = useState(testBoardMock);
 
   return (
     <Container>
-      <Header>
+      <HeaderBoard>
         <BoardTitle>{boardInfo.title}</BoardTitle>
         <ButtonGroup>
           <RoundedBtn type="submit" variant="big" typeBtn="addBtn" disabled>
@@ -24,10 +26,20 @@ const Board: NextPage = () => {
             Delete Board
           </RoundedBtn>
         </ButtonGroup>
-      </Header>
+      </HeaderBoard>
 
       <ColumnList columns={boardInfo.columns} />
     </Container>
+  );
+};
+
+Board.getLayout = (page: ReactElement) => {
+  return (
+    <BoardLayout>
+      <Header />
+      {page}
+      <Footer />
+    </BoardLayout>
   );
 };
 
