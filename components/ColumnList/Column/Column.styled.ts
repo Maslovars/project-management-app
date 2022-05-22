@@ -32,7 +32,7 @@ export const Title = styled.h2`
   text-overflow: ellipsis;
 
   :hover {
-    cursor: text;
+    cursor: url('/icons/pencil.png') 15 30, auto;
   }
 `;
 

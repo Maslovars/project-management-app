@@ -91,15 +91,6 @@ export const Name = styled.p`
   font-size: 1.6rem;
 `;
 
-export const FileImage = styled.img`
-  width: 23rem;
-  width: 100%;
-  height: 8.5rem;
-  margin-bottom: 2rem;
-  object-fit: cover;
-  border-radius: 1rem;
-`;
-
 export const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;

@@ -1,7 +1,7 @@
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { Task } from '../Task';
 import { RoundedButton } from '@/components/common/RoundedButton';
-import { TitleChanger } from '../Task/TitleChanger/TitleChanger';
+import { TitleChanger } from './TitleChanger/TitleChanger';
 import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';

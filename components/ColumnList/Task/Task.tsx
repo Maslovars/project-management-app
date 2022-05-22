@@ -1,5 +1,6 @@
 import { Draggable } from 'react-beautiful-dnd';
 import { RoundedButton } from '@/components/common/RoundedButton';
+import { FileList } from './FileList/FileList';
 import {
   Card,
   Header,
@@ -11,11 +12,10 @@ import {
   Assigned,
   Avatar,
   Name,
-  FileImage,
   ButtonGroup,
 } from './Task.styled';
 import { TaskTypes } from '@/types/data';
-import { ReactEventHandler, useState } from 'react';
+import { useState } from 'react';
 
 interface TaskProps {
   index: number;
@@ -41,13 +41,11 @@ export const Task: React.FC<TaskProps> = ({ task, index }) => {
               <CheckBox checked={checked} />
             </Check>
           </Header>
-          <Description>{description}</Description>
           <Assigned>
             <Avatar src="../img/user-avatar.png" alt={userId} /> <Name>User Name</Name>
           </Assigned>
-          {files.map((item) => (
-            <FileImage key={item.filename} src={item.filename} alt={item.filename} />
-          ))}
+          <Description>{description}</Description>
+          <FileList files={files} />
           <ButtonGroup>
             <RoundedButton type="submit" typeBtn="editBtn" variant="small">
               Edit
