@@ -3,11 +3,13 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const StyledLink = styled.a`
+  height: 100%;
   /* width: 100%; */
   cursor: pointer;
 `;
 
 export const Card = styled.li`
+  height: 100%;
   width: 100%;
   max-width: 44.5rem;
   padding: 3rem;
@@ -28,11 +30,13 @@ export const Title = styled.h2`
   font-size: ${fonts.fontSizeTitle};
 `;
 export const Body = styled.ul`
+  height: 90%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 `;
 export const Column = styled.li`
+  height: 100%;
   max-width: 38.5rem;
   padding: 2rem;
   background-color: ${colors.colorBgPrimaryLighten};

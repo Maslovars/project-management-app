@@ -1,5 +1,5 @@
 import { BoardPreview } from '@/components/BoardPreview';
-import { UserBoardsMock } from 'mock/data';
+import { testBoardsMock } from 'mock/data';
 import type { NextPage } from 'next';
 import { Container, BoardList } from './Main.styled';
 
@@ -7,7 +7,7 @@ const Main: NextPage = () => {
   return (
     <Container>
       <BoardList>
-        {UserBoardsMock.map((board) => {
+        {testBoardsMock.map((board) => {
           return (
             <BoardPreview
               key={board.id}

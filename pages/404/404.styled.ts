@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 
-export const NotFoundWrap = styled.div`
+export const NotFoundMain = styled.main`
+  flex: 1 0 auto;
   width: 100%;
-  height: 95vh;
   background-color: ${colors.colorBgPrimaryLighten};
 `;
 
