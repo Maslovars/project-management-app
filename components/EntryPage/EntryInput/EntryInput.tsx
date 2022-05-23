@@ -20,7 +20,7 @@ export const EntryInput: React.FC<IEntryInputProps> = ({ label, ...props }) => {
         <Input {...field} {...props} />
         <ErrorMessageWrap>
           {meta.touched && meta.error ? (
-            <ErrorMessage className="error">{meta.error}</ErrorMessage>
+            <ErrorMessage className='error'>{meta.error}</ErrorMessage>
           ) : null}
         </ErrorMessageWrap>
       </label>

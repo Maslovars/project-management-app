@@ -27,16 +27,16 @@ export const Task: React.FC<TaskProps> = ({ task, index }) => {
           <Title>{title}</Title>
           <Description>{description}</Description>
           <Assigned>
-            <Avatar src="../img/user-avatar.png" alt={userId} /> <Name>User Name</Name>
+            <Avatar src='../img/user-avatar.png' alt={userId} /> <Name>User Name</Name>
           </Assigned>
           {files.map((item) => (
             <FileImage key={item.filename} src={item.filename} alt={item.filename} />
           ))}
           <ButtonGroup>
-            <RoundedButton type="submit" typeBtn="editBtn" variant="small">
+            <RoundedButton type='submit' typeBtn='editBtn' variant='small'>
               Edit
             </RoundedButton>
-            <RoundedButton type="submit" typeBtn="delBtn" variant="small">
+            <RoundedButton type='submit' typeBtn='delBtn' variant='small'>
               Delete
             </RoundedButton>
           </ButtonGroup>
