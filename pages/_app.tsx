@@ -4,6 +4,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary';
 import { Layout } from '@/components/Layout/Layout';
 import Header from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
+import { wrapper } from 'store/store';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 
@@ -34,4 +35,4 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default App;
+export default wrapper.withRedux(App);

@@ -4,11 +4,16 @@
     "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
     "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier"
   ],
-  "plugins": ["@typescript-eslint", "react", "prettier", "react-hooks"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "prettier",
+    "react-hooks"
+  ],
   "parserOptions": {
     "ecmaVersion": 11,
     "sourceType": "module",
@@ -20,7 +25,10 @@
     "no-console": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "comma-dangle": ["error", "only-multiline"],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
     "react/prop-types": "off",
     "react/display-name": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
