@@ -70,7 +70,6 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
               </TasksContainer>
             )}
           </Droppable>
-
           <div>
             <RoundedButton type="submit" typeBtn="delBtn">
               Delete column

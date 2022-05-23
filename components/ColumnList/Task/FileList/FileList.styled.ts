@@ -7,10 +7,10 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
+  margin-bottom: 0.5rem;
   color: ${colors.colorFontPrimary};
   font-weight: ${fonts.fontWeightBold};
   font-size: 1.6rem;
-  margin-bottom: 0.5rem;
 `;
 
 export const ItemList = styled.ul`
@@ -27,9 +27,9 @@ export const Item = styled.li`
 export const Icon = styled.img`
   width: 3.5rem;
   height: 3.5rem;
-  border-radius: 0.8rem;
-  overflow: hidden;
   margin-right: 0.5rem;
+  overflow: hidden;
+  border-radius: 0.8rem;
 `;
 export const Info = styled.div`
   display: flex;

@@ -15,10 +15,10 @@ export const Card = styled.li`
 `;
 
 export const Header = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   margin-bottom: 0.8rem;
 `;
 
@@ -29,15 +29,15 @@ export const Title = styled.h3`
 `;
 
 export const Check = styled.label`
-  width: 3rem;
-  height: 3rem;
   position: relative;
-  margin-left: 1rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 1rem;
   background-color: ${colors.colorBgSecondary};
   border-radius: 0.4rem;
+  cursor: pointer;
   transition: all 0.3s ease;
 
   :hover {
@@ -47,21 +47,19 @@ export const Check = styled.label`
 
 export const CheckInput = styled.input`
   position: absolute;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 `;
 
 export const CheckBox = styled.span<CheckBoxProps>`
   width: 3rem;
   height: 3rem;
-  border-radius: 0.4rem;
   background-color: ${colors.colorSuccessLight};
   background-image: url('/check-mark.svg');
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 0.4rem;
   transition: all 0.3s ease;
-  visibility: ${(props) => (props.checked ? 'visible' : 'hidden')};
+  ${(props) => (props.checked ? 'visibility: visible' : 'visibility: hidden')};
 `;
 
 export const Description = styled.p`
