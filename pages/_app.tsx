@@ -4,6 +4,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary';
 import { Layout } from '@/components/Layout/Layout';
 import Header from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
+import { wrapper } from 'store/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,4 +19,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
