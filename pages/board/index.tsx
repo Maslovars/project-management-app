@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-
+import { PopUp } from '@/components/common/PopUp';
+import { TextInput } from '@/components/common/TextInput';
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedBtn } from '@/components/common/RoundedButton/RoundedButton.styled';
 import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
@@ -25,7 +26,7 @@ const Board: NextPage = () => {
           </RoundedBtn>
         </ButtonGroup>
       </Header>
-
+      <PopUp title="Creat Column" children={<TextInput htmlFor="column" name="column" />} />
       <ColumnList columns={boardInfo.columns} />
     </Container>
   );

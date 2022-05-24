@@ -15,6 +15,7 @@ export const Modal = styled.div`
   background-color: ${colors.colorBgSecondary};
   border-radius: 1rem;
   transform: translate(-50%, -50%);
+  z-index: 2;
 `;
 
 export const Header = styled.div`
