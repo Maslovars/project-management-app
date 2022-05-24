@@ -9,6 +9,10 @@ interface TitleChanger {
   titleHandler: (newTitle: string) => void;
 }
 
+interface Errors {
+  title?: string;
+}
+
 export const TitleChanger: React.FC<TitleChanger> = ({
   closeTitleChanger,
   currentTitle,
@@ -22,6 +26,15 @@ export const TitleChanger: React.FC<TitleChanger> = ({
       closeTitleChanger();
       titleHandler(values.title);
     },
+
+    validate: (values) => {
+      let errors: Errors = {};
+      if (!values.title.trim()) {
+        errors.title = 'The Title not be empty!';
+      }
+
+      return errors;
+    },
   });
 
   return (
@@ -31,6 +44,7 @@ export const TitleChanger: React.FC<TitleChanger> = ({
         name="title"
         value={formik.values.title}
         onChange={formik.handleChange}
+        error={formik.errors.title}
       />
       <ButtonGroup>
         <RoundedButton typeBtn="addBtn" variant="small">

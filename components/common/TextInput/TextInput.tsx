@@ -1,4 +1,4 @@
-import { Container, Description, Input } from './TextInput.styled';
+import { Container, Description, Input, Error } from './TextInput.styled';
 
 interface TextInputProps {
   htmlFor: string;
@@ -8,6 +8,7 @@ interface TextInputProps {
   placeholder?: string;
   value?: string;
   onChange?: (newValue: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
@@ -18,6 +19,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   description,
   value,
   onChange,
+  error,
 }) => {
   return (
     <Container>
@@ -31,6 +33,7 @@ export const TextInput: React.FC<TextInputProps> = ({
           onChange={onChange}
         />
       </label>
+      {error && <Error>{error}</Error>}
     </Container>
   );
 };

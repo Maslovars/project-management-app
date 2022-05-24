@@ -4,4 +4,5 @@ export const ButtonGroup = styled.div`
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
+  padding-top: 1rem;
 `;
