@@ -6,16 +6,16 @@ export const Modal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   width: 100%;
   min-width: 3.2rem;
-  max-width: 59.6rem;
+  max-width: 40rem;
   overflow: hidden;
   background-color: ${colors.colorBgSecondary};
   border-radius: 1rem;
   transform: translate(-50%, -50%);
-  z-index: 2;
 `;
 
 export const Header = styled.div`
@@ -38,11 +38,4 @@ export const Close = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-`;
-
-export const Body = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 3rem;
 `;

@@ -42,9 +42,9 @@ export const Input = styled.input`
 `;
 
 export const Error = styled.div`
+  position: absolute;
+  left: 2rem;
   color: ${colors.colorError};
   font-weight: ${fonts.fontWeightBold};
   font-size: 1.2rem;
-  position: absolute;
-  left: 2rem;
 `;
