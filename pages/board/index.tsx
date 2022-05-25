@@ -11,7 +11,7 @@ import { ConfirmModal } from '@/components/ConfirmModal';
 const Board: NextPage = () => {
   const [boardInfo, setBoardInfo] = useState(testBoardMock);
   const [showColumnCreator, setShowColumnCreator] = useState(false);
-  const [modalActive, setModalActive] = useState(true);
+  const [modalActive, setModalActive] = useState(false);
   const router = useRouter();
 
   const addColumn = () => {
@@ -36,6 +36,10 @@ const Board: NextPage = () => {
     }
   };
 
+  const goToMain = () => {
+    router.push('/main');
+  };
+
   return (
     <Container>
       <Header>
@@ -46,6 +50,9 @@ const Board: NextPage = () => {
           </RoundedButton>
           <RoundedButton onClick={deleteBoard} type="submit" variant="big" typeBtn="delBtn">
             Delete Board
+          </RoundedButton>
+          <RoundedButton onClick={goToMain} type="button" variant="big" typeBtn="editBtn">
+            Go To Main
           </RoundedButton>
         </ButtonGroup>
       </Header>
