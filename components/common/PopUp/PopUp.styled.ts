@@ -1,6 +1,19 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
+
+const showModal = keyframes`
+0% {
+  opacity: 0;
+  transform: scale(0.3);
+  transform: translate(-50%, -50%);}
+
+100% {
+  opacity: 1;
+  transform: scale(1);
+  transform: translate(-50%, -50%);
+}
+`;
 
 export const Modal = styled.div`
   position: fixed;
@@ -16,6 +29,7 @@ export const Modal = styled.div`
   background-color: ${colors.colorBgSecondary};
   border-radius: 1rem;
   transform: translate(-50%, -50%);
+  animation: ${showModal} 0.6s ease;
 `;
 
 export const Header = styled.div`

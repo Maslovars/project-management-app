@@ -1,9 +1,20 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const showInput = keyframes`
+0% {
+  opacity: 0;
+
+}
+
+100% {
+  opacity: 0.6;
+}
+`;
 
 export const FormStyled = styled.form`
   display: flex;
   align-items: center;
-  transition: all 0.5s;
+  animation: ${showInput} 0.2s ease;
 `;
 
 export const ButtonGroup = styled.div`

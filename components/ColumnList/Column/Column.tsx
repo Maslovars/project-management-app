@@ -3,6 +3,7 @@ import { Task } from '../Task';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { TitleChanger } from './TitleChanger/TitleChanger';
 import { ConfirmModal } from '@/components/ConfirmModal';
+import { TaskCreator } from './TaskCreator/TaskCreator';
 import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';
@@ -19,6 +20,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
   const [columnTitle, setColumnTitle] = useState(title);
   const [inputShow, setInputShow] = useState(false);
   const [modalActive, setModalActive] = useState(false);
+  const [showTaskCreator, setShowTaskCreator] = useState(false);
 
   const showTitleChanger = () => {
     setInputShow(true);
@@ -45,6 +47,14 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
     }
   };
 
+  const addTask = () => {
+    setShowTaskCreator(true);
+  };
+
+  const closeTaskCreator = () => {
+    setShowTaskCreator(false);
+  };
+
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (
@@ -64,7 +74,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
           {!inputShow && (
             <Header>
               <Title onClick={showTitleChanger}>{columnTitle}</Title>
-              <RoundedButton type="button" typeBtn="addBtn">
+              <RoundedButton onClick={addTask} type="button" typeBtn="addBtn">
                 + Add Task
               </RoundedButton>
             </Header>
@@ -89,6 +99,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
               Delete column
             </RoundedButton>
           </div>
+          {showTaskCreator && <TaskCreator closer={closeTaskCreator} />}
           <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
         </ColumnStyled>
       )}

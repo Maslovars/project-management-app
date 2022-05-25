@@ -17,6 +17,7 @@ import {
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';
 import { ConfirmModal } from '@/components/ConfirmModal';
+import { TaskCreator } from '../Column/TaskCreator/TaskCreator';
 
 interface TaskProps {
   index: number;
@@ -27,6 +28,7 @@ export const Task: React.FC<TaskProps> = ({ task, index }) => {
   const { id, title, done, description, userId, files, boardId } = task;
   const [checked, setChecked] = useState(done);
   const [modalActive, setModalActive] = useState(false);
+  const [showTaskCreator, setShowTaskCreator] = useState(false);
 
   const handleChecked = (): void => {
     setChecked(!checked);
@@ -43,6 +45,14 @@ export const Task: React.FC<TaskProps> = ({ task, index }) => {
     if (!result) {
       return;
     }
+  };
+
+  const closeTaskCreator = () => {
+    setShowTaskCreator(false);
+  };
+
+  const editTask = () => {
+    setShowTaskCreator(true);
   };
 
   return (
@@ -62,13 +72,21 @@ export const Task: React.FC<TaskProps> = ({ task, index }) => {
           <Description>{description}</Description>
           <FileList files={files} />
           <ButtonGroup>
-            <RoundedButton type="button" typeBtn="editBtn" variant="small">
+            <RoundedButton onClick={editTask} type="button" typeBtn="editBtn" variant="small">
               Edit
             </RoundedButton>
             <RoundedButton onClick={deleteTask} type="button" typeBtn="delBtn" variant="small">
               Delete
             </RoundedButton>
           </ButtonGroup>
+          {showTaskCreator && (
+            <TaskCreator
+              title={task.title}
+              assigned={'User Name'}
+              description={task.description}
+              closer={closeTaskCreator}
+            />
+          )}
           <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
         </Card>
       )}

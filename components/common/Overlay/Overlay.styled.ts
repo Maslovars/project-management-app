@@ -1,5 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { colors } from '@/variables/colors.styled';
+
+const showOverLay = keyframes`
+0% {
+  opacity: 0;
+
+}
+
+100% {
+  opacity: 0.6;
+}
+`;
 
 export const OverlayLayer = styled.div`
   position: fixed;
@@ -10,4 +21,5 @@ export const OverlayLayer = styled.div`
   height: 100%;
   background: ${colors.colorFontPrimary};
   opacity: 0.6;
+  animation: ${showOverLay} 0.3s ease-out;
 `;
