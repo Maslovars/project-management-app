@@ -1,14 +1,18 @@
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { ColumnCreator } from '@/components/ColumnCreator/ColumnCreator';
 import { ColumnList } from '@/components/ColumnList';
-import { RoundedBtn } from '@/components/common/RoundedButton/RoundedButton.styled';
+import { RoundedButton } from '@/components/common/RoundedButton';
 import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
 import { testBoardMock } from '../../mock/data';
+import { ConfirmModal } from '@/components/ConfirmModal';
 
 const Board: NextPage = () => {
   const [boardInfo, setBoardInfo] = useState(testBoardMock);
   const [showColumnCreator, setShowColumnCreator] = useState(false);
+  const [modalActive, setModalActive] = useState(true);
+  const router = useRouter();
 
   const addColumn = () => {
     setShowColumnCreator(true);
@@ -18,24 +22,36 @@ const Board: NextPage = () => {
     setShowColumnCreator(false);
   };
 
+  const deleteBoard = () => {
+    setModalActive(true);
+  };
+
+  const confirmDelete = (result: boolean) => {
+    if (result) {
+      alert(`BOARD: ${boardInfo.id} DELETE`);
+      router.push('/main');
+    }
+    if (!result) {
+      return;
+    }
+  };
+
   return (
     <Container>
       <Header>
         <BoardTitle>{boardInfo.title}</BoardTitle>
         <ButtonGroup>
-          <RoundedBtn type="submit" variant="big" typeBtn="addBtn" disabled>
-            Create Board
-          </RoundedBtn>
-          <RoundedBtn onClick={addColumn} type="submit" variant="big" typeBtn="addBtn">
+          <RoundedButton onClick={addColumn} type="submit" variant="big" typeBtn="addBtn">
             Add Column
-          </RoundedBtn>
-          <RoundedBtn type="submit" variant="big" typeBtn="delBtn">
+          </RoundedButton>
+          <RoundedButton onClick={deleteBoard} type="submit" variant="big" typeBtn="delBtn">
             Delete Board
-          </RoundedBtn>
+          </RoundedButton>
         </ButtonGroup>
       </Header>
       <ColumnList columns={boardInfo.columns} />
       {showColumnCreator && <ColumnCreator handlerColumn={closeColumnCreator} />}
+      <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
     </Container>
   );
 };
