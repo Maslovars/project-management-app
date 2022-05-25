@@ -2,6 +2,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { Task } from '../Task';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { TitleChanger } from './TitleChanger/TitleChanger';
+import { ConfirmModal } from '@/components/ConfirmModal';
 import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';
@@ -17,6 +18,7 @@ interface ColumnProps {
 export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
   const [columnTitle, setColumnTitle] = useState(title);
   const [inputShow, setInputShow] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
 
   const showTitleChanger = () => {
     setInputShow(true);
@@ -28,6 +30,19 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
 
   const titleHandler = (newTitle: string) => {
     setColumnTitle(newTitle);
+  };
+
+  const deleteColumn = () => {
+    setModalActive(true);
+  };
+
+  const confirmDelete = (result: boolean) => {
+    if (result) {
+      alert(`COLUMN: ${title} DELETE`);
+    }
+    if (!result) {
+      return;
+    }
   };
 
   return (
@@ -70,10 +85,11 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
             )}
           </Droppable>
           <div>
-            <RoundedButton type="submit" typeBtn="delBtn">
+            <RoundedButton onClick={deleteColumn} type="button" typeBtn="delBtn">
               Delete column
             </RoundedButton>
           </div>
+          <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
         </ColumnStyled>
       )}
     </Draggable>
