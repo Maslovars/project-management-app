@@ -39,23 +39,22 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <Header>
-            {inputShow && (
-              <TitleChanger
-                closeTitleChanger={closeTitleChanger}
-                currentTitle={columnTitle}
-                titleHandler={titleHandler}
-              />
-            )}
-            {!inputShow && (
-              <>
-                <Title onClick={showTitleChanger}>{columnTitle}</Title>
-                <RoundedButton type="button" typeBtn="addBtn">
-                  + Add Task
-                </RoundedButton>
-              </>
-            )}
-          </Header>
+          {inputShow && (
+            <TitleChanger
+              closeTitleChanger={closeTitleChanger}
+              currentTitle={columnTitle}
+              titleHandler={titleHandler}
+            />
+          )}
+          {!inputShow && (
+            <Header>
+              <Title onClick={showTitleChanger}>{columnTitle}</Title>
+              <RoundedButton type="button" typeBtn="addBtn">
+                + Add Task
+              </RoundedButton>
+            </Header>
+          )}
+
           <Droppable droppableId={id} type="task">
             {(provided, snapshot) => (
               <TasksContainer

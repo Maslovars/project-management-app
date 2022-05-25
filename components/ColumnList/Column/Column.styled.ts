@@ -20,7 +20,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 3.1rem;
 `;
 
 export const Title = styled.h2`

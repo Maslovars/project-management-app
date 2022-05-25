@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { TextInput } from '@/components/common/TextInput';
 import { RoundedButton } from '@/components/common/RoundedButton';
-import { ButtonGroup } from './TitleChanger.styled';
+import { FormStyled, ButtonGroup } from './TitleChanger.styled';
 
 interface TitleChanger {
   closeTitleChanger: () => void;
@@ -38,14 +38,7 @@ export const TitleChanger: React.FC<TitleChanger> = ({
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <TextInput
-        htmlFor="title"
-        name="title"
-        value={formik.values.title}
-        onChange={formik.handleChange}
-        error={formik.errors.title}
-      />
+    <FormStyled onSubmit={formik.handleSubmit}>
       <ButtonGroup>
         <RoundedButton typeBtn="addBtn" variant="small">
           Submit
@@ -54,6 +47,13 @@ export const TitleChanger: React.FC<TitleChanger> = ({
           Chancel
         </RoundedButton>
       </ButtonGroup>
-    </form>
+      <TextInput
+        htmlFor="title"
+        name="title"
+        value={formik.values.title}
+        onChange={formik.handleChange}
+        error={formik.errors.title}
+      />
+    </FormStyled>
   );
 };

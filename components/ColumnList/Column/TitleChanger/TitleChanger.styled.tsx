@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
-export const ButtonGroup = styled.div`
-  margin-top: 1rem;
+export const FormStyled = styled.form`
   display: flex;
+  align-items: center;
+  transition: all 0.5s;
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding-top: 1rem;
+  margin-right: 1rem;
+  gap: 0.5rem;
 `;
