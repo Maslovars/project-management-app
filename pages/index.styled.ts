@@ -3,13 +3,12 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 import { breakpoints } from '@/variables/response.styled';
 
-const WelcomeSpan = styled.div`
+const WelcomeMain = styled.main`
   display: flex;
-  flex-direction: column;
+  flex: 1 0 auto;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  height: 95vh;
   background-color: ${colors.colorBgPrimaryLighten};
 `;
 
@@ -63,4 +62,4 @@ const Text = styled.p`
   }
 `;
 
-export { WelcomeSpan, WrapperContent, TextBlock, Title, Text, SubTitle };
+export { WelcomeMain, WrapperContent, TextBlock, Title, Text, SubTitle };

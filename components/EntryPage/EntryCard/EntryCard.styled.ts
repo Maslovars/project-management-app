@@ -7,7 +7,7 @@ export const EntryCardWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 4rem 5rem;
+  padding: 4rem 4rem;
   background-color: ${colors.colorBgSecondary};
   border-radius: 8px;
   @media (max-width: ${breakpoints.sm}) {
@@ -22,7 +22,6 @@ export const EntryCardWrap = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
   span {
     color: ${colors.colorFontPrimaryLighten};

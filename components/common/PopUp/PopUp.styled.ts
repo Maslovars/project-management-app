@@ -4,14 +4,14 @@ import { fonts } from '@/variables/fonts.styled';
 
 const showModal = keyframes`
 0% {
-  opacity: 0;
   transform: scale(0.3);
-  transform: translate(-50%, -50%);}
+  transform: translate(-50%, -50%);
+  opacity: 0;}
 
 100% {
-  opacity: 1;
   transform: scale(1);
   transform: translate(-50%, -50%);
+  opacity: 1;
 }
 `;
 

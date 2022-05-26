@@ -1,14 +1,16 @@
-import type { NextPage } from 'next';
+import type { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { ColumnCreator } from '@/components/ColumnCreator/ColumnCreator';
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedButton } from '@/components/common/RoundedButton';
-import { Container, Header, BoardTitle, ButtonGroup } from './Board.styled';
+import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
 import { testBoardMock } from '../../mock/data';
 import { ConfirmModal } from '@/components/ConfirmModal';
+import { Footer } from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
 
-const Board: NextPage = () => {
+const Board = () => {
   const [boardInfo, setBoardInfo] = useState(testBoardMock);
   const [showColumnCreator, setShowColumnCreator] = useState(false);
   const [modalActive, setModalActive] = useState(false);
@@ -42,7 +44,7 @@ const Board: NextPage = () => {
 
   return (
     <Container>
-      <Header>
+      <HeaderBoard>
         <BoardTitle>{boardInfo.title}</BoardTitle>
         <ButtonGroup>
           <RoundedButton onClick={addColumn} type="submit" variant="big" typeBtn="addBtn">
@@ -55,11 +57,21 @@ const Board: NextPage = () => {
             Go To Main
           </RoundedButton>
         </ButtonGroup>
-      </Header>
+      </HeaderBoard>
       <ColumnList columns={boardInfo.columns} />
       {showColumnCreator && <ColumnCreator handlerColumn={closeColumnCreator} />}
       <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
     </Container>
+  );
+};
+
+Board.getLayout = (page: ReactElement) => {
+  return (
+    <BoardLayout>
+      <Header />
+      {page}
+      <Footer />
+    </BoardLayout>
   );
 };
 

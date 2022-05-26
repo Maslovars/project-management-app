@@ -5,6 +5,7 @@ import Image from 'next/image';
 export const MainHeader = styled.header`
   position: sticky;
   top: 0;
+  flex: 0 0 auto;
   background-color: ${colors.colorFontLight};
 `;
 
@@ -14,7 +15,7 @@ export const MainHeaderWrapper = styled.div`
   justify-content: space-between;
   max-width: 140rem;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: 2rem 0.5rem;
 `;
 
 export const LogoWrapper = styled.div`

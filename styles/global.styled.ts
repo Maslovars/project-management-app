@@ -51,4 +51,15 @@ ul {
 :hover {
   transition: 0.5s;
 }
+
+#root {
+  height: 100%;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
 `;
