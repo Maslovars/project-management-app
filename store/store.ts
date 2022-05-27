@@ -1,10 +1,12 @@
 import authReducer from './reducers/authSlice';
+import boardReducer from './reducers/boardSlice'
 import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { createWrapper } from 'next-redux-wrapper';
 
 
 const rootReducer = combineReducers({
-    authReducer
+    authReducer,
+    boardReducer
 });
 
 export const makeStore = () => {

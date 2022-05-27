@@ -1,17 +1,40 @@
 import type { ReactElement } from 'react';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ColumnCreator } from '@/components/ColumnCreator/ColumnCreator';
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
 import { testBoardMock } from '../../mock/data';
+import { useSelector } from 'react-redux';
 import { ConfirmModal } from '@/components/ConfirmModal';
 import { Footer } from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import axios from 'axios';
 
-const Board = () => {
-  const [boardInfo, setBoardInfo] = useState(testBoardMock);
+export const getServerSideProps = async (context) => {
+  const {id} = context // this id should be added to request on next line!
+  const response = await axios.get(`https://kanban-rest77.herokuapp.com/boards/da90f759-014e-40fc-96d1-0970631acb80`, {
+    headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4'}
+
+    })
+    const data = await response.data
+
+    if (!data) {
+return {
+  notFound: true
+}
+    }
+
+  return {
+    props: {board: data}, 
+  }
+}
+
+const Board = ({board}) => {
+  const state = useSelector(store => store)
+  console.log(state)
+  const [boardInfo, setBoardInfo] = useState(board);
   const [showColumnCreator, setShowColumnCreator] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const router = useRouter();
@@ -41,6 +64,21 @@ const Board = () => {
   const goToMain = () => {
     router.push('/main');
   };
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const response = await axios.get('https://kanban-rest77.herokuapp.com/boards', {
+//       headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4'}
+
+//        })
+//     .then((response) => {
+//       console.log(response);
+//     }, (error) => {
+//       console.log(error);
+//     });
+//   }
+//   fetchData()
+// },[])
 
   return (
     <Container>
