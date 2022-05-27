@@ -5,6 +5,7 @@ import { Layout } from '@/components/Layout/Layout';
 import Header from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
 import { wrapper } from 'store/store';
+import { appWithTranslation } from 'next-i18next';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 
@@ -35,4 +36,4 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default wrapper.withRedux(App);
+export default appWithTranslation(wrapper.withRedux(App));
