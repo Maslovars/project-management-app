@@ -27,6 +27,8 @@ export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) =
         .catch(error => {
             console.error('There was an error!', error);
         });
+
+        
     },
 
     validate: (values) => {
