@@ -47,13 +47,13 @@ const Board = () => {
       <HeaderBoard>
         <BoardTitle>{boardInfo.title}</BoardTitle>
         <ButtonGroup>
-          <RoundedButton onClick={addColumn} type="submit" variant="big" typeBtn="addBtn">
+          <RoundedButton onClick={addColumn} type='submit' variant='big' typeBtn='addBtn'>
             Add Column
           </RoundedButton>
-          <RoundedButton onClick={deleteBoard} type="submit" variant="big" typeBtn="delBtn">
+          <RoundedButton onClick={deleteBoard} type='submit' variant='big' typeBtn='delBtn'>
             Delete Board
           </RoundedButton>
-          <RoundedButton onClick={goToMain} type="button" variant="big" typeBtn="editBtn">
+          <RoundedButton onClick={goToMain} type='button' variant='big' typeBtn='editBtn'>
             Go To Main
           </RoundedButton>
         </ButtonGroup>

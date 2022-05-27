@@ -62,20 +62,20 @@ export const Task: React.FC<TaskProps> = ({ task, index }) => {
           <Header>
             <Title>{title}</Title>
             <Check>
-              <CheckInput type="checkbox" checked={checked} onChange={handleChecked} />
+              <CheckInput type='checkbox' checked={checked} onChange={handleChecked} />
               <CheckBox checked={checked} />
             </Check>
           </Header>
           <Assigned>
-            <Avatar src="../img/user-avatar.png" alt={userId} /> <Name>User Name</Name>
+            <Avatar src='../img/user-avatar.png' alt={userId} /> <Name>User Name</Name>
           </Assigned>
           <Description>{description}</Description>
           <FileList files={files} />
           <ButtonGroup>
-            <RoundedButton onClick={editTask} type="button" typeBtn="editBtn" variant="small">
+            <RoundedButton onClick={editTask} type='button' typeBtn='editBtn' variant='small'>
               Edit
             </RoundedButton>
-            <RoundedButton onClick={deleteTask} type="button" typeBtn="delBtn" variant="small">
+            <RoundedButton onClick={deleteTask} type='button' typeBtn='delBtn' variant='small'>
               Delete
             </RoundedButton>
           </ButtonGroup>

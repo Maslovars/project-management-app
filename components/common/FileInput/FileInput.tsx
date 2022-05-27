@@ -18,7 +18,7 @@ export const FileInput = () => {
   return (
     <Container>
       <Label empty={isEmpty}>
-        <Input type="file" onChange={handleChange} />
+        <Input type='file' onChange={handleChange} />
         <Title empty={isEmpty}>{title}</Title>
       </Label>
     </Container>

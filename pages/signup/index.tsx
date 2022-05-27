@@ -36,34 +36,34 @@ export const SignUp: NextPage = () => {
       >
         <Form>
           <EntryInput
-            label="Name"
-            htmlFor="name"
-            name="name"
-            type="text"
-            placeholder="enter name"
+            label='Name'
+            htmlFor='name'
+            name='name'
+            type='text'
+            placeholder='enter name'
           />
           <EntryInput
-            label="Email"
-            htmlFor="email"
-            name="email"
-            type="email"
-            placeholder="name@email.com"
+            label='Email'
+            htmlFor='email'
+            name='email'
+            type='email'
+            placeholder='name@email.com'
           />
           <EntryInput
-            label="Password"
-            htmlFor="password"
-            name="password"
-            type="password"
-            placeholder="enter password"
+            label='Password'
+            htmlFor='password'
+            name='password'
+            type='password'
+            placeholder='enter password'
           />
-          <RoundedButton type="submit" variant="big" typeBtn="addBtn">
+          <RoundedButton type='submit' variant='big' typeBtn='addBtn'>
             Sugn Up
           </RoundedButton>
         </Form>
       </Formik>
       <span>
         Already have an account? &nbsp;
-        <Link href="/login">
+        <Link href='/login'>
           <a>Log in</a>
         </Link>
       </span>

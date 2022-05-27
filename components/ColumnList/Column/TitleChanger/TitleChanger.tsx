@@ -28,7 +28,7 @@ export const TitleChanger: React.FC<TitleChanger> = ({
     },
 
     validate: (values) => {
-      let errors: Errors = {};
+      const errors: Errors = {};
       if (!values.title.trim()) {
         errors.title = 'The Title not be empty!';
       }
@@ -40,16 +40,16 @@ export const TitleChanger: React.FC<TitleChanger> = ({
   return (
     <FormStyled onSubmit={formik.handleSubmit}>
       <ButtonGroup>
-        <RoundedButton typeBtn="addBtn" variant="small">
+        <RoundedButton typeBtn='addBtn' variant='small'>
           Submit
         </RoundedButton>
-        <RoundedButton type="button" onClick={closeTitleChanger} typeBtn="delBtn" variant="small">
+        <RoundedButton type='button' onClick={closeTitleChanger} typeBtn='delBtn' variant='small'>
           Chancel
         </RoundedButton>
       </ButtonGroup>
       <TextInput
-        htmlFor="title"
-        name="title"
+        htmlFor='title'
+        name='title'
         value={formik.values.title}
         onChange={formik.handleChange}
         error={formik.errors.title}

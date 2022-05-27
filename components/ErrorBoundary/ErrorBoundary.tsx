@@ -36,7 +36,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     if (this.state.hasError) {
       return (
         <ToastContainer
-          position="top-right"
+          position='top-right'
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}

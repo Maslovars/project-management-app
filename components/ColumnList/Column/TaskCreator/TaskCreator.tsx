@@ -46,40 +46,40 @@ export const TaskCreator: React.FC<ColumnCreatorProps> = ({
   });
 
   return (
-    <PopUp closePopUp={closer} title="Add Task">
+    <PopUp closePopUp={closer} title='Add Task'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput
-            htmlFor="title"
-            name="title"
+            htmlFor='title'
+            name='title'
             value={formik.values.title}
             onChange={formik.handleChange}
             error={formik.errors.title}
-            description="Title"
+            description='Title'
           />
         </InputWrapper>
         <InputWrapper>
           <TextInput
-            htmlFor="assigned"
-            name="assigned"
+            htmlFor='assigned'
+            name='assigned'
             value={formik.values.assigned}
             onChange={formik.handleChange}
-            description="Assigned"
+            description='Assigned'
           />
         </InputWrapper>
         <InputWrapper>
           <TextArea
-            htmlFor="description"
-            name="description"
+            htmlFor='description'
+            name='description'
             value={formik.values.description}
             onChange={formik.handleChange}
-            description="Description"
+            description='Description'
           />
         </InputWrapper>
         <InputWrapper>
           <FileInput />
         </InputWrapper>
-        <RoundedButton type="submit" typeBtn="addBtn" variant="big">
+        <RoundedButton type='submit' typeBtn='addBtn' variant='big'>
           Confirm
         </RoundedButton>
       </FormStyled>

@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     <MainHeader>
       <MainHeaderWrapper>
         <LogoWrapper>
-          <MainLogoImg src="/img/MainLogo.png" width={50} height={50} alt="Main logo" />
+          <MainLogoImg src='/img/MainLogo.png' width={50} height={50} alt='Main logo' />
           <LogoHeader>Taskrunner</LogoHeader>
         </LogoWrapper>
         <BtnGroup>

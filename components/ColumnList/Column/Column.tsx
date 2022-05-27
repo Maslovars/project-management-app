@@ -74,13 +74,13 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
           {!inputShow && (
             <Header>
               <Title onClick={showTitleChanger}>{columnTitle}</Title>
-              <RoundedButton onClick={addTask} type="button" typeBtn="addBtn">
+              <RoundedButton onClick={addTask} type='button' typeBtn='addBtn'>
                 + Add Task
               </RoundedButton>
             </Header>
           )}
 
-          <Droppable droppableId={id} type="task">
+          <Droppable droppableId={id} type='task'>
             {(provided, snapshot) => (
               <TasksContainer
                 ref={provided.innerRef}
@@ -95,7 +95,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
             )}
           </Droppable>
           <div>
-            <RoundedButton onClick={deleteColumn} type="button" typeBtn="delBtn">
+            <RoundedButton onClick={deleteColumn} type='button' typeBtn='delBtn'>
               Delete column
             </RoundedButton>
           </div>

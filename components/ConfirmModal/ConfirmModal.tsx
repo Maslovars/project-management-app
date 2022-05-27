@@ -24,10 +24,10 @@ export const ConfirmModal = ({ active, setActive, isConfirm }) => {
       <ModalContent active={active}>
         <Title>Are you sure?</Title>
         <ButtonGroup>
-          <RoundedButton onClick={confirmed} variant="big" type="button" typeBtn="addBtn">
+          <RoundedButton onClick={confirmed} variant='big' type='button' typeBtn='addBtn'>
             Ok
           </RoundedButton>
-          <RoundedButton onClick={canceled} variant="big" type="button" typeBtn="delBtn">
+          <RoundedButton onClick={canceled} variant='big' type='button' typeBtn='delBtn'>
             Cancel
           </RoundedButton>
         </ButtonGroup>
