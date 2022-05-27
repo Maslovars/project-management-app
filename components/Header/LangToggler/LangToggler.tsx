@@ -16,7 +16,7 @@ const LangToggler: React.FC = () => {
 
   return (
     <label className={styles.checkbox} onClick={handleLanguageToggle}>
-      <input type='checkbox' defaultChecked={locale === 'ru'} />
+      <input type='checkbox' defaultChecked={locale === 'en'} />
       <span className={styles.checkboxSwitch} data-label-en='EN' data-label-ru='RU'></span>
     </label>
   );
