@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { PopUp } from '@/components/common/PopUp';
 import { TextInput } from '@/components/common/TextInput';
-import { TextArea } from '@/components/common/TextArea/Teaxtarea';
+import { TextArea } from '@/components/common/TextArea/TextArea';
 import { RoundedButton } from '@/components/common/RoundedButton/RoundedButton';
 import { FormStyled, InputWrapper } from './TaskCreator.styled';
 import { FileInput } from '@/components/common/FileInput/FileInput';

@@ -1,4 +1,4 @@
-import { Container, Description, Textarea, Error } from './Textarea.styled';
+import { Container, Description, Textarea, Error } from './TextArea.styled';
 
 interface TextAreaProps {
   htmlFor: string;
