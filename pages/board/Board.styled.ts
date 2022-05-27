@@ -3,10 +3,10 @@ import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
 export const Container = styled.main`
-  height: 86%;
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
+  height: 86%;
   background-color: ${colors.colorBgPrimary};
 `;
 

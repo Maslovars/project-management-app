@@ -20,7 +20,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 3.1rem;
 `;
 
 export const Title = styled.h2`
@@ -32,7 +32,7 @@ export const Title = styled.h2`
   text-overflow: ellipsis;
 
   :hover {
-    cursor: text;
+    cursor: url('/icons/pencil.png') 15 30, auto;
   }
 `;
 

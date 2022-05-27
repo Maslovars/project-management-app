@@ -1,29 +1,23 @@
 import { Overlay } from '../Overlay';
-import { Modal, Header, Title, Close, Body } from './PopUp.styled';
-import { TextInput } from '../TextInput';
-import { RoundedButton } from '../RoundedButton';
+import { Modal, Header, Title, Close } from './PopUp.styled';
 import { ReactNode } from 'react';
 
 interface PopUpProps {
   title: string;
   children: ReactNode;
+  closePopUp: () => void;
 }
 
-export const PopUp: React.FC<PopUpProps> = ({ title, children }) => {
+export const PopUp: React.FC<PopUpProps> = ({ title, children, closePopUp }) => {
   return (
     <>
       <Overlay />
       <Modal>
         <Header>
           <Title>{title}</Title>
-          <Close>&#10006;</Close>
+          <Close onClick={closePopUp}>&#10006;</Close>
         </Header>
-        <Body>
-          {children}
-          <RoundedButton type='submit' typeBtn='addBtn' variant='big'>
-            Confirm
-          </RoundedButton>
-        </Body>
+        <div>{children}</div>
       </Modal>
     </>
   );

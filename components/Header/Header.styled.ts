@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
-import { fonts } from '@/variables/fonts.styled';
-import { breakpoints } from '@/variables/response.styled';
 import Image from 'next/image';
 
 export const MainHeader = styled.header`
   position: sticky;
   top: 0;
-  background-color: ${colors.colorFontLight};
   flex: 0 0 auto;
+  background-color: ${colors.colorFontLight};
 `;
 
 export const MainHeaderWrapper = styled.div`

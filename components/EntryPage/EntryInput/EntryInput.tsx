@@ -1,5 +1,5 @@
 import { Description, Input } from '../../common/TextInput/TextInput.styled';
-import { Formik, Form, useField, useFormikContext } from 'formik';
+import { useField } from 'formik';
 import { ErrorMessage, Container, ErrorMessageWrap } from './EntryInput.styled';
 
 interface IEntryInputProps {
