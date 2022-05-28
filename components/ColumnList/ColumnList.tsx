@@ -6,9 +6,10 @@ import { ColumnTypes } from '@/types/data';
 
 interface ColumnListProps {
   columns: ColumnTypes[];
+  boardId: string;
 }
 
-export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
+export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
   const [columnsData, setColumnsData] = useState(columns);
 
   const onDragEnd = (result: DropResult) => {
@@ -76,6 +77,7 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
                     return (
                       <Item key={column.id}>
                         <Column
+                          boardId={boardId}
                           order={column.order}
                           id={column.id}
                           title={column.title}

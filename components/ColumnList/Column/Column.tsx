@@ -7,6 +7,7 @@ import { TaskCreator } from './TaskCreator/TaskCreator';
 import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';
+import axios from 'axios';
 
 interface ColumnProps {
   id: string;
@@ -14,9 +15,10 @@ interface ColumnProps {
   order: number;
   tasks: TaskTypes[];
   index: number;
+  boardId: string;
 }
 
-export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
+export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId, order }) => {
   const [columnTitle, setColumnTitle] = useState(title);
   const [inputShow, setInputShow] = useState(false);
   const [modalActive, setModalActive] = useState(false);
@@ -40,7 +42,17 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
 
   const confirmDelete = (result: boolean) => {
     if (result) {
-      alert(`COLUMN: ${title} DELETE`);
+      axios
+        .delete(`https://kanban-rest77.herokuapp.com/boards/${boardId}/columns/${id}`, {
+          headers: {
+            Authorization:
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4',
+          },
+        })
+        .then((response) => console.log(response))
+        .catch((error) => {
+          console.error('There was an error!', error);
+        });
     }
     if (!result) {
       return;
@@ -69,6 +81,9 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
               closeTitleChanger={closeTitleChanger}
               currentTitle={columnTitle}
               titleHandler={titleHandler}
+              columnOrder={order}
+              boardId={boardId}
+              columnId={id}
             />
           )}
           {!inputShow && (
@@ -88,7 +103,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
                 isDraggingOver={snapshot.isDraggingOver}
               >
                 {tasks.map((item, index) => (
-                  <Task key={item.id} task={item} index={index} />
+                  <Task key={item.id} task={item} index={index} columnId={id} boardId={boardId} />
                 ))}
                 {provided.placeholder}
               </TasksContainer>
@@ -99,7 +114,9 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
               Delete column
             </RoundedButton>
           </div>
-          {showTaskCreator && <TaskCreator closer={closeTaskCreator} />}
+          {showTaskCreator && (
+            <TaskCreator boardId={boardId} columnId={id} closer={closeTaskCreator} />
+          )}
           <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
         </ColumnStyled>
       )}
