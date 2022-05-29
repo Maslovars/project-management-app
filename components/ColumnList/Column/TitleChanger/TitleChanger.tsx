@@ -3,6 +3,8 @@ import { TextInput } from '@/components/common/TextInput';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { FormStyled, ButtonGroup } from './TitleChanger.styled';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setBoardData } from 'store/reducers/boardSlice';
 
 interface TitleChanger {
   closeTitleChanger: () => void;
@@ -11,6 +13,7 @@ interface TitleChanger {
   columnOrder: number;
   boardId: string;
   columnId: string;
+  testIndex?;
 }
 
 interface Errors {
@@ -24,7 +27,22 @@ export const TitleChanger: React.FC<TitleChanger> = ({
   columnOrder,
   boardId,
   columnId,
+  testIndex,
 }) => {
+  const dispatch = useDispatch();
+  const fetchData = async () => {
+    const response = await axios.get(
+      'https://kanban-rest77.herokuapp.com/boards/da90f759-014e-40fc-96d1-0970631acb80',
+      {
+        headers: {
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4',
+        },
+      }
+    );
+    dispatch(setBoardData(response.data));
+    console.log('new date', response.data);
+  };
   const formik = useFormik({
     initialValues: {
       title: currentTitle,
@@ -43,7 +61,7 @@ export const TitleChanger: React.FC<TitleChanger> = ({
             },
           }
         )
-        .then((response) => console.log(response))
+        .then((response) => fetchData())
         .catch((error) => {
           console.error('There was an error!', error);
         });

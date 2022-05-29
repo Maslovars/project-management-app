@@ -8,6 +8,8 @@ import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';
 import axios from 'axios';
+import { deleteColumn } from 'store/actionCreators/boardActionCreator';
+import { useAppSelector, useAppDispatch } from 'hooks/reduxHooks';
 
 interface ColumnProps {
   id: string;
@@ -19,6 +21,7 @@ interface ColumnProps {
 }
 
 export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId, order }) => {
+  const dispatch = useAppDispatch();
   const [columnTitle, setColumnTitle] = useState(title);
   const [inputShow, setInputShow] = useState(false);
   const [modalActive, setModalActive] = useState(false);
@@ -36,23 +39,13 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
     setColumnTitle(newTitle);
   };
 
-  const deleteColumn = () => {
+  const deleteColumnId = () => {
     setModalActive(true);
   };
 
   const confirmDelete = (result: boolean) => {
     if (result) {
-      axios
-        .delete(`https://kanban-rest77.herokuapp.com/boards/${boardId}/columns/${id}`, {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4',
-          },
-        })
-        .then((response) => console.log(response))
-        .catch((error) => {
-          console.error('There was an error!', error);
-        });
+      dispatch(deleteColumn({ boardId, id }));
     }
     if (!result) {
       return;
@@ -84,6 +77,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
               columnOrder={order}
               boardId={boardId}
               columnId={id}
+              testIndex={index}
             />
           )}
           {!inputShow && (
@@ -110,7 +104,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
             )}
           </Droppable>
           <div>
-            <RoundedButton onClick={deleteColumn} type="button" typeBtn="delBtn">
+            <RoundedButton onClick={deleteColumnId} type="button" typeBtn="delBtn">
               Delete column
             </RoundedButton>
           </div>

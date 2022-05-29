@@ -73,7 +73,7 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
             <Droppable droppableId="all-columns" direction="horizontal" type="column">
               {(provided) => (
                 <Container {...provided.droppableProps} ref={provided.innerRef}>
-                  {columnsData.map((column, index) => {
+                  {columns.map((column, index) => {
                     return (
                       <Item key={column.id}>
                         <Column

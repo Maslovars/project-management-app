@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer/Footer';
 import { wrapper } from 'store/store';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
+import { Provider } from 'react-redux';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

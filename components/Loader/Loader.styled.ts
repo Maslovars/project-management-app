@@ -17,6 +17,7 @@ export const Spinner = styled.div`
   width: 8rem;
   height: 8rem;
   transform: translate(-50%, -50%);
+  z-index: 2;
 
   div {
     position: absolute;
