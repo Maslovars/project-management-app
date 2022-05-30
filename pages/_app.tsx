@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app';
 import { GlobalStyle } from '../styles/global.styled';
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary';
+import { wrapper } from 'store/store';
+import { appWithTranslation } from 'next-i18next';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import { Layout } from '@/components/Layout/Layout';
@@ -24,4 +26,4 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default App;
+export default appWithTranslation(wrapper.withRedux(App));

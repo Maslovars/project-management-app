@@ -1,21 +1,28 @@
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import { WelcomeMain, WrapperContent, TextBlock, Title, Text, SubTitle } from './index.styled';
 import type { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const WelcomePage: NextPage = () => {
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['welcome'])),
+      // Will be passed to the page component as props
+    },
+  };
+}
+
+const WelcomePage: NextPage = (props) => {
+  const { t } = useTranslation('welcome');
+
   return (
     <WelcomeMain>
       <WrapperContent>
         <TextBlock>
           <Title>TaskRunner</Title>
-          <SubTitle>
-            Kanban board <br /> management
-          </SubTitle>
-          <Text>
-            Our team of 3 REACT2022Q1 students is pleased to present a joint project. This app is a
-            project management tool that helps you visualize tasks, limit work in progress and
-            maximize efficiency.
-          </Text>
+          <SubTitle>{t('welcome_subtitle')}</SubTitle>
+          <Text>{t('welcome_text')}</Text>
         </TextBlock>
       </WrapperContent>
     </WelcomeMain>

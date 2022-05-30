@@ -9,9 +9,9 @@ export const StyledLink = styled.a`
 `;
 
 export const Card = styled.li`
-  height: 100%;
   width: 100%;
   max-width: 44.5rem;
+  height: 100%;
   padding: 3rem;
   background-color: ${colors.colorBgSecondary};
   border-radius: 0.8rem;
@@ -30,14 +30,14 @@ export const Title = styled.h2`
   font-size: ${fonts.fontSizeTitle};
 `;
 export const Body = styled.ul`
-  height: 90%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 90%;
 `;
 export const Column = styled.li`
-  height: 100%;
   max-width: 38.5rem;
+  height: 100%;
   padding: 2rem;
   background-color: ${colors.colorBgPrimaryLighten};
   border-radius: 1rem;

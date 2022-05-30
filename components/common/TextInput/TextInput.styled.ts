@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { colors } from '@/variables/colors.styled';
 import { fonts } from '@/variables/fonts.styled';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  position: relative;
+`;
 
 export const Description = styled.p`
   margin-bottom: 1rem;
@@ -37,4 +39,12 @@ export const Input = styled.input`
     font-style: italic;
     opacity: 0.5;
   }
+`;
+
+export const Error = styled.div`
+  position: absolute;
+  left: 2rem;
+  color: ${colors.colorError};
+  font-weight: ${fonts.fontWeightBold};
+  font-size: 1.2rem;
 `;

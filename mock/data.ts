@@ -19,9 +19,12 @@ export const testBoardMock = {
           columnId: 'b9a5b4be-8baa-4abd-ad70-54ab3a3711a9',
           files: [
             {
-              filename:
-                'https://images.unsplash.com/photo-1621609764095-b32bbe35cf3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80',
-              fileSize: 6105000,
+              filename: 'table.txt',
+              fileSize: 610,
+            },
+            {
+              filename: 'task.doc',
+              fileSize: 610,
             },
           ],
         },
@@ -36,9 +39,12 @@ export const testBoardMock = {
           columnId: 'b9a5b4be-8baa-4abd-ad70-54ab3a3711a9',
           files: [
             {
-              filename:
-                'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1103&q=80',
-              fileSize: 6105000,
+              filename: 'table.txt',
+              fileSize: 610,
+            },
+            {
+              filename: 'table.xls',
+              fileSize: 610,
             },
           ],
         },
@@ -53,9 +59,8 @@ export const testBoardMock = {
           columnId: 'b9a5b4be-8baa-4abd-ad70-54ab3a3711a9',
           files: [
             {
-              filename:
-                'https://images.unsplash.com/photo-1454165205744-3b78555e5572?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-              fileSize: 6105000,
+              filename: 'task.docs',
+              fileSize: 610,
             },
           ],
         },
@@ -77,9 +82,8 @@ export const testBoardMock = {
           columnId: 'bbac10dd-9406-4074-a4a9-2300bad2cace',
           files: [
             {
-              filename:
-                'https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174',
-              fileSize: 6105000,
+              filename: 'files.rar',
+              fileSize: 610,
             },
           ],
         },
@@ -94,9 +98,17 @@ export const testBoardMock = {
           columnId: 'bbac10dd-9406-4074-a4a9-2300bad2cace',
           files: [
             {
-              filename:
-                'https://images.unsplash.com/photo-1521939094609-93aba1af40d7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-              fileSize: 6105000,
+              filename: 'music.mp3',
+              fileSize: 610,
+            },
+            {
+              filename: 'video.mov',
+              fileSize: 610,
+            },
+
+            {
+              filename: 'examples.zip',
+              fileSize: 610,
             },
           ],
         },
