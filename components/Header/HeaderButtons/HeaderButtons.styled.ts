@@ -9,3 +9,8 @@ export const BtnWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const StyledLink = styled.a`
+  color: #1d201c;
+  cursor: pointer;
+`;
