@@ -7,10 +7,10 @@ const HeaderButtons: React.FC = () => {
   if (!loggedIn) {
     return (
       <BtnWrapper>
-        <RoundedButton variant="small" typeBtn="otherBtn">
+        <RoundedButton variant='small' typeBtn='otherBtn'>
           Sign In
         </RoundedButton>
-        <RoundedButton variant="small" typeBtn="otherBtn">
+        <RoundedButton variant='small' typeBtn='otherBtn'>
           Sign Up
         </RoundedButton>
       </BtnWrapper>
@@ -20,13 +20,13 @@ const HeaderButtons: React.FC = () => {
   if (loggedIn) {
     return (
       <BtnWrapper>
-        <RoundedButton variant="small" typeBtn="otherBtn">
+        <RoundedButton variant='small' typeBtn='otherBtn'>
           Create New Board
         </RoundedButton>
-        <RoundedButton variant="small" typeBtn="otherBtn">
+        <RoundedButton variant='small' typeBtn='otherBtn'>
           Edit Profile
         </RoundedButton>
-        <RoundedButton variant="small" typeBtn="otherBtn">
+        <RoundedButton variant='small' typeBtn='otherBtn'>
           Sign Out
         </RoundedButton>
       </BtnWrapper>

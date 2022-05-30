@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
-export const Main = styled.main`
-  flex: 1 0 auto;
+export const LayoutWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 `;

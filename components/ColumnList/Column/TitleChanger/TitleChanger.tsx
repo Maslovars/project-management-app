@@ -2,11 +2,18 @@ import { useFormik } from 'formik';
 import { TextInput } from '@/components/common/TextInput';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { FormStyled, ButtonGroup } from './TitleChanger.styled';
+import axios from 'axios';
+import { useAppDispatch } from '../../../../hooks/reduxHooks';
+import { changeColumnTitle } from '../../../../store/actionCreators/boardActionCreator';
 
 interface TitleChanger {
   closeTitleChanger: () => void;
   currentTitle: string;
   titleHandler: (newTitle: string) => void;
+  columnOrder: number;
+  boardId: string;
+  columnId: string;
+  testIndex?;
 }
 
 interface Errors {
@@ -17,14 +24,20 @@ export const TitleChanger: React.FC<TitleChanger> = ({
   closeTitleChanger,
   currentTitle,
   titleHandler,
+  columnOrder,
+  boardId,
+  columnId,
+  testIndex,
 }) => {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       title: currentTitle,
     },
-    onSubmit: (values) => {
+    onSubmit: ({ title }) => {
       closeTitleChanger();
-      titleHandler(values.title);
+      dispatch(changeColumnTitle({ boardId, columnId, title, columnOrder }));
     },
 
     validate: (values) => {

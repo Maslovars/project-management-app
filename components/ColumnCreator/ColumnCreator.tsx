@@ -1,25 +1,37 @@
 import { useFormik } from 'formik';
+
 import { PopUp } from '@/components/common/PopUp';
 import { TextInput } from '@/components/common/TextInput';
-import { RoundedButton } from '../common/RoundedButton';
+import { RoundedButton } from '@/components/common/RoundedButton';
+
+import { useAppDispatch } from 'hooks/reduxHooks';
+import { closeColumnCreator } from 'store/reducers/boardSlice';
+
 import { FormStyled, InputWrapper } from './ColumnCreator.styled';
+import { createColumn } from 'store/actionCreators/boardActionCreator';
 
 interface ColumnCreatorProps {
-  handlerColumn: () => void;
+  boardId: string;
 }
 
 interface Errors {
   title?: string;
 }
 
-export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) => {
+export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ boardId }) => {
+  const dispatch = useAppDispatch();
+
+  const close = () => {
+    dispatch(closeColumnCreator());
+  };
+
   const formik = useFormik({
     initialValues: {
       title: '',
     },
-    onSubmit: (values) => {
-      handlerColumn();
-      alert(values.title);
+    onSubmit: ({ title }) => {
+      close();
+      dispatch(createColumn({ boardId, title }));
     },
 
     validate: (values) => {
@@ -33,7 +45,7 @@ export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) =
   });
 
   return (
-    <PopUp closePopUp={handlerColumn} title='Create Column'>
+    <PopUp closePopUp={close} title='Create Column'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput

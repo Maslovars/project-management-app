@@ -6,7 +6,7 @@ export const Container = styled.ul`
   flex-wrap: nowrap;
   gap: 3rem;
   width: auto;
-  max-height: 100%;
+  max-height: 85%;
   padding: 3rem;
   overflow-x: auto;
   background-color: ${colors.colorBgPrimary};
