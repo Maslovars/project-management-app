@@ -20,11 +20,14 @@ export const RoundedButton: React.FC<RoundedButtonProps> = ({
   disabled,
   typeBtn,
 }) => {
-  const handleClick = useCallback(() => {
-    if (onClick) {
-      onClick();
-    }
-  }, [onClick]);
+  const handleClick = useCallback(
+    (e) => {
+      if (onClick) {
+        onClick(e);
+      }
+    },
+    [onClick]
+  );
 
   return (
     <RoundedBtn

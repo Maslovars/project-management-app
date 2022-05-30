@@ -3,9 +3,11 @@ import { PopUp } from '@/components/common/PopUp';
 import { TextInput } from '@/components/common/TextInput';
 import { RoundedButton } from '../common/RoundedButton';
 import { FormStyled, InputWrapper } from './BoardCreator.styled';
+import { useAppDispatch } from 'hooks/reduxHooks';
+import { createBoard } from 'store/actionCreators/mainActionCreator';
 
-interface ColumnCreatorProps {
-  handlerColumn: () => void;
+interface BoardCreatorProps {
+  closeBoardCreator: () => void;
 }
 
 interface Errors {
@@ -13,14 +15,17 @@ interface Errors {
   description?: string;
 }
 
-export const BoardCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) => {
+export const BoardCreator: React.FC<BoardCreatorProps> = ({ closeBoardCreator }) => {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       title: '',
       description: '',
     },
-    onSubmit: (values) => {
-      handlerColumn();
+    onSubmit: ({ title, description }) => {
+      dispatch(createBoard({ title, description }));
+      closeBoardCreator();
     },
 
     validate: (values) => {
@@ -38,7 +43,7 @@ export const BoardCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) =>
   });
 
   return (
-    <PopUp closePopUp={handlerColumn} title='Create board'>
+    <PopUp closePopUp={closeBoardCreator} title='Create board'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput
@@ -47,6 +52,7 @@ export const BoardCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) =>
             value={formik.values.title}
             onChange={formik.handleChange}
             error={formik.errors.title}
+            description='Title'
           />
           <TextInput
             htmlFor='description'
@@ -54,6 +60,7 @@ export const BoardCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) =>
             value={formik.values.description}
             onChange={formik.handleChange}
             error={formik.errors.description}
+            description='Description'
           />
         </InputWrapper>
 

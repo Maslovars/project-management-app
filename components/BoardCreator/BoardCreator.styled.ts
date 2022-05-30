@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { fonts } from '@/variables/fonts.styled';
 
 export const FormStyled = styled.form`
   display: flex;
@@ -10,8 +11,11 @@ export const FormStyled = styled.form`
 export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 2rem;
   padding-bottom: 2rem;
+`;
+
+export const InputTitle = styled.h3`
+  font-weight: ${fonts.fontWeightBold};
+  font-size: 1.4rem;
 `;

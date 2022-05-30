@@ -2,17 +2,10 @@ import { BoardType } from './../../types/data';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// export const fetchBoards = () => async (dispatch: AppDispatch) => {
-//     try {
-//         dispatch(mainSlice.actions.boardFetching());
-//         const response = await axios.get<BoardType[]>('https://kanban-rest77.herokuapp.com/boards', {
-//             headers: { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0NGNmOTZkMi01OGZjLTRlMGMtOTZkOS05YWM0MjhkNGQ0OTUiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTIwMDMyMTF9.EUlvrrs0Hl7wq1o-vkW5eh710CeNmhTfivk8aYkO43I' }
-//         });
-//         dispatch(mainSlice.actions.boardFetchingSuccess(response.data));
-//     } catch (err) {
-//         dispatch(mainSlice.actions.boardFetchingError(err))
-//     }
-// }
+interface newBoard {
+  title: string;
+  description: string;
+}
 
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0ZWZjYmRlNy02OTVmLTQyY2EtODdjMi1jNzdiZGNkNDM1ZDciLCJsb2dpbiI6IkFyc2VueTIiLCJpYXQiOjE2NTM4MTEyMjl9.pKwTWt-eq-gaTDc7Mp4s8ELxv8Z-EMrmAvTlou7-2ak';
@@ -36,8 +29,26 @@ export const deleteBoard = createAsyncThunk('boards/delete', async (id: string, 
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+    thunkAPI.dispatch(fetchBoards());
     return response.data;
   } catch (err) {
     return thunkAPI.rejectWithValue('Failed to delete board');
+  }
+});
+
+export const createBoard = createAsyncThunk('boards/create', async (params: newBoard, thunkAPI) => {
+  const { title, description } = params;
+  try {
+    const response = await axios.post<BoardType[]>(
+      `https://kanban-rest77.herokuapp.com/boards`,
+      { title: title, description: description },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    thunkAPI.dispatch(fetchBoards());
+    return response.data;
+  } catch (err) {
+    return thunkAPI.rejectWithValue('Failed to create board');
   }
 });

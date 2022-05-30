@@ -53,7 +53,7 @@ const Main: NextPage = (props) => {
           );
         })}
       </BoardList>
-      {showBoardCreator && <BoardCreator handlerColumn={closeBoardCreator} />}
+      {showBoardCreator && <BoardCreator closeBoardCreator={closeBoardCreator} />}
     </Container>
   );
 };
