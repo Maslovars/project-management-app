@@ -1,6 +1,9 @@
 import React from 'react';
-import { Container, Title, ItemList, Item, Icon, Info, Name, Size, Empty } from './FileList.styled';
 import { FileType } from '@/types/data';
+
+import { FileInput } from '@/components/common/FileInput/FileInput';
+
+import { Container, Title, ItemList, Item, Icon, Info, Name, Size, Empty } from './FileList.styled';
 
 interface FileListProps {
   files: FileType[];
@@ -48,6 +51,7 @@ export const FileList: React.FC<FileListProps> = ({ files }) => {
         </ItemList>
       )}
       {files.length === 0 && <Empty>No files</Empty>}
+      <FileInput />
     </Container>
   );
 };

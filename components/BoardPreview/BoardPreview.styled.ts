@@ -15,6 +15,11 @@ export const Card = styled.li`
   padding: 3rem;
   background-color: ${colors.colorBgSecondary};
   border-radius: 0.8rem;
+  border: 0.2rem solid ${colors.colorBgSecondary};
+  transition: all 0.3s ease-in;
+  &:hover {
+    border: 0.2rem solid ${colors.colorFontSecondary};
+  }
 `;
 
 export const Header = styled.div`
