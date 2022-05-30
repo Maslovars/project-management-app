@@ -33,7 +33,6 @@ const Main: NextPage = (props) => {
   useEffect(() => {
     dispatch(fetchBoards());
     // const token = JSON.parse(localStorage.getItem('user'));
-    // console.log('token', token.user.token)
   }, []);
 
   return (
