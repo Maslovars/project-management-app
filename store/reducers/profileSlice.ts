@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit';
 
 interface profileState {
-    data: any
+  data: [];
 }
 
 const initialState: profileState = {
-    data: []
-}
+  data: [],
+};
 
 export const profileSlice = createSlice({
-    name: 'profile',
-    initialState,
-    reducers: {},
-    extraReducers: {}
-})
+  name: 'profile',
+  initialState,
+  reducers: {},
+  extraReducers: {},
+});
 
 export default profileSlice.reducer;

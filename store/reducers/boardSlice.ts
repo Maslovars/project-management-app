@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit';
 
 interface boardState {
-    data: any
+  data: [];
 }
 
 const initialState: boardState = {
-    data: []
-}
+  data: [],
+};
 
 export const boardSlice = createSlice({
-    name: 'board',
-    initialState,
-    reducers: {},
-    extraReducers: {}
-})
+  name: 'board',
+  initialState,
+  reducers: {},
+  extraReducers: {},
+});
 
 export default boardSlice.reducer;
