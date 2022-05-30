@@ -24,10 +24,35 @@ interface createTaskI {
   currentColumnId: string;
 }
 
+interface dndCreateTaskI {
+  boardId: string;
+  title: string;
+  description: string;
+  assigned: string;
+  currentColumnId: string;
+  order: number;
+  id: string;
+}
+
 interface deleteTaskI {
   boardId: string;
   columnId: string;
   id: string;
+}
+
+interface dndDeleteTaskI {
+  boardId: string;
+  columnId: string;
+  id: string;
+  addParams: {
+    boardId: string;
+    title: string;
+    description: string;
+    assigned: string;
+    currentColumnId: string;
+    order: number;
+    id: string;
+  };
 }
 
 interface changeTaskI {
@@ -81,9 +106,21 @@ export const fetchBoardData = createAsyncThunk(
         return 0;
       });
 
+      newState.columns.map((column) => {
+        column.tasks.sort(function (a, b) {
+          if (a.order > b.order) {
+            return 1;
+          }
+          if (a.order < b.order) {
+            return -1;
+          }
+          return 0;
+        });
+      });
+
       return newState;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -106,7 +143,7 @@ export const fetchUsers = createAsyncThunk(
       const data = await response.data;
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -129,7 +166,7 @@ export const deleteColumn = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -156,7 +193,7 @@ export const createColumn = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -183,7 +220,7 @@ export const createTask = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -209,7 +246,7 @@ export const deleteTask = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -251,7 +288,7 @@ export const changeTask = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -278,7 +315,7 @@ export const changeColumnTitle = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -305,7 +342,72 @@ export const changeColumnOrder = createAsyncThunk(
 
       thunkAPI.dispatch(fetchBoardData());
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const dndDeleteTask = createAsyncThunk(
+  'board/dndDeleteTask',
+
+  async (params: dndDeleteTaskI, thunkAPI) => {
+    const { boardId, columnId, id, addParams } = params;
+    try {
+      const response = await axios.delete(
+        `${baseUrl}/boards/${boardId}/columns/${columnId}/tasks/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${mockUserToken}`,
+          },
+        }
+      );
+
+      if (response.status !== 204) {
+        throw new Error("Cant't delete task. Server error");
+      }
+
+      thunkAPI.dispatch(dndCreateTask(addParams));
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const dndCreateTask = createAsyncThunk(
+  'board/dndCreateTask',
+
+  async (params: dndCreateTaskI, thunkAPI) => {
+    const { boardId, title, description, assigned, currentColumnId, order, id } = params;
+    try {
+      const response = await axios.post(
+        `${baseUrl}/boards/${boardId}/columns/${currentColumnId}/tasks`,
+        { title: title, description: description, userId: assigned },
+        {
+          headers: {
+            Authorization: `Bearer ${mockUserToken}`,
+          },
+        }
+      );
+
+      if (response.status !== 201) {
+        throw new Error("Cant't add task. Server error");
+      }
+
+      thunkAPI.dispatch(fetchBoardData());
+
+      // thunkAPI.dispatch(
+      //   changeTask({
+      //     currentBoardId: boardId,
+      //     title,
+      //     currentOrder: response.data.order,
+      //     description,
+      //     assigned,
+      //     currentColumnId,
+      //     currentTaskId: id,
+      //   })
+      // );
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
