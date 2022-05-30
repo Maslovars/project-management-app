@@ -33,6 +33,7 @@ export const Description = styled.p`
   color: ${colors.colorFontPrimary};
   font-weight: ${fonts.fontWeightRegular};
   font-size: 1.5rem;
+  word-break: break-all;
 `;
 
 export const Assigned = styled.div`
