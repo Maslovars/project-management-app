@@ -6,9 +6,10 @@ import { ColumnTypes } from '@/types/data';
 
 interface ColumnListProps {
   columns: ColumnTypes[];
+  boardId: string;
 }
 
-export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
+export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
   const [columnsData, setColumnsData] = useState(columns);
 
   const onDragEnd = (result: DropResult) => {
@@ -72,10 +73,11 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
             <Droppable droppableId='all-columns' direction='horizontal' type='column'>
               {(provided) => (
                 <Container {...provided.droppableProps} ref={provided.innerRef}>
-                  {columnsData.map((column, index) => {
+                  {columns.map((column, index) => {
                     return (
                       <Item key={column.id}>
                         <Column
+                          boardId={boardId}
                           order={column.order}
                           id={column.id}
                           title={column.title}

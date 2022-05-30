@@ -13,6 +13,7 @@ export const Spinner = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 2;
   display: inline-block;
   width: 8rem;
   height: 8rem;

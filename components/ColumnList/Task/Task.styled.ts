@@ -28,45 +28,12 @@ export const Title = styled.h3`
   font-size: 1.8rem;
 `;
 
-export const Check = styled.label`
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 3rem;
-  height: 3rem;
-  margin-left: 1rem;
-  background-color: ${colors.colorBgSecondary};
-  border-radius: 0.4rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  :hover {
-    box-shadow: 0 0 0 0.3rem ${colors.colorFontSecondary};
-  }
-`;
-
-export const CheckInput = styled.input`
-  position: absolute;
-  appearance: none;
-`;
-
-export const CheckBox = styled.span<CheckBoxProps>`
-  width: 3rem;
-  height: 3rem;
-  background-color: ${colors.colorSuccessLight};
-  background-image: url('/check-mark.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 0.4rem;
-  transition: all 0.3s ease;
-  ${(props) => (props.checked ? 'visibility: visible' : 'visibility: hidden')};
-`;
-
 export const Description = styled.p`
   margin-bottom: 0.8rem;
   color: ${colors.colorFontPrimary};
   font-weight: ${fonts.fontWeightRegular};
   font-size: 1.5rem;
+  word-break: break-all;
 `;
 
 export const Assigned = styled.div`
@@ -79,7 +46,7 @@ export const Avatar = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 1rem;
-  border: 0.2rem solid ${colors.colorBgSecondary};
+  border: 0.2rem solid ${colors.colorInfo};
   border-radius: 50%;
 `;
 
