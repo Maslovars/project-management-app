@@ -148,7 +148,30 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     };
   }
 
-  store.dispatch(setBoardData(data));
+  const newState = JSON.parse(JSON.stringify(data));
+  newState.columns.sort(function (a, b) {
+    if (a.order > b.order) {
+      return 1;
+    }
+    if (a.order < b.order) {
+      return -1;
+    }
+    return 0;
+  });
+
+  newState.columns.map((column) => {
+    column.tasks.sort(function (a, b) {
+      if (a.order > b.order) {
+        return 1;
+      }
+      if (a.order < b.order) {
+        return -1;
+      }
+      return 0;
+    });
+  });
+
+  store.dispatch(setBoardData(newState));
   return {
     props: {
       board: data,
