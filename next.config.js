@@ -9,8 +9,8 @@ const nextConfig = {
   i18n
 };
 
-module.exports = {
-  pageExtensions: ['page.tsx', 'page.ts', 'page.styled', 'page.jsx', 'page.js'],
-}
+// module.exports = {
+//   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+// }
 
 module.exports = nextConfig;

@@ -1,6 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { WelcomeMain, WrapperContent, TextBlock, Title, Text, SubTitle } from './index.styled.page';
+import {
+  WelcomeMain,
+  WrapperContent,
+  TextBlock,
+  Title,
+  Text,
+  SubTitle,
+} from '../pages-styles/index.styled';
 import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

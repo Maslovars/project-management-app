@@ -1,6 +1,6 @@
 import { BoardPreview } from '@/components/BoardPreview';
 import type { NextPage } from 'next';
-import { AddNewBoardBtn, Container, BoardList, Title } from './Main.styled.page';
+import { AddNewBoardBtn, Container, BoardList, Title } from '../../pages-styles/Main.styled';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import { useEffect, useState } from 'react';
