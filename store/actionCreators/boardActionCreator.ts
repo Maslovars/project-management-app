@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const baseUrl = 'https://kanban-rest77.herokuapp.com';
-export const mockBoardId = 'da90f759-014e-40fc-96d1-0970631acb80';
+export const mockBoardId = 'bda4eccf-89f2-4bc9-a2f9-45612a4cd58d';
 export const mockUserToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM5MzQ4OTB9.xTkaPO5Kxj1ugNet5LI_duZv7yCQTblTrtXhncwtyY8';
 
 interface deleteColumnI {
   boardId: string;
@@ -288,7 +288,6 @@ export const changeColumnOrder = createAsyncThunk(
 
   async (params: changeColumnOrderI, thunkAPI) => {
     const { boardId, columnId, title, columnOrder } = params;
-    console.log(params);
     try {
       const response = await axios.put(
         `${baseUrl}/boards/${boardId}/columns/${columnId}`,

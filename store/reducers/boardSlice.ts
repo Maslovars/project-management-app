@@ -60,6 +60,9 @@ export const boardSlice = createSlice({
     setBoardData: (state, action) => {
       state.data = action.payload;
     },
+    setColumnData: (state, action) => {
+      state.data.columns = action.payload;
+    },
     showColumnCreator: (state) => {
       state.error = null;
       state.isColumnCreator = true;
@@ -163,6 +166,7 @@ export const boardSlice = createSlice({
 });
 export const {
   setBoardData,
+  setColumnData,
   showColumnCreator,
   closeColumnCreator,
   showTaskCreator,
