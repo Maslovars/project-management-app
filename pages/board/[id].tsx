@@ -133,6 +133,10 @@ Board.getLayout = (page: ReactElement) => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
+  // const { id } = context;
+  const {
+    query: { id },
+  } = context;
   // const {id} = context // this id should be added to request on next line!
   const response = await axios.get(`${baseUrl}/boards/${mockBoardId}`, {
     headers: {

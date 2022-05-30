@@ -1,8 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { boardData } from 'store/reducers/boardSlice';
 import axios from 'axios';
+import { useAppSelector } from 'hooks/reduxHooks';
 
 export const baseUrl = 'https://kanban-rest77.herokuapp.com';
-export const mockBoardId = 'bda4eccf-89f2-4bc9-a2f9-45612a4cd58d';
+export const mockBoardId = '207be9a7-be16-41f6-a193-a29bc6b7d16d';
 export const mockUserToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM5MzQ4OTB9.xTkaPO5Kxj1ugNet5LI_duZv7yCQTblTrtXhncwtyY8';
 
