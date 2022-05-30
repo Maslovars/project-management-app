@@ -36,9 +36,9 @@ const HeaderButtons: React.FC = () => {
   if (loggedIn) {
     return (
       <BtnWrapper>
-        <RoundedButton variant='small' typeBtn='otherBtn'>
+        {/* <RoundedButton variant='small' typeBtn='otherBtn'>
           Create New Board
-        </RoundedButton>
+        </RoundedButton> */}
         <RoundedButton variant='small' typeBtn='otherBtn'>
           Edit Profile
         </RoundedButton>
