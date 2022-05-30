@@ -45,7 +45,7 @@ export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ boardId }) => {
   });
 
   return (
-    <PopUp closePopUp={close} title='Creat Column'>
+    <PopUp closePopUp={close} title='Create Column'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput

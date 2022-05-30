@@ -4,6 +4,8 @@ import axios from 'axios';
 import Router from 'next/router';
 import { UserLogIn } from 'types/data';
 import { saveUserToLocalStorage } from '../services';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function updateAppStateUser(userState: UserState): void {
   AppUserState.user = userState;
@@ -11,6 +13,7 @@ function updateAppStateUser(userState: UserState): void {
 
 export async function logInUser(user: UserLogIn): Promise<void> {
   AuthStateErrors.errors = [];
+
   await axios
     .post(`${API_ENDPOINT}signin`, JSON.stringify(user, null, 2), {
       headers: {
