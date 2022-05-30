@@ -6,7 +6,7 @@ export function saveUserToLocalStorage(userState: IAppUserState): void {
   }
 }
 
-export function loadUserFromLocalStorage(): IAppUserState | null {
+export function getCurrentUser(): IAppUserState | null {
   const userStateJson = localStorage.getItem('user');
   if (userStateJson) {
     const result = JSON.parse(userStateJson) as IAppUserState;
