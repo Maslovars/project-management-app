@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { NotFoundMain, NotFoundContent } from './404.styled';
+import { NotFoundMain, NotFoundContent } from './404.styled.page';
 
 const NotFound: NextPage = () => {
   return (

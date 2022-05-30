@@ -25,7 +25,7 @@ import Header from '@/components/Header/Header';
 import { Loader } from '@/components/Loader';
 import { TaskChanger } from '@/components/ColumnList/Column/TaskChanger/TaskChanger';
 
-import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
+import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled.page';
 import { deleteBoard } from 'store/actionCreators/mainActionCreator';
 
 const Board = () => {
