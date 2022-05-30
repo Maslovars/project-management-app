@@ -76,7 +76,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
           )}
           {!inputShow && (
             <Header>
-              <Title onClick={showTitleChanger}>{columnTitle}</Title>
+              <Title onClick={showTitleChanger}>{title}</Title>
               <RoundedButton onClick={addTask} type="button" typeBtn="addBtn">
                 + Add Task
               </RoundedButton>

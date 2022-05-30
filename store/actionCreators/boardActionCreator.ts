@@ -40,6 +40,13 @@ interface changeTaskI {
   currentTaskId: string;
 }
 
+interface changeColumnTitleI {
+  boardId: string;
+  columnId: string;
+  title: string;
+  columnOrder: number;
+}
+
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
 
@@ -222,6 +229,33 @@ export const changeTask = createAsyncThunk(
 
       if (response.status !== 200) {
         throw new Error("Cant't add task. Server error");
+      }
+
+      thunkAPI.dispatch(fetchBoardData());
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeColumnTitle = createAsyncThunk(
+  'board/changeColumnTitle',
+
+  async (params: changeColumnTitleI, thunkAPI) => {
+    const { boardId, columnId, title, columnOrder } = params;
+    try {
+      const response = await axios.put(
+        `${baseUrl}/boards/${boardId}/columns/${columnId}`,
+        { title: title, order: columnOrder },
+        {
+          headers: {
+            Authorization: `Bearer ${mockUserToken}`,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        throw new Error("Cant't change Title. Server error");
       }
 
       thunkAPI.dispatch(fetchBoardData());

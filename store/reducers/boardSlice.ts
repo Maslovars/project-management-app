@@ -9,6 +9,8 @@ import {
   fetchUsers,
   createTask,
   deleteTask,
+  changeTask,
+  changeColumnTitle,
 } from '../actionCreators/boardActionCreator';
 
 interface UserI {
@@ -143,6 +145,18 @@ export const boardSlice = createSlice({
       state.error = null;
     },
     [deleteTask.rejected.type]: (state, action) => {
+      state.error = action.payload;
+    },
+    [changeTask.pending.type]: (state, action) => {
+      state.error = null;
+    },
+    [changeTask.rejected.type]: (state, action) => {
+      state.error = action.payload;
+    },
+    [changeColumnTitle.pending.type]: (state, action) => {
+      state.error = null;
+    },
+    [changeColumnTitle.rejected.type]: (state, action) => {
       state.error = action.payload;
     },
   },
