@@ -20,7 +20,7 @@ export const PopUp: React.FC<PopUpProps> = ({ title, children }) => {
         </Header>
         <Body>
           {children}
-          <RoundedButton type="submit" typeBtn="addBtn" variant="big">
+          <RoundedButton type='submit' typeBtn='addBtn' variant='big'>
             Confirm
           </RoundedButton>
         </Body>

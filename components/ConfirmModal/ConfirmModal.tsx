@@ -9,10 +9,10 @@ export const ConfirmModal = () => {
       <Modal>
         <Title>Are you sure?</Title>
         <ButtonGroup>
-          <RoundedButton variant="big" type="button" typeBtn="addBtn">
+          <RoundedButton variant='big' type='button' typeBtn='addBtn'>
             Ok
           </RoundedButton>
-          <RoundedButton variant="big" type="button" typeBtn="delBtn">
+          <RoundedButton variant='big' type='button' typeBtn='delBtn'>
             Cancel
           </RoundedButton>
         </ButtonGroup>

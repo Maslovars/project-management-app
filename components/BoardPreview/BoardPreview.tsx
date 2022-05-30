@@ -14,12 +14,12 @@ interface BoardPreviewProps {
 
 export const BoardPreview: React.FC<BoardPreviewProps> = ({ id, title, columns }) => {
   return (
-    <Link href="/board">
+    <Link href='/board'>
       <Card key={id}>
         <StyledLink>
           <Header>
             <Title>{title}</Title>
-            <RoundedButton type="submit" variant="big" typeBtn="delBtn">
+            <RoundedButton type='submit' variant='big' typeBtn='delBtn'>
               Delete Board
             </RoundedButton>
           </Header>

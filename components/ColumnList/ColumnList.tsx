@@ -69,7 +69,7 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns }) => {
       {isBrowser ? (
         <DragDropContext onDragEnd={onDragEnd}>
           {
-            <Droppable droppableId="all-columns" direction="horizontal" type="column">
+            <Droppable droppableId='all-columns' direction='horizontal' type='column'>
               {(provided) => (
                 <Container {...provided.droppableProps} ref={provided.innerRef}>
                   {columnsData.map((column, index) => {

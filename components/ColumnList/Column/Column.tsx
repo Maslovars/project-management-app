@@ -24,11 +24,11 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
         >
           <Header>
             <Title>{title}</Title>
-            <RoundedButton type="button" typeBtn="addBtn">
+            <RoundedButton type='button' typeBtn='addBtn'>
               + Add Task
             </RoundedButton>
           </Header>
-          <Droppable droppableId={id} type="task">
+          <Droppable droppableId={id} type='task'>
             {(provided, snapshot) => (
               <TasksContainer
                 ref={provided.innerRef}
@@ -44,7 +44,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index }) => {
           </Droppable>
 
           <div>
-            <RoundedButton type="submit" typeBtn="delBtn">
+            <RoundedButton type='submit' typeBtn='delBtn'>
               Delete column
             </RoundedButton>
           </div>

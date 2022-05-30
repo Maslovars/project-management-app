@@ -16,13 +16,13 @@ const Board = () => {
       <HeaderBoard>
         <BoardTitle>{boardInfo.title}</BoardTitle>
         <ButtonGroup>
-          <RoundedBtn type="submit" variant="big" typeBtn="addBtn" disabled>
+          <RoundedBtn type='submit' variant='big' typeBtn='addBtn' disabled>
             Create Board
           </RoundedBtn>
-          <RoundedBtn type="submit" variant="big" typeBtn="addBtn">
+          <RoundedBtn type='submit' variant='big' typeBtn='addBtn'>
             Add Column
           </RoundedBtn>
-          <RoundedBtn type="submit" variant="big" typeBtn="delBtn">
+          <RoundedBtn type='submit' variant='big' typeBtn='delBtn'>
             Delete Board
           </RoundedBtn>
         </ButtonGroup>

@@ -5,6 +5,12 @@ import { EntryPageWrap } from '@/components/EntryPage/EntryPageWrap/EntryPageWra
 import * as Yup from 'yup';
 import { EntryInput } from '@/components/EntryPage/EntryInput/EntryInput';
 import type { NextPage } from 'next';
+import { createUser } from 'services/auth/registration/registration';
+import {
+  ErrorMessage,
+  ErrorMessageWrap,
+} from '@/components/EntryPage/EntryInput/EntryInput.styled';
+import { AuthStateErrors } from 'utils/constants';
 
 export const SignUp: NextPage = () => {
   return (
@@ -13,12 +19,15 @@ export const SignUp: NextPage = () => {
       <Formik
         initialValues={{
           name: '',
-          email: '',
+          login: '',
           password: '',
         }}
         validationSchema={Yup.object({
           name: Yup.string().min(1, 'Must be 1 characters or more').required('Required'),
-          email: Yup.string().email('Invalid email address').required('Required'),
+          login: Yup.string()
+            .min(2, 'Must be 2 characters or more')
+            .matches(/(([a-z]+\d+)|(\d+[a-z]+))[a-z\d]*/, 'Must contain number and letter')
+            .required('Required'),
           password: Yup.string()
             .min(6, 'Must be 6 characters or more')
             .matches(
@@ -29,7 +38,7 @@ export const SignUp: NextPage = () => {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            createUser(values);
             setSubmitting(false);
           }, 400);
         }}
@@ -43,11 +52,11 @@ export const SignUp: NextPage = () => {
             placeholder='enter name'
           />
           <EntryInput
-            label='Email'
-            htmlFor='email'
-            name='email'
-            type='email'
-            placeholder='name@email.com'
+            label='Login'
+            htmlFor='login'
+            name='login'
+            type='text'
+            placeholder='login123'
           />
           <EntryInput
             label='Password'
@@ -59,6 +68,11 @@ export const SignUp: NextPage = () => {
           <RoundedButton type='submit' variant='big' typeBtn='addBtn'>
             Sugn Up
           </RoundedButton>
+          <ErrorMessageWrap>
+            {AuthStateErrors.errors.length > 0 ? (
+              <ErrorMessage className='error'>{[...AuthStateErrors.errors]}</ErrorMessage>
+            ) : null}
+          </ErrorMessageWrap>
         </Form>
       </Formik>
       <span>
