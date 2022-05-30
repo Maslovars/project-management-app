@@ -3,12 +3,11 @@ import { Task } from '../Task';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { TitleChanger } from './TitleChanger/TitleChanger';
 import { ConfirmModal } from '@/components/ConfirmModal';
-import { TaskCreator } from './TaskCreator/TaskCreator';
 import { ColumnStyled, Header, Title, TasksContainer } from './Column.styled';
 import { TaskTypes } from '@/types/data';
 import { useState } from 'react';
-import axios from 'axios';
 import { deleteColumn } from 'store/actionCreators/boardActionCreator';
+import { showTaskCreator } from 'store/reducers/boardSlice';
 import { useAppSelector, useAppDispatch } from 'hooks/reduxHooks';
 
 interface ColumnProps {
@@ -25,7 +24,6 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
   const [columnTitle, setColumnTitle] = useState(title);
   const [inputShow, setInputShow] = useState(false);
   const [modalActive, setModalActive] = useState(false);
-  const [showTaskCreator, setShowTaskCreator] = useState(false);
 
   const showTitleChanger = () => {
     setInputShow(true);
@@ -53,11 +51,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
   };
 
   const addTask = () => {
-    setShowTaskCreator(true);
-  };
-
-  const closeTaskCreator = () => {
-    setShowTaskCreator(false);
+    dispatch(showTaskCreator(id));
   };
 
   return (
@@ -108,9 +102,6 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
               Delete column
             </RoundedButton>
           </div>
-          {showTaskCreator && (
-            <TaskCreator boardId={boardId} columnId={id} closer={closeTaskCreator} />
-          )}
           <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
         </ColumnStyled>
       )}

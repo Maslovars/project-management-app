@@ -20,7 +20,7 @@ interface Errors {
   title?: string;
 }
 
-export const TaskCreator: React.FC<ColumnCreatorProps> = ({
+export const TaskChanger: React.FC<ColumnCreatorProps> = ({
   closer,
   title = '',
   assigned = '',

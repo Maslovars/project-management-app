@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import axios from 'axios';
@@ -10,12 +10,13 @@ import { setBoardData, showColumnCreator } from 'store/reducers/boardSlice';
 import { useAppSelector, useAppDispatch } from 'hooks/reduxHooks';
 import {
   baseUrl,
+  fetchUsers,
   mockBoardId,
   mockUserToken,
-  fetchBoardData,
 } from 'store/actionCreators/boardActionCreator';
 
 import { ColumnCreator } from '@/components/ColumnCreator/ColumnCreator';
+import { TaskCreator } from '@/components/ColumnList/Task/TaskCreator/TaskCreator';
 import { ColumnList } from '@/components/ColumnList';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { ConfirmModal } from '@/components/ConfirmModal';
@@ -30,12 +31,17 @@ const Board = () => {
     data: { id, title, columns },
     isLoading,
     isColumnCreator,
+    isTaskCreator,
     error,
   } = useAppSelector((state) => state.boardReducer);
 
   const [modalActive, setModalActive] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
   const addColumn = () => {
     dispatch(showColumnCreator());
@@ -94,6 +100,7 @@ const Board = () => {
         </HeaderBoard>
         <ColumnList boardId={id} columns={columns} />
         {isColumnCreator && <ColumnCreator boardId={id} />}
+        {isTaskCreator && <TaskCreator boardId={id} />}
         <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
       </Container>
     </>
