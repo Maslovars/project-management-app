@@ -47,6 +47,13 @@ interface changeColumnTitleI {
   columnOrder: number;
 }
 
+interface changeColumnOrderI {
+  boardId: string;
+  columnId: string;
+  title: string;
+  columnOrder: number;
+}
+
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
 
@@ -63,7 +70,18 @@ export const fetchBoardData = createAsyncThunk(
       }
 
       const data = await response.data;
-      return data;
+      const newState = JSON.parse(JSON.stringify(data));
+      newState.columns.sort(function (a, b) {
+        if (a.order > b.order) {
+          return 1;
+        }
+        if (a.order < b.order) {
+          return -1;
+        }
+        return 0;
+      });
+
+      return newState;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -256,6 +274,34 @@ export const changeColumnTitle = createAsyncThunk(
 
       if (response.status !== 200) {
         throw new Error("Cant't change Title. Server error");
+      }
+
+      thunkAPI.dispatch(fetchBoardData());
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeColumnOrder = createAsyncThunk(
+  'board/changeColumnOrder',
+
+  async (params: changeColumnOrderI, thunkAPI) => {
+    const { boardId, columnId, title, columnOrder } = params;
+    console.log(params);
+    try {
+      const response = await axios.put(
+        `${baseUrl}/boards/${boardId}/columns/${columnId}`,
+        { title: title, order: columnOrder },
+        {
+          headers: {
+            Authorization: `Bearer ${mockUserToken}`,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        throw new Error("Cant't change Order. Server error");
       }
 
       thunkAPI.dispatch(fetchBoardData());

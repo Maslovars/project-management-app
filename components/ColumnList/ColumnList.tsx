@@ -3,6 +3,8 @@ import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Column } from '@/components/ColumnList/Column';
 import { Container, Item } from './ColumnList.styled';
 import { ColumnTypes } from '@/types/data';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { changeColumnOrder } from '../../store/actionCreators/boardActionCreator';
 
 interface ColumnListProps {
   columns: ColumnTypes[];
@@ -11,9 +13,29 @@ interface ColumnListProps {
 
 export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
   const [columnsData, setColumnsData] = useState(columns);
+  const [columnTitle, setColumnTitle] = useState('');
+  const dispatch = useAppDispatch();
+
+  console.log(columns);
+
+  const getTitle = (id: string) => {
+    setColumnTitle(columns.find((column) => column.id === id).title);
+  };
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
+    console.log(result);
+    // getTitle(result.draggableId);
+    const title = columns.find((column) => column.id === result.draggableId).title;
+
+    dispatch(
+      changeColumnOrder({
+        boardId,
+        columnId: result.draggableId,
+        title,
+        columnOrder: destination.index + 1,
+      })
+    );
 
     if (!destination) {
       return;
@@ -24,17 +46,26 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
     }
 
     if (type === 'column') {
-      const newState = Array.from(columnsData);
-      [newState[source.index], newState[destination.index]] = [
-        newState[destination.index],
-        newState[source.index],
-      ];
+      // const newState = Array.from(columnsData);
+      // [newState[source.index], newState[destination.index]] = [
+      //   newState[destination.index],
+      //   newState[source.index],
+      // ];
+      // newState.forEach((column, index) => {
+      //   column.order = index + 1;
+      // });
+      // setColumnsData(newState);
 
-      newState.forEach((column, index) => {
-        column.order = index + 1;
-      });
+      const title = columns.find((column) => column.id === result.draggableId).title;
 
-      setColumnsData(newState);
+      dispatch(
+        changeColumnOrder({
+          boardId,
+          columnId: result.draggableId,
+          title,
+          columnOrder: destination.index + 1,
+        })
+      );
     }
 
     if (type === 'task') {
@@ -73,7 +104,7 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
             <Droppable droppableId='all-columns' direction='horizontal' type='column'>
               {(provided) => (
                 <Container {...provided.droppableProps} ref={provided.innerRef}>
-                  {columns.map((column, index) => {
+                  {columns?.map((column, index) => {
                     return (
                       <Item key={column.id}>
                         <Column
