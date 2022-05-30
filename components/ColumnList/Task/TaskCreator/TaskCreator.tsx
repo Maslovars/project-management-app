@@ -6,7 +6,7 @@ import { createTask } from 'store/actionCreators/boardActionCreator';
 
 import { PopUp } from '@/components/common/PopUp';
 import { TextInput } from '@/components/common/TextInput';
-import { TextArea } from '@/components/common/TextArea/TeaxtArea';
+import { TextArea } from '@/components/common/TextArea/TextArea';
 import { RoundedButton } from '@/components/common/RoundedButton/RoundedButton';
 import { Select } from '@/components/common/Select/Select';
 
@@ -71,41 +71,41 @@ export const TaskCreator: React.FC<TaskCreatorProps> = ({
   });
 
   return (
-    <PopUp closePopUp={close} title="Add Task">
+    <PopUp closePopUp={close} title='Add Task'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput
-            htmlFor="title"
-            name="title"
+            htmlFor='title'
+            name='title'
             value={formik.values.title}
             onChange={formik.handleChange}
             error={formik.errors.title}
-            description="Title"
+            description='Title'
           />
         </InputWrapper>
 
         <InputWrapper>
           <Select
-            htmlFor="assigned"
-            name="assigned"
+            htmlFor='assigned'
+            name='assigned'
             value={formik.values.assigned}
             onChange={formik.handleChange}
-            description="Assigned"
+            description='Assigned'
             error={formik.errors.assigned}
           />
         </InputWrapper>
 
         <InputWrapper>
           <TextArea
-            htmlFor="description"
-            name="description"
+            htmlFor='description'
+            name='description'
             value={formik.values.description}
             onChange={formik.handleChange}
-            description="Description"
+            description='Description'
             error={formik.errors.description}
           />
         </InputWrapper>
-        <RoundedButton type="submit" typeBtn="addBtn" variant="big">
+        <RoundedButton type='submit' typeBtn='addBtn' variant='big'>
           Confirm
         </RoundedButton>
       </FormStyled>

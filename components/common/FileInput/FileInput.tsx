@@ -12,7 +12,6 @@ export const FileInput = () => {
   const [isEmpty, setIsEmpty] = useState(true);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget);
     if (e.currentTarget.files.length !== 0) {
       setTitle(e.currentTarget?.files[0].name);
       setIsEmpty(false);
@@ -35,7 +34,6 @@ export const FileInput = () => {
     <Formik
       initialValues={{ file: '' }}
       onSubmit={async (values) => {
-        console.log(values.file);
         const fileData = new FormData();
         fileData.append('file', values.file);
 
@@ -50,25 +48,24 @@ export const FileInput = () => {
           }
         );
         const data = await response;
-        console.log(data);
       }}
     >
       {(formProps) => (
         <Form>
           <Container>
-            <Label empty={formProps.values.file !== '' ? false : true} htmlFor="file">
+            <Label empty={formProps.values.file !== '' ? false : true} htmlFor='file'>
               <Input
-                type="file"
-                name="file"
+                type='file'
+                name='file'
                 onChange={(event) => formProps.setFieldValue('file', event.target.files[0])}
               />
               <Title empty={formProps.values.file !== '' ? false : true}>
-                {formProps.values.file ? formProps.values.file.name : 'Add file'}
+                {/* {formProps.values.file ? formProps.values.file.name : 'Add file'} */}
               </Title>
             </Label>
 
             {formProps.values.file && (
-              <RoundedButton variant="small" type="submit" typeBtn="addBtn">
+              <RoundedButton variant='small' type='submit' typeBtn='addBtn'>
                 Attach
               </RoundedButton>
             )}

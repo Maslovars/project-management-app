@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit';
 
 interface authState {
-    data: any
+  data: [];
 }
 
 const initialState: authState = {
-    data: []
-}
+  data: [],
+};
 
 export const authSlice = createSlice({
-    name: 'auth',
-    initialState,
-    reducers: {},
-    extraReducers: {}
-})
+  name: 'auth',
+  initialState,
+  reducers: {},
+  extraReducers: {},
+});
 
 export default authSlice.reducer;

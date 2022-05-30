@@ -1,12 +1,11 @@
 import type { AppProps } from 'next/app';
 import { GlobalStyle } from '../styles/global.styled';
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary';
-import Header from '@/components/Header/Header';
-import { Footer } from '@/components/Footer/Footer';
 import { wrapper } from 'store/store';
+import { appWithTranslation } from 'next-i18next';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
-import { Provider } from 'react-redux';
+import { Layout } from '@/components/Layout/Layout';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -17,15 +16,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout =
-    Component.getLayout ??
-    ((page) => (
-      <>
-        <Header />
-        {page}
-        <Footer />
-      </>
-    ));
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
 
   return getLayout(
     <ErrorBoundary>
@@ -35,4 +26,4 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default wrapper.withRedux(App);
+export default appWithTranslation(wrapper.withRedux(App));

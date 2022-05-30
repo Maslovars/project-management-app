@@ -85,16 +85,16 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
             <Title>{title}</Title>
           </Header>
           <Assigned>
-            <Avatar src="../img/user-avatar.png" alt={userId} />
+            <Avatar src='../img/user-avatar.png' alt={userId} />
             <Name>{user ? user : 'User not found'}</Name>
           </Assigned>
           <Description>{description}</Description>
           {/* <FileList files={files} /> */}
           <ButtonGroup>
-            <RoundedButton onClick={editTask} type="button" typeBtn="editBtn" variant="small">
+            <RoundedButton onClick={editTask} type='button' typeBtn='editBtn' variant='small'>
               Edit
             </RoundedButton>
-            <RoundedButton onClick={deleteTaskId} type="button" typeBtn="delBtn" variant="small">
+            <RoundedButton onClick={deleteTaskId} type='button' typeBtn='delBtn' variant='small'>
               Delete
             </RoundedButton>
           </ButtonGroup>

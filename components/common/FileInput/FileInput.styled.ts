@@ -19,9 +19,9 @@ const Full = css`
 `;
 
 export const Container = styled.div`
-  padding: 1rem;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 `;
 
 export const Title = styled.span<LabelProps>`
@@ -58,6 +58,6 @@ export const Input = styled.input`
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0;
   cursor: pointer;
+  opacity: 0;
 `;

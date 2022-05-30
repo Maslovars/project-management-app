@@ -77,7 +77,7 @@ const Board = () => {
           {isLoading && <Loader />}
           {error && (
             <ToastContainer
-              position="top-right"
+              position='top-right'
               autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}
@@ -89,13 +89,13 @@ const Board = () => {
             />
           )}
           <ButtonGroup>
-            <RoundedButton onClick={addColumn} type="button" variant="big" typeBtn="addBtn">
+            <RoundedButton onClick={addColumn} type='button' variant='big' typeBtn='addBtn'>
               Add Column
             </RoundedButton>
-            <RoundedButton onClick={deleteBoard} type="button" variant="big" typeBtn="delBtn">
+            <RoundedButton onClick={deleteBoard} type='button' variant='big' typeBtn='delBtn'>
               Delete Board
             </RoundedButton>
-            <RoundedButton onClick={goToMain} type="button" variant="big" typeBtn="editBtn">
+            <RoundedButton onClick={goToMain} type='button' variant='big' typeBtn='editBtn'>
               Go To Main
             </RoundedButton>
           </ButtonGroup>

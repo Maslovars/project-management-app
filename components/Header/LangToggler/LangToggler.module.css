@@ -21,7 +21,7 @@
 }
 
 .checkbox .checkboxSwitch:before {
-    content: attr(data-label-ru);
+    content: attr(data-label-en);
     display: inline-block;
     box-sizing: border-box;
     width: 4rem;
@@ -37,7 +37,7 @@
 }
 
 .checkbox .checkboxSwitch:after {
-    content: attr(data-label-en);
+    content: attr(data-label-ru);
     display: inline-block;
     box-sizing: border-box;
     width: 3.9rem;
@@ -70,12 +70,12 @@
 }
 
 .checkbox input[type="checkbox"]:checked+.checkboxSwitch:before {
-    content: attr(data-label-en);
+    content: attr(data-label-ru);
     left: 0;
 }
 
 .checkbox input[type="checkbox"]:checked+.checkboxSwitch:after {
-    content: attr(data-label-ru);
+    content: attr(data-label-en);
     color: #1d201c;
     transform: translate3d(3.9rem, 0, 0);
 }

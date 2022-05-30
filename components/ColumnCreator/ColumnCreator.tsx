@@ -45,19 +45,19 @@ export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ boardId }) => {
   });
 
   return (
-    <PopUp closePopUp={close} title="Creat Column">
+    <PopUp closePopUp={close} title='Creat Column'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput
-            htmlFor="title"
-            name="title"
+            htmlFor='title'
+            name='title'
             value={formik.values.title}
             onChange={formik.handleChange}
             error={formik.errors.title}
           />
         </InputWrapper>
 
-        <RoundedButton type="submit" typeBtn="addBtn" variant="big">
+        <RoundedButton type='submit' typeBtn='addBtn' variant='big'>
           Confirm
         </RoundedButton>
       </FormStyled>

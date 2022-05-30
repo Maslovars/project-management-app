@@ -1,9 +1,13 @@
-import { Main } from './Layout.styled';
+import Header from 'components/Header/Header';
+import { Footer } from 'components/Footer/Footer';
+import { LayoutWrap } from './Layout.styled';
 
-type Props = {
-  children?: React.ReactNode;
-};
-
-export const Layout: React.FC<Props> = ({ children }) => {
-  return <Main>{children}</Main>;
+export const Layout = ({ children }) => {
+  return (
+    <LayoutWrap>
+      <Header />
+      {children}
+      <Footer />
+    </LayoutWrap>
+  );
 };
