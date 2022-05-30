@@ -1,10 +1,12 @@
 import authReducer from './reducers/authSlice';
+import mainReducer from './reducers/mainSlice';
 import boardReducer from './reducers/boardSlice';
 import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 
 const rootReducer = combineReducers({
   authReducer,
+  mainReducer,
   boardReducer,
 });
 

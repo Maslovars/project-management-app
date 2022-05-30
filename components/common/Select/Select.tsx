@@ -24,7 +24,7 @@ export const Select: React.FC<SelectProps> = ({
       <label htmlFor={htmlFor}>
         {description && <Description>{description}:</Description>}
         <SelectStyled name={name} value={value} onChange={onChange}>
-          <option disabled value="">
+          <option disabled value=''>
             Set assigned
           </option>
           {users.map((user) => (

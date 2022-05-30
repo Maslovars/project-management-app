@@ -26,6 +26,7 @@ import { Loader } from '@/components/Loader';
 import { TaskChanger } from '@/components/ColumnList/Column/TaskChanger/TaskChanger';
 
 import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
+import { deleteBoard } from 'store/actionCreators/mainActionCreator';
 
 const Board = () => {
   const {
@@ -49,13 +50,13 @@ const Board = () => {
     dispatch(showColumnCreator());
   };
 
-  const deleteBoard = () => {
+  const deleteCurrentBoard = () => {
     setModalActive(true);
   };
 
   const confirmDelete = (result: boolean) => {
     if (result) {
-      alert(`BOARD DELETE`);
+      dispatch(deleteBoard(id));
       router.push('/main');
     }
     if (!result) {
@@ -92,7 +93,12 @@ const Board = () => {
             <RoundedButton onClick={addColumn} type='button' variant='big' typeBtn='addBtn'>
               Add Column
             </RoundedButton>
-            <RoundedButton onClick={deleteBoard} type='button' variant='big' typeBtn='delBtn'>
+            <RoundedButton
+              onClick={deleteCurrentBoard}
+              type='button'
+              variant='big'
+              typeBtn='delBtn'
+            >
               Delete Board
             </RoundedButton>
             <RoundedButton onClick={goToMain} type='button' variant='big' typeBtn='editBtn'>
