@@ -9,10 +9,10 @@ import { logInUser } from 'services/auth/login/login';
 import { AppUserState, AuthStateErrors } from 'utils/constants';
 import { ErrorMessage, ErrorMessageWrap } from 'components/EntryPage/EntryInput/EntryInput.styled';
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LogIn: NextPage = () => {
-  const [error, setError] = useState(null);
-
   return (
     <EntryPageWrap>
       <h2>Log In</h2>
@@ -59,9 +59,22 @@ export const LogIn: NextPage = () => {
           <RoundedButton type='submit' variant='big' typeBtn='addBtn'>
             Log in
           </RoundedButton>
+          {AuthStateErrors.errors.length > 0 && (
+            <ToastContainer
+              position='top-right'
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+          )}
           <ErrorMessageWrap>
             {AuthStateErrors.errors.length > 0 ? (
-              <ErrorMessage className='error'>{error}</ErrorMessage>
+              <ErrorMessage className='error'>{[...AuthStateErrors.errors]}</ErrorMessage>
             ) : null}
           </ErrorMessageWrap>
         </Form>
