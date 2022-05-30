@@ -6,9 +6,13 @@ import axios from 'axios';
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { ConfirmModal } from '@/components/ConfirmModal';
 
-import { useAppDispatch } from 'hooks/reduxHooks';
-import { deleteTask, mockUserToken, baseUrl } from 'store/actionCreators/boardActionCreator';
-import { TaskCreator } from './TaskCreator/TaskCreator';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
+import {
+  deleteTask,
+  mockUserToken,
+  baseUrl,
+  fetchUsers,
+} from 'store/actionCreators/boardActionCreator';
 
 import { FileList } from './FileList/FileList';
 import {
@@ -21,6 +25,7 @@ import {
   Name,
   ButtonGroup,
 } from './Task.styled';
+import { showTaskChanger } from 'store/reducers/boardSlice';
 
 interface TaskProps {
   index: number;
@@ -31,9 +36,9 @@ interface TaskProps {
 
 export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) => {
   const [user, setUser] = useState('');
-  const { id, title, description, userId, files } = task;
+  const { id, title, description, userId, files, order } = task;
   const [modalConfirmActive, setModalConfirmActive] = useState(false);
-  const [showTaskCreator, setShowTaskCreator] = useState(false);
+  // const [showTaskCreator, setShowTaskCreator] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -51,11 +56,11 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
   };
 
   const closeTaskCreator = () => {
-    setShowTaskCreator(false);
+    // setShowTaskCreator(false);
   };
 
   const editTask = () => {
-    setShowTaskCreator(true);
+    dispatch(showTaskChanger({ columnId, title, order, description, userId, boardId, id }));
   };
 
   useEffect(() => {
@@ -70,7 +75,7 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
       setUser(data.name);
     };
     getUser(userId);
-  }, []);
+  }, [userId]);
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -80,11 +85,11 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
             <Title>{title}</Title>
           </Header>
           <Assigned>
-            <Avatar src="../img/user-avatar.png" alt={userId} />{' '}
+            <Avatar src="../img/user-avatar.png" alt={userId} />
             <Name>{user ? user : 'User not found'}</Name>
           </Assigned>
           <Description>{description}</Description>
-          <FileList files={files} />
+          {/* <FileList files={files} /> */}
           <ButtonGroup>
             <RoundedButton onClick={editTask} type="button" typeBtn="editBtn" variant="small">
               Edit
@@ -93,16 +98,6 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
               Delete
             </RoundedButton>
           </ButtonGroup>
-          {showTaskCreator && (
-            <TaskCreator
-              boardId={boardId}
-              columnId={columnId}
-              title={task.title}
-              assigned={'User Name'}
-              description={task.description}
-              closer={closeTaskCreator}
-            />
-          )}
           <ConfirmModal
             active={modalConfirmActive}
             setActive={setModalConfirmActive}

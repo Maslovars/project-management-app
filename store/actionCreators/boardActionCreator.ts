@@ -30,6 +30,16 @@ interface deleteTaskI {
   id: string;
 }
 
+interface changeTaskI {
+  currentBoardId: string;
+  title: string;
+  currentOrder: number;
+  description: string;
+  assigned: string;
+  currentColumnId: string;
+  currentTaskId: string;
+}
+
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
 
@@ -170,6 +180,48 @@ export const deleteTask = createAsyncThunk(
 
       if (response.status !== 204) {
         throw new Error("Cant't delete task. Server error");
+      }
+
+      thunkAPI.dispatch(fetchBoardData());
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeTask = createAsyncThunk(
+  'board/changeTask',
+
+  async (params: changeTaskI, thunkAPI) => {
+    const {
+      currentBoardId,
+      title,
+      currentOrder,
+      description,
+      assigned,
+      currentColumnId,
+      currentTaskId,
+    } = params;
+    try {
+      const response = await axios.put(
+        `${baseUrl}/boards/${currentBoardId}/columns/${currentColumnId}/tasks/${currentTaskId}`,
+        {
+          title: title,
+          order: currentOrder,
+          description: description,
+          userId: assigned,
+          boardId: currentBoardId,
+          columnId: currentColumnId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${mockUserToken}`,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        throw new Error("Cant't add task. Server error");
       }
 
       thunkAPI.dispatch(fetchBoardData());

@@ -19,7 +19,6 @@ export const Select: React.FC<SelectProps> = ({
   error,
 }) => {
   const { users } = useAppSelector((state) => state.boardReducer);
-
   return (
     <Container>
       <label htmlFor={htmlFor}>

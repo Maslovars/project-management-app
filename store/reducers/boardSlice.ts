@@ -23,7 +23,14 @@ interface boardState {
   error: null | string;
   isColumnCreator: boolean;
   isTaskCreator: boolean;
+  isTaskChanger: boolean;
   currentColumnId: string;
+  currentTitle: string;
+  currentOrder: number | null;
+  currentDescription: string;
+  currentUserId: string;
+  currentBoardId: string;
+  currentTaskId: string;
   users: UserI[];
 }
 
@@ -33,7 +40,14 @@ const initialState: boardState = {
   error: null,
   isColumnCreator: false,
   isTaskCreator: false,
+  isTaskChanger: false,
   currentColumnId: '',
+  currentTitle: '',
+  currentOrder: null,
+  currentDescription: '',
+  currentUserId: '',
+  currentBoardId: '',
+  currentTaskId: '',
   users: [],
 };
 
@@ -61,6 +75,28 @@ export const boardSlice = createSlice({
       state.error = null;
       state.isTaskCreator = false;
       state.currentColumnId = '';
+    },
+    showTaskChanger: (state, action) => {
+      state.error = null;
+      state.currentColumnId = action.payload.columnId;
+      state.currentTitle = action.payload.title;
+      state.currentOrder = action.payload.order;
+      state.currentDescription = action.payload.description;
+      state.currentUserId = action.payload.userId;
+      state.currentBoardId = action.payload.boardId;
+      state.currentTaskId = action.payload.id;
+      state.isTaskChanger = true;
+    },
+    closeTaskChanger: (state) => {
+      state.error = null;
+      state.isTaskChanger = false;
+      state.currentColumnId = '';
+      state.currentTitle = '';
+      state.currentOrder = null;
+      state.currentDescription = '';
+      state.currentUserId = '';
+      state.currentBoardId = '';
+      state.currentTaskId = '';
     },
   },
 
@@ -117,6 +153,8 @@ export const {
   closeColumnCreator,
   showTaskCreator,
   closeTaskCreator,
+  showTaskChanger,
+  closeTaskChanger,
 } = boardSlice.actions;
 export const boardData = (state: AppState) => state.boardReducer;
 export default boardSlice.reducer;

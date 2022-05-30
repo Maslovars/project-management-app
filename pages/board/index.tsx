@@ -23,6 +23,7 @@ import { ConfirmModal } from '@/components/ConfirmModal';
 import { Footer } from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import { Loader } from '@/components/Loader';
+import { TaskChanger } from '@/components/ColumnList/Column/TaskChanger/TaskChanger';
 
 import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
 
@@ -32,6 +33,7 @@ const Board = () => {
     isLoading,
     isColumnCreator,
     isTaskCreator,
+    isTaskChanger,
     error,
   } = useAppSelector((state) => state.boardReducer);
 
@@ -101,6 +103,7 @@ const Board = () => {
         <ColumnList boardId={id} columns={columns} />
         {isColumnCreator && <ColumnCreator boardId={id} />}
         {isTaskCreator && <TaskCreator boardId={id} />}
+        {isTaskChanger && <TaskChanger boardId={id} />}
         <ConfirmModal active={modalActive} setActive={setModalActive} isConfirm={confirmDelete} />
       </Container>
     </>
