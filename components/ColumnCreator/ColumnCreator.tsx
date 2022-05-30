@@ -33,7 +33,7 @@ export const ColumnCreator: React.FC<ColumnCreatorProps> = ({ handlerColumn }) =
   });
 
   return (
-    <PopUp closePopUp={handlerColumn} title='Creat Column'>
+    <PopUp closePopUp={handlerColumn} title='Create Column'>
       <FormStyled onSubmit={formik.handleSubmit}>
         <InputWrapper>
           <TextInput

@@ -6,7 +6,7 @@ export interface RoundedButtonProps {
   variant?: 'big' | 'small';
   children: React.ReactNode;
   type?: 'button' | 'submit';
-  onClick?(): void;
+  onClick?(e?: React.MouseEvent<HTMLButtonElement>): void;
   disabled?: boolean;
   typeBtn?: 'addBtn' | 'delBtn' | 'otherBtn' | 'editBtn';
 }
