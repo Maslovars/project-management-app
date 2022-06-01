@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useAppSelector } from 'hooks/reduxHooks';
 
 export const baseUrl = 'https://kanban-rest77.herokuapp.com';
-export const mockBoardId = 'e4d613f1-e8c4-43d4-8170-a96b962a9e05';
+export const mockBoardId = '9de86f90-adfc-4c3f-83bf-7ce3a3e63ed8';
 export const mockUserToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM5MzQ4OTB9.xTkaPO5Kxj1ugNet5LI_duZv7yCQTblTrtXhncwtyY8';
 
