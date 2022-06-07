@@ -1,18 +1,12 @@
 import { Draggable } from 'react-beautiful-dnd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TaskTypes } from '@/types/data';
-import axios from 'axios';
 
 import { RoundedButton } from '@/components/common/RoundedButton';
 import { ConfirmModal } from '@/components/ConfirmModal';
 
 import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
-import {
-  deleteTask,
-  mockUserToken,
-  baseUrl,
-  fetchUsers,
-} from 'store/actionCreators/boardActionCreator';
+import { deleteTask } from 'store/actionCreators/boardActionCreator';
 
 import { FileList } from './FileList/FileList';
 import {
@@ -35,12 +29,12 @@ interface TaskProps {
 }
 
 export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) => {
-  const [user, setUser] = useState('');
   const { id, title, description, userId, files, order } = task;
   const [modalConfirmActive, setModalConfirmActive] = useState(false);
-  // const [showTaskCreator, setShowTaskCreator] = useState(false);
 
   const dispatch = useAppDispatch();
+
+  const { users } = useAppSelector((state) => state.boardReducer);
 
   const deleteTaskId = () => {
     setModalConfirmActive(true);
@@ -55,27 +49,14 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
     }
   };
 
-  const closeTaskCreator = () => {
-    // setShowTaskCreator(false);
-  };
-
   const editTask = () => {
     dispatch(showTaskChanger({ columnId, title, order, description, userId, boardId, id }));
   };
 
-  useEffect(() => {
-    const getUser = async (id: string) => {
-      const response = await axios.get(`${baseUrl}/users/${id}`, {
-        headers: {
-          Authorization: `Bearer ${mockUserToken}`,
-        },
-      });
-      const data = await response.data;
-
-      setUser(data.name);
-    };
-    getUser(userId);
-  }, [userId]);
+  const getUserName = (userId: string): string => {
+    const user = users.find((user) => user.id === userId);
+    return user?.name;
+  };
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -86,7 +67,7 @@ export const Task: React.FC<TaskProps> = ({ task, index, columnId, boardId }) =>
           </Header>
           <Assigned>
             <Avatar src='../img/user-avatar.png' alt={userId} />
-            <Name>{user ? user : 'User not found'}</Name>
+            <Name>{getUserName(userId) || 'User not found'}</Name>
           </Assigned>
           <Description>{description}</Description>
           {/* <FileList files={files} /> */}
