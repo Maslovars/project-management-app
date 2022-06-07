@@ -4,7 +4,7 @@ import { Column } from '@/components/ColumnList/Column';
 import { Container, Item } from './ColumnList.styled';
 import { ColumnTypes } from '@/types/data';
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { changeColumnOrder, dndDeleteTask } from '../../store/actionCreators/boardActionCreator';
+import { changeColumnOrder, changeTask } from '../../store/actionCreators/boardActionCreator';
 import { setColumnData } from '../../store/reducers/boardSlice';
 
 interface ColumnListProps {
@@ -61,27 +61,20 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
       });
       dispatch(setColumnData(newState));
 
-      // const title = columns.find((column) => column.id === result.draggableId).title;
       const currentColumn = columns.find((column) => column.id === result.source.droppableId);
       const currentColumnId = columns.find((column) => column.id === result.source.droppableId).id;
-      const currentColumnTaskId = draggableId;
-
       const taskToColumn = currentColumn.tasks.find((task) => task.id === draggableId);
 
       dispatch(
-        dndDeleteTask({
-          boardId,
-          columnId: currentColumnId,
-          id: draggableId,
-          addParams: {
-            boardId,
-            title: taskToColumn.title,
-            description: taskToColumn.description,
-            assigned: taskToColumn.userId,
-            currentColumnId: destination.droppableId,
-            order: destination.index + 1,
-            id: taskToColumn.id,
-          },
+        changeTask({
+          currentBoardId: boardId,
+          title: taskToColumn.title,
+          currentOrder: destination.index + 1,
+          description: taskToColumn.description,
+          assigned: taskToColumn.userId,
+          currentColumnId,
+          currentTaskId: taskToColumn.id,
+          newColumnId: destination.droppableId,
         })
       );
     }

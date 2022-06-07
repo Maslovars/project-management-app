@@ -12,8 +12,6 @@ import {
   changeTask,
   changeColumnTitle,
   changeColumnOrder,
-  dndDeleteTask,
-  dndCreateTask,
 } from '../actionCreators/boardActionCreator';
 
 interface UserI {
@@ -170,20 +168,6 @@ export const boardSlice = createSlice({
       state.error = null;
     },
     [changeColumnOrder.rejected.type]: (state, action) => {
-      state.error = action.payload;
-    },
-
-    [dndDeleteTask.pending.type]: (state, action) => {
-      state.error = null;
-    },
-    [dndDeleteTask.rejected.type]: (state, action) => {
-      state.error = action.payload;
-    },
-
-    [dndCreateTask.pending.type]: (state, action) => {
-      state.error = null;
-    },
-    [dndCreateTask.rejected.type]: (state, action) => {
       state.error = action.payload;
     },
   },

@@ -6,9 +6,7 @@ import {
   deleteColumnI,
   createColumnI,
   createTaskI,
-  dndCreateTaskI,
   deleteTaskI,
-  dndDeleteTaskI,
   changeTaskI,
   changeColumnTitleI,
   changeColumnOrderI,
@@ -204,6 +202,7 @@ export const changeTask = createAsyncThunk(
       assigned,
       currentColumnId,
       currentTaskId,
+      newColumnId,
     } = params;
     try {
       const response = await axios.put(
@@ -214,7 +213,7 @@ export const changeTask = createAsyncThunk(
           description: description,
           userId: assigned,
           boardId: currentBoardId,
-          columnId: currentColumnId,
+          columnId: newColumnId ? newColumnId : currentColumnId,
         },
         {
           headers: {
@@ -224,7 +223,7 @@ export const changeTask = createAsyncThunk(
       );
 
       if (response.status !== 200) {
-        throw new Error("Cant't add task. Server error");
+        throw new Error("Cant't change task. Server error");
       }
 
       thunkAPI.dispatch(fetchBoardData(currentBoardId));
@@ -282,71 +281,6 @@ export const changeColumnOrder = createAsyncThunk(
       }
 
       thunkAPI.dispatch(fetchBoardData(boardId));
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
-    }
-  }
-);
-
-export const dndDeleteTask = createAsyncThunk(
-  'board/dndDeleteTask',
-
-  async (params: dndDeleteTaskI, thunkAPI) => {
-    const { boardId, columnId, id, addParams } = params;
-    try {
-      const response = await axios.delete(
-        `${baseUrl}/boards/${boardId}/columns/${columnId}/tasks/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${mockUserToken}`,
-          },
-        }
-      );
-
-      if (response.status !== 204) {
-        throw new Error("Cant't delete task. Server error");
-      }
-
-      thunkAPI.dispatch(dndCreateTask(addParams));
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
-    }
-  }
-);
-
-export const dndCreateTask = createAsyncThunk(
-  'board/dndCreateTask',
-
-  async (params: dndCreateTaskI, thunkAPI) => {
-    const { boardId, title, description, assigned, currentColumnId, order, id } = params;
-    try {
-      const response = await axios.post(
-        `${baseUrl}/boards/${boardId}/columns/${currentColumnId}/tasks`,
-        { title: title, description: description, userId: assigned },
-        {
-          headers: {
-            Authorization: `Bearer ${mockUserToken}`,
-          },
-        }
-      );
-
-      if (response.status !== 201) {
-        throw new Error("Cant't add task. Server error");
-      }
-
-      thunkAPI.dispatch(fetchBoardData(boardId));
-
-      // thunkAPI.dispatch(
-      //   changeTask({
-      //     currentBoardId: boardId,
-      //     title,
-      //     currentOrder: response.data.order,
-      //     description,
-      //     assigned,
-      //     currentColumnId,
-      //     currentTaskId: id,
-      //   })
-      // );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
