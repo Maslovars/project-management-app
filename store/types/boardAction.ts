@@ -16,35 +16,10 @@ export interface createTaskI {
   currentColumnId: string;
 }
 
-export interface dndCreateTaskI {
-  boardId: string;
-  title: string;
-  description: string;
-  assigned: string;
-  currentColumnId: string;
-  order: number;
-  id: string;
-}
-
 export interface deleteTaskI {
   boardId: string;
   columnId: string;
   id: string;
-}
-
-export interface dndDeleteTaskI {
-  boardId: string;
-  columnId: string;
-  id: string;
-  addParams: {
-    boardId: string;
-    title: string;
-    description: string;
-    assigned: string;
-    currentColumnId: string;
-    order: number;
-    id: string;
-  };
 }
 
 export interface changeTaskI {
@@ -55,6 +30,7 @@ export interface changeTaskI {
   assigned: string;
   currentColumnId: string;
   currentTaskId: string;
+  newColumnId?: string;
 }
 
 export interface changeColumnTitleI {
