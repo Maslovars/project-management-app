@@ -26,7 +26,7 @@ export const FileInput = () => {
   //     file: '',
   //   },
   //   onSubmit: (values) => {
-  //     console.log(values);
+  //
   //   },
   // });
 

@@ -8,12 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { wrapper } from 'store/store';
 import { setBoardData, showColumnCreator } from 'store/reducers/boardSlice';
 import { useAppSelector, useAppDispatch } from 'hooks/reduxHooks';
-import {
-  baseUrl,
-  fetchUsers,
-  mockBoardId,
-  mockUserToken,
-} from 'store/actionCreators/boardActionCreator';
+import { baseUrl, fetchUsers, mockUserToken } from 'store/actionCreators/boardActionCreator';
+import { deleteBoard } from 'store/actionCreators/mainActionCreator';
 
 import { ColumnCreator } from '@/components/ColumnCreator/ColumnCreator';
 import { TaskCreator } from '@/components/ColumnList/Task/TaskCreator/TaskCreator';
@@ -25,8 +21,15 @@ import Header from '@/components/Header/Header';
 import { Loader } from '@/components/Loader';
 import { TaskChanger } from '@/components/ColumnList/Column/TaskChanger/TaskChanger';
 
-import { Container, HeaderBoard, BoardTitle, ButtonGroup, BoardLayout } from './Board.styled';
-import { deleteBoard } from 'store/actionCreators/mainActionCreator';
+import { ColumnTypes } from '@/types/data';
+
+import {
+  Container,
+  HeaderBoard,
+  BoardTitle,
+  ButtonGroup,
+  BoardLayout,
+} from '../../pages-styles/Board.styled';
 
 const Board = () => {
   const {
@@ -127,8 +130,11 @@ Board.getLayout = (page: ReactElement) => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
-  // const {id} = context // this id should be added to request on next line!
-  const response = await axios.get(`${baseUrl}/boards/${mockBoardId}`, {
+  const {
+    query: { id },
+  } = context;
+
+  const response = await axios.get(`${baseUrl}/boards/${id}`, {
     headers: {
       Authorization: `Bearer ${mockUserToken}`,
     },
@@ -142,7 +148,30 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     };
   }
 
-  store.dispatch(setBoardData(data));
+  const newState = JSON.parse(JSON.stringify(data));
+  newState.columns.sort(function (a: ColumnTypes, b: ColumnTypes) {
+    if (a.order > b.order) {
+      return 1;
+    }
+    if (a.order < b.order) {
+      return -1;
+    }
+    return 0;
+  });
+
+  newState.columns.map((column: ColumnTypes) => {
+    column.tasks.sort(function (a, b) {
+      if (a.order > b.order) {
+        return 1;
+      }
+      if (a.order < b.order) {
+        return -1;
+      }
+      return 0;
+    });
+  });
+
+  store.dispatch(setBoardData(newState));
   return {
     props: {
       board: data,

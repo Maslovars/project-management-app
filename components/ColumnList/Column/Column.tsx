@@ -66,7 +66,7 @@ export const Column: React.FC<ColumnProps> = ({ id, title, tasks, index, boardId
           {inputShow && (
             <TitleChanger
               closeTitleChanger={closeTitleChanger}
-              currentTitle={columnTitle}
+              currentTitle={title}
               titleHandler={titleHandler}
               columnOrder={order}
               boardId={boardId}

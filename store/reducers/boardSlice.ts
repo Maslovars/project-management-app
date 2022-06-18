@@ -11,6 +11,7 @@ import {
   deleteTask,
   changeTask,
   changeColumnTitle,
+  changeColumnOrder,
 } from '../actionCreators/boardActionCreator';
 
 interface UserI {
@@ -60,6 +61,9 @@ export const boardSlice = createSlice({
     setBoardData: (state, action) => {
       state.data = action.payload;
     },
+    setColumnData: (state, action) => {
+      state.data.columns = action.payload;
+    },
     showColumnCreator: (state) => {
       state.error = null;
       state.isColumnCreator = true;
@@ -108,7 +112,7 @@ export const boardSlice = createSlice({
     },
 
     [fetchBoardData.pending.type]: (state, action) => {
-      state.isLoading = true;
+      // state.isLoading = true;
       state.error = null;
     },
     [fetchBoardData.fulfilled.type]: (state, action) => {
@@ -159,10 +163,18 @@ export const boardSlice = createSlice({
     [changeColumnTitle.rejected.type]: (state, action) => {
       state.error = action.payload;
     },
+
+    [changeColumnOrder.pending.type]: (state, action) => {
+      state.error = null;
+    },
+    [changeColumnOrder.rejected.type]: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 export const {
   setBoardData,
+  setColumnData,
   showColumnCreator,
   closeColumnCreator,
   showTaskCreator,

@@ -3,6 +3,9 @@ import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Column } from '@/components/ColumnList/Column';
 import { Container, Item } from './ColumnList.styled';
 import { ColumnTypes } from '@/types/data';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { changeColumnOrder, changeTask } from '../../store/actionCreators/boardActionCreator';
+import { setColumnData } from '../../store/reducers/boardSlice';
 
 interface ColumnListProps {
   columns: ColumnTypes[];
@@ -10,10 +13,10 @@ interface ColumnListProps {
 }
 
 export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
-  const [columnsData, setColumnsData] = useState(columns);
+  const dispatch = useAppDispatch();
 
   const onDragEnd = (result: DropResult) => {
-    const { destination, source, type } = result;
+    const { destination, source, type, draggableId } = result;
 
     if (!destination) {
       return;
@@ -24,22 +27,25 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
     }
 
     if (type === 'column') {
-      const newState = Array.from(columnsData);
-      [newState[source.index], newState[destination.index]] = [
-        newState[destination.index],
-        newState[source.index],
-      ];
+      const newState = JSON.parse(JSON.stringify(columns));
+      newState.splice(destination.index, 0, newState.splice(source.index, 1)[0]);
 
-      newState.forEach((column, index) => {
-        column.order = index + 1;
-      });
+      dispatch(setColumnData(newState));
 
-      setColumnsData(newState);
+      const title = columns.find((column) => column.id === result.draggableId).title;
+
+      dispatch(
+        changeColumnOrder({
+          boardId,
+          columnId: result.draggableId,
+          title,
+          columnOrder: destination.index + 1,
+        })
+      );
     }
 
     if (type === 'task') {
-      const newState = JSON.parse(JSON.stringify(columnsData));
-
+      const newState = JSON.parse(JSON.stringify(columns));
       const column = newState.find((column: ColumnTypes) => column.id === source.droppableId);
       const newTask = column.tasks[source.index];
       newTask.columnId = destination.droppableId;
@@ -48,14 +54,29 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
         (column: ColumnTypes) => column.id === destination.droppableId
       );
       newColumn.tasks.splice(destination.index, 0, newTask);
-
       newState.forEach((column: ColumnTypes) => {
         column.tasks.forEach((task, index) => {
           task.order = index + 1;
         });
       });
+      dispatch(setColumnData(newState));
 
-      setColumnsData(newState);
+      const currentColumn = columns.find((column) => column.id === result.source.droppableId);
+      const currentColumnId = columns.find((column) => column.id === result.source.droppableId).id;
+      const taskToColumn = currentColumn.tasks.find((task) => task.id === draggableId);
+
+      dispatch(
+        changeTask({
+          currentBoardId: boardId,
+          title: taskToColumn.title,
+          currentOrder: destination.index + 1,
+          description: taskToColumn.description,
+          assigned: taskToColumn.userId,
+          currentColumnId,
+          currentTaskId: taskToColumn.id,
+          newColumnId: destination.droppableId,
+        })
+      );
     }
   };
 
@@ -73,7 +94,7 @@ export const ColumnList: React.FC<ColumnListProps> = ({ columns, boardId }) => {
             <Droppable droppableId='all-columns' direction='horizontal' type='column'>
               {(provided) => (
                 <Container {...provided.droppableProps} ref={provided.innerRef}>
-                  {columns.map((column, index) => {
+                  {columns?.map((column, index) => {
                     return (
                       <Item key={column.id}>
                         <Column

@@ -1,58 +1,28 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { ColumnTypes } from '@/types/data';
+import {
+  deleteColumnI,
+  createColumnI,
+  createTaskI,
+  deleteTaskI,
+  changeTaskI,
+  changeColumnTitleI,
+  changeColumnOrderI,
+} from '../types/boardAction';
 
 export const baseUrl = 'https://kanban-rest77.herokuapp.com';
-export const mockBoardId = 'da90f759-014e-40fc-96d1-0970631acb80';
+export const mockBoardId = '207be9a7-be16-41f6-a193-a29bc6b7d16d';
 export const mockUserToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM2MzMyNjJ9.melw7nOQCOT9rcO6Kz6JaKWmLFh8Tgq4GxBTF5R1Ty4';
-
-interface deleteColumnI {
-  boardId: string;
-  id: string;
-}
-
-interface createColumnI {
-  boardId: string;
-  title: string;
-}
-
-interface createTaskI {
-  boardId: string;
-  title: string;
-  description: string;
-  assigned: string;
-  currentColumnId: string;
-}
-
-interface deleteTaskI {
-  boardId: string;
-  columnId: string;
-  id: string;
-}
-
-interface changeTaskI {
-  currentBoardId: string;
-  title: string;
-  currentOrder: number;
-  description: string;
-  assigned: string;
-  currentColumnId: string;
-  currentTaskId: string;
-}
-
-interface changeColumnTitleI {
-  boardId: string;
-  columnId: string;
-  title: string;
-  columnOrder: number;
-}
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NTM2NzJhOS1jY2JkLTRjMmEtOGI1Yy0zYjAzNDQyNzQ4YzUiLCJsb2dpbiI6InRlc3QxMjMiLCJpYXQiOjE2NTM5MzQ4OTB9.xTkaPO5Kxj1ugNet5LI_duZv7yCQTblTrtXhncwtyY8';
 
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
 
-  async function (_, { rejectWithValue }) {
+  async function (boardId: string, { rejectWithValue }) {
     try {
-      const response = await axios.get(`${baseUrl}/boards/${mockBoardId}`, {
+      const response = await axios.get(`${baseUrl}/boards/${boardId}`, {
         headers: {
           Authorization: `Bearer ${mockUserToken}`,
         },
@@ -63,9 +33,33 @@ export const fetchBoardData = createAsyncThunk(
       }
 
       const data = await response.data;
-      return data;
+
+      const newState = JSON.parse(JSON.stringify(data));
+      newState.columns.sort(function (a: ColumnTypes, b: ColumnTypes) {
+        if (a.order > b.order) {
+          return 1;
+        }
+        if (a.order < b.order) {
+          return -1;
+        }
+        return 0;
+      });
+
+      newState.columns.map((column: ColumnTypes) => {
+        column.tasks.sort(function (a, b) {
+          if (a.order > b.order) {
+            return 1;
+          }
+          if (a.order < b.order) {
+            return -1;
+          }
+          return 0;
+        });
+      });
+
+      return newState;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -88,7 +82,7 @@ export const fetchUsers = createAsyncThunk(
       const data = await response.data;
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -109,9 +103,9 @@ export const deleteColumn = createAsyncThunk(
         throw new Error("Cant't delete column. Server error");
       }
 
-      thunkAPI.dispatch(fetchBoardData());
+      thunkAPI.dispatch(fetchBoardData(boardId));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -136,9 +130,9 @@ export const createColumn = createAsyncThunk(
         throw new Error("Cant't add column. Server error");
       }
 
-      thunkAPI.dispatch(fetchBoardData());
+      thunkAPI.dispatch(fetchBoardData(boardId));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -163,9 +157,9 @@ export const createTask = createAsyncThunk(
         throw new Error("Cant't add task. Server error");
       }
 
-      thunkAPI.dispatch(fetchBoardData());
+      thunkAPI.dispatch(fetchBoardData(boardId));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -189,9 +183,9 @@ export const deleteTask = createAsyncThunk(
         throw new Error("Cant't delete task. Server error");
       }
 
-      thunkAPI.dispatch(fetchBoardData());
+      thunkAPI.dispatch(fetchBoardData(boardId));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -208,6 +202,7 @@ export const changeTask = createAsyncThunk(
       assigned,
       currentColumnId,
       currentTaskId,
+      newColumnId,
     } = params;
     try {
       const response = await axios.put(
@@ -218,7 +213,7 @@ export const changeTask = createAsyncThunk(
           description: description,
           userId: assigned,
           boardId: currentBoardId,
-          columnId: currentColumnId,
+          columnId: newColumnId ? newColumnId : currentColumnId,
         },
         {
           headers: {
@@ -228,12 +223,12 @@ export const changeTask = createAsyncThunk(
       );
 
       if (response.status !== 200) {
-        throw new Error("Cant't add task. Server error");
+        throw new Error("Cant't change task. Server error");
       }
 
-      thunkAPI.dispatch(fetchBoardData());
+      thunkAPI.dispatch(fetchBoardData(currentBoardId));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -258,9 +253,36 @@ export const changeColumnTitle = createAsyncThunk(
         throw new Error("Cant't change Title. Server error");
       }
 
-      thunkAPI.dispatch(fetchBoardData());
+      thunkAPI.dispatch(fetchBoardData(boardId));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const changeColumnOrder = createAsyncThunk(
+  'board/changeColumnOrder',
+
+  async (params: changeColumnOrderI, thunkAPI) => {
+    const { boardId, columnId, title, columnOrder } = params;
+    try {
+      const response = await axios.put(
+        `${baseUrl}/boards/${boardId}/columns/${columnId}`,
+        { title: title, order: columnOrder },
+        {
+          headers: {
+            Authorization: `Bearer ${mockUserToken}`,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        throw new Error("Cant't change Order. Server error");
+      }
+
+      thunkAPI.dispatch(fetchBoardData(boardId));
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
